@@ -1,184 +1,553 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta property="og:title" content="US4 | Settings">
-    <meta property="og:description" content="Edit your website settings here!">
-    <meta property="og:image" content="/storage/images/logo.png">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="icon" href="../storage/images/googleclassroom.png" type="image/png">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="/storage/css/settings.css" rel="stylesheet">
-    <link href="/storage/css/style.css" rel="stylesheet">
-  </head>
-  <body>
-    <script src="/particles.js"></script>
-    <script src="/app.js"></script>
-    <div id="particles-js"></div>
-    <div class="navbar">
-      <div class="left-side">
-        <a href="/">
-          <img src="/storage/images/logo.png" alt="logo">
-        </a>
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <meta property="og:title" content="Classroom Management Tools & Resources - Google for Education">
+   <meta property="og:description" content="Google Classroom is your central place where teaching and learning come together. This easy-to-use and secure tool helps educators manage, measure and enrich learning experiences.">
+
+   <title>Home - Classroom</title>
+
+   <link rel="icon" href="/storage/images/googleclassroom.png" type="image/png">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+   <link href="/storage/css/background.css" rel="stylesheet">
+   <link href="/storage/css/navigation.css" rel="stylesheet">
+   <link href="/storage/css/cursor.css" rel="stylesheet">
+   <link href="/storage/css/settings.css" rel="stylesheet">
+
+   <script src="/storage/js/cursor.js"></script>
+   <script>
+   localStorage.setItem("nexusCustomCursor", "true");
+
+   if (window.setNexusCustomCursor) {
+      window.setNexusCustomCursor(true);
+   } else {
+      document.documentElement.classList.add("nexus-cursor-on");
+      document.documentElement.classList.remove("nexus-cursor-off");
+   }
+</script>
+</head>
+
+<body>
+
+   <main class="settings-page">
+      <header class="settings-header">
+         <h1>Settings</h1>
+         <p>customise how the site looks and functions</p>
+      </header>
+
+      <section class="settings-grid">
+
+         <div class="settings-card">
+            <h2>tab cloak</h2>
+            <p>change the tab title and icon</p>
+
+            <select id="cloakPreset">
+               <option value="default">Google Classroom</option>
+               <option value="googledrive">Google Drive</option>
+               <option value="google">Google</option>
+               <option value="youtube">YouTube</option>
+               <option value="sparx">Sparx Maths</option>
+            </select>
+
+            <button id="resetCloak" type="button">reset cloak</button>
+         </div>
+
+         <div class="settings-card">
+            <h2>themes</h2>
+            <p>choose the theme of nexus</p>
+
+            <select id="themeSelect">
+               <option value="default">default</option>
+               <option value="minecraft">minecraft</option>
+            </select>
+
+            <p class="setting-status" id="themeStatus">default theme selected</p>
+         </div>
+
+         <div class="settings-card bare-card">
+            <div class="card-title-row">
+               <div>
+                  <h2>custom bare server</h2>
+                  <p>set a static bare server url for ultraviolet</p>
+               </div>
+
+               <button type="button" class="info-button" id="bareInfoButton" aria-label="bare server information">
+                  ?
+               </button>
+            </div>
+
+            <label for="bareServerUrl">bare server url</label>
+            <input type="text" id="bareServerUrl" placeholder="" autocomplete="off">
+
+            <div class="button-row compact">
+               <button id="saveBareServer" type="button">save bare server</button>
+               <button id="resetBareServer" type="button">reset</button>
+            </div>
+
+            <p class="setting-status" id="bareServerStatus">no custom bare server set.</p>
+         </div>
+
+         <div class="settings-card">
+            <h2>custom cursor</h2>
+            <p>use the nexus cursor icons across supported pages</p>
+
+            <label class="switch-row">
+               <span>enable custom cursor</span>
+               <input type="checkbox" id="customCursorToggle">
+               <span class="switch"></span>
+            </label>
+
+            <p class="setting-status" id="cursorStatus">custom cursor disabled</p>
+         </div>
+
+         <div class="settings-card">
+            <h2>mobile mode</h2>
+            <p>optimise games for mobile devices</p>
+
+            <p class="setting-status" id="deviceStatus">device: desktop</p>
+
+            <label class="switch-row">
+               <span>enable mobile mode</span>
+               <input type="checkbox" id="mobileModeToggle">
+               <span class="switch"></span>
+            </label>
+         </div>
+
+         <div class="settings-card">
+            <h2>about:blank</h2>
+            <p>open nexus in a blank tab</p>
+
+            <button id="openBlank" type="button">open in about:blank</button>
+
+            <p class="small-note">this opens nexus in a new blank tab.</p>
+         </div>
+
+         <div class="settings-card">
+            <h2>panic key</h2>
+
+            <p class="setting-status">your key: <span id="panicKeyDisplay">none</span></p>
+            <p>click any key to change</p>
+
+            <button id="changePanicKey" type="button">change panic key</button>
+
+            <p class="setting-status">your url: <span id="panicUrlDisplay">https://www.google.com</span></p>
+
+            <label for="panicUrl">enter your url link</label>
+            <input type="text" id="panicUrl" placeholder="https://www.google.com">
+
+            <button id="savePanicUrl" type="button">set url</button>
+         </div>
+
+         <div class="settings-card data-card">
+            <h2>data saving</h2>
+            <p>export or import your local nexus data</p>
+
+            <button id="exportData" type="button">export your data</button>
+
+            <div class="button-row">
+               <button id="importData" type="button">import data</button>
+               <button id="clearData" type="button">clear all data</button>
+            </div>
+
+            <input type="file" id="importFile" accept="application/json">
+         </div>
+
+      </section>
+   </main>
+
+   <div class="modal-backdrop" id="bareModal" hidden>
+      <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="bareModalTitle">
+         <button type="button" class="modal-close" id="bareModalClose" aria-label="close modal">
+            <i class="fa-solid fa-xmark"></i>
+         </button>
+
+         <h2 id="bareModalTitle">custom bare server</h2>
+
+         <p>a bare server is the backend which lets ultraviolet route web requests through a proxy setup.</p>
+
+         <p>this setting is for a static bare server url. it saves locally so it can be connected to the ultraviolet proxy.</p>
+
+         <div class="modal-example">https://tomp.app/</div>
       </div>
-      <div class="right-side">
-        <script type="text/javascript" src="/storage/js/nav.js"></script>
-      </div>
-    </div>
-    <div class="settings-container">
-      <h1>Settings</h1>
-      <label for="backgroundColorPicker">Select Background Color:</label>
-      <input type="color" id="backgroundColorPicker">
-      <div class="checkbox-container">
-        <div>
-          <label for="beforeUnloadToggle">Anti-Close</label>
-          <input type="checkbox" id="beforeUnloadToggle" />
-        </div>
-        <div>
-          <label for="autocloakToggle">Auto-about:blank</label>
-          <input type="checkbox" id="autocloakToggle" />
-        </div>
-      </div>
-      <hr>
-      <label for="siteTitle">Set Site Title:</label>
-      <input type="text" id="siteTitle" placeholder="Enter site title" />
-      <label for="siteLogo">Set Site Favicon:</label>
-      <input type="file" id="siteLogo" accept="image/*" />
-      <button id="saveSettings">Save Title & Favicon</button>
-      <hr>
-      <label for="panicKey">Set Panic Button Key:</label>
-      <input type="text" id="panicKey" placeholder="Enter key (e.g., F1)" />
-      <label for="panicUrl">Set Panic Button URL:</label>
-      <input type="text" id="panicUrl" placeholder="Enter URL to redirect to" />
-      <button id="savePanicButtonSettings">Save Panic Button Settings</button>
-      <hr>
-      <button id="resetSettings" class="reset-button">Reset Tab Name and Icon</button>
-      <button id="resetPanicButtonSettings" class="reset-button">Reset Panic Button Settings</button>
-    </div>
-    <script>
-      const beforeUnloadToggle = document.getElementById('beforeUnloadToggle');
-      const autocloakToggle = document.getElementById('autocloakToggle');
-      const siteTitleInput = document.getElementById('siteTitle');
-      const siteLogoInput = document.getElementById('siteLogo');
-      const panicKeyInput = document.getElementById('panicKey');
-      const panicUrlInput = document.getElementById('panicUrl');
-      const saveSettingsButton = document.getElementById('saveSettings');
-      const savePanicButtonSettingsButton = document.getElementById('savePanicButtonSettings');
-      const resetSettingsButton = document.getElementById('resetSettings');
-      const resetPanicButtonSettingsButton = document.getElementById('resetPanicButtonSettings');
-      beforeUnloadToggle.checked = localStorage.getItem('beforeUnloadEnabled') === 'true';
-      autocloakToggle.checked = localStorage.getItem('autocloakEnabled') === 'true';
-      siteTitleInput.value = localStorage.getItem('siteTitle') || '';
-      panicKeyInput.value = localStorage.getItem('panicKey') || '';
-      panicUrlInput.value = localStorage.getItem('panicUrl') || '';
-      const savedLogo = localStorage.getItem('siteLogo');
-      if (savedLogo) {
-        const faviconLink = document.createElement('link');
-        faviconLink.rel = 'icon';
-        faviconLink.href = savedLogo;
-        document.head.appendChild(faviconLink);
+   </div>
+
+   <script>
+      const cloakPreset = document.getElementById("cloakPreset");
+      const resetCloak = document.getElementById("resetCloak");
+
+      const themeSelect = document.getElementById("themeSelect");
+      const themeStatus = document.getElementById("themeStatus");
+
+      const bareServerUrl = document.getElementById("bareServerUrl");
+      const saveBareServer = document.getElementById("saveBareServer");
+      const resetBareServer = document.getElementById("resetBareServer");
+      const bareServerStatus = document.getElementById("bareServerStatus");
+      const bareInfoButton = document.getElementById("bareInfoButton");
+      const bareModal = document.getElementById("bareModal");
+      const bareModalClose = document.getElementById("bareModalClose");
+
+      const customCursorToggle = document.getElementById("customCursorToggle");
+      const cursorStatus = document.getElementById("cursorStatus");
+
+      const mobileModeToggle = document.getElementById("mobileModeToggle");
+      const deviceStatus = document.getElementById("deviceStatus");
+
+      const openBlank = document.getElementById("openBlank");
+
+      const panicKeyDisplay = document.getElementById("panicKeyDisplay");
+      const panicUrlDisplay = document.getElementById("panicUrlDisplay");
+      const changePanicKey = document.getElementById("changePanicKey");
+      const panicUrl = document.getElementById("panicUrl");
+      const savePanicUrl = document.getElementById("savePanicUrl");
+
+      const exportData = document.getElementById("exportData");
+      const importData = document.getElementById("importData");
+      const importFile = document.getElementById("importFile");
+      const clearData = document.getElementById("clearData");
+
+      const cloaks = {
+         default: {
+            title: "Home - Classroom",
+            icon: "/storage/favicon/googleclassroom.png"
+         },
+         googledrive: {
+            title: "Google Drive",
+            icon: "/storage/favicon/googledrive.png"
+         },
+         google: {
+            title: "Google",
+            icon: "/storage/favicon/google.png"
+         },
+         youtube: {
+            title: "YouTube",
+            icon: "/storage/favicon/youtube.png"
+         },
+         sparx: {
+            title: "Sparx Maths",
+            icon: "/storage/favicon/sparx.png"
+         }
+      };
+
+      function setFavicon(src) {
+         let icon = document.querySelector("link[rel='icon']");
+
+         if (!icon) {
+            icon = document.createElement("link");
+            icon.rel = "icon";
+            document.head.appendChild(icon);
+         }
+
+         icon.href = src;
       }
-      saveSettingsButton.addEventListener('click', function() {
-        const siteTitle = siteTitleInput.value;
-        const siteLogoFile = siteLogoInput.files[0];
-        if (siteTitle) {
-          localStorage.setItem('siteTitle', siteTitle);
-        }
-        if (siteLogoFile) {
-          const reader = new FileReader();
-          reader.onload = function(event) {
-            const logoUrl = event.target.result;
-            localStorage.setItem('siteLogo', logoUrl);
-            const faviconLink = document.createElement('link');
-            faviconLink.rel = 'icon';
-            faviconLink.href = logoUrl;
-            document.head.appendChild(faviconLink);
-          };
-          reader.readAsDataURL(siteLogoFile);
-        }
-      });
-      savePanicButtonSettingsButton.addEventListener('click', function() {
-        const panicKey = panicKeyInput.value;
-        const panicUrl = panicUrlInput.value;
-        if (panicKey) {
-          localStorage.setItem('panicKey', panicKey);
-        }
-        if (panicUrl) {
-          localStorage.setItem('panicUrl', panicUrl);
-        }
-      });
-      resetSettingsButton.addEventListener('click', function() {
-        localStorage.removeItem('siteTitle');
-        localStorage.removeItem('siteLogo');
-        document.title = 'Home';
-        const defaultFaviconLink = document.querySelector('link[rel="icon"]');
-        if (defaultFaviconLink) {
-          defaultFaviconLink.href = 'https://raw.githubusercontent.com/voucan/voucan.github.io/refs/heads/main/googleclassroom.png';
-        }
-      });
-      resetPanicButtonSettingsButton.addEventListener('click', function() {
-        localStorage.removeItem('panicKey');
-        localStorage.removeItem('panicUrl');
-      });
-      beforeUnloadToggle.addEventListener('change', function() {
-        localStorage.setItem('beforeUnloadEnabled', beforeUnloadToggle.checked);
-        if (beforeUnloadToggle.checked) {
-          window.addEventListener('beforeunload', function(e) {
-            e.preventDefault();
-            e.returnValue = '';
-          });
-        } else {
-          window.removeEventListener('beforeunload', function(e) {
-            e.preventDefault();
-            e.returnValue = '';
-          });
-        }
-      });
-      autocloakToggle.addEventListener('change', function() {
-        localStorage.setItem('autocloakEnabled', autocloakToggle.checked);
-        if (autocloakToggle.checked) {
-          const newTab = window.open('about:blank', '_blank');
-          if (newTab) {
-            const iframe = document.createElement('iframe');
-            iframe.src = '/';
-            iframe.style.width = '100vw';
-            iframe.style.height = '100vh';
-            iframe.style.border = 'none';
-            newTab.document.body.style.margin = '0';
-            newTab.document.body.appendChild(iframe);
-          }
-          const panicUrl = localStorage.getItem('panicUrl') || "https://classroom.google.com";
-          window.location.href = panicUrl;
-        }
-      });
-      if (beforeUnloadToggle.checked) {
-        window.addEventListener('beforeunload', function(e) {
-          e.preventDefault();
-          e.returnValue = '';
-        });
+
+      function applyCloak(value) {
+         const cloak = cloaks[value] || cloaks.default;
+
+         document.title = cloak.title;
+         setFavicon(cloak.icon);
+
+         localStorage.setItem("cloakPreset", value);
+         localStorage.setItem("siteTitle", cloak.title);
+         localStorage.setItem("siteLogo", cloak.icon);
+
+         if (window.parent && window.parent !== window) {
+            window.parent.postMessage({
+               type: "nexus-cloak-change",
+               title: cloak.title,
+               icon: cloak.icon,
+               preset: value
+            }, "*");
+         }
       }
-      window.addEventListener('keydown', function(event) {
-        const panicKey = localStorage.getItem('panicKey');
-        const panicUrl = localStorage.getItem('panicUrl');
-        if (event.key === panicKey && panicUrl) {
-          window.location.href = panicUrl;
-        }
+
+      function setTopFavicon(src) {
+         setFavicon(src);
+      }
+
+      function applySavedCloak() {
+         const savedTitle = localStorage.getItem("siteTitle");
+         const savedIcon = localStorage.getItem("siteLogo");
+
+         if (savedTitle) {
+            document.title = savedTitle;
+         }
+
+         if (savedIcon) {
+            setTopFavicon(savedIcon);
+         }
+      }
+
+      function applyThemeLabel(value) {
+         document.documentElement.dataset.theme = value;
+         themeStatus.textContent = value + " theme selected";
+      }
+
+      function updateBareServerStatus() {
+         const savedBare = localStorage.getItem("customBareServer");
+
+         if (savedBare) {
+            bareServerStatus.textContent = "saved: " + savedBare;
+         } else {
+            bareServerStatus.textContent = "no custom bare server set.";
+         }
+      }
+
+      function applyCursorMode(enabled) {
+         localStorage.setItem("nexusCustomCursor", enabled ? "true" : "false");
+
+         if (window.setNexusCustomCursor) {
+            window.setNexusCustomCursor(enabled);
+         } else {
+            document.documentElement.classList.toggle("nexus-cursor-on", enabled);
+            document.documentElement.classList.toggle("nexus-cursor-off", !enabled);
+         }
+
+         customCursorToggle.checked = enabled;
+         cursorStatus.textContent = enabled ? "custom cursor enabled" : "custom cursor disabled";
+      }
+
+      function applyMobileMode(enabled) {
+         localStorage.setItem("mobileMode", enabled ? "true" : "false");
+         deviceStatus.textContent = enabled ? "device: mobile" : "device: desktop";
+      }
+
+      function openBareModal() {
+         bareModal.hidden = false;
+
+         requestAnimationFrame(function () {
+            bareModal.classList.add("active");
+            document.body.classList.add("modal-open");
+         });
+      }
+
+      function closeBareModal() {
+         bareModal.classList.remove("active");
+         document.body.classList.remove("modal-open");
+
+         setTimeout(function () {
+            bareModal.hidden = true;
+         }, 180);
+      }
+
+      cloakPreset.value = localStorage.getItem("cloakPreset") || "default";
+      themeSelect.value = localStorage.getItem("nexusTheme") || "default";
+      bareServerUrl.value = localStorage.getItem("customBareServer") || "";
+      customCursorToggle.checked = localStorage.getItem("nexusCustomCursor") === "true";
+      mobileModeToggle.checked = localStorage.getItem("mobileMode") === "true";
+      panicUrl.value = localStorage.getItem("panicUrl") || "https://www.google.com";
+
+      panicKeyDisplay.textContent = localStorage.getItem("panicKey") || "none";
+      panicUrlDisplay.textContent = panicUrl.value;
+
+      applySavedCloak();
+      applyThemeLabel(themeSelect.value);
+      updateBareServerStatus();
+      applyCursorMode(customCursorToggle.checked);
+      applyMobileMode(mobileModeToggle.checked);
+
+      cloakPreset.addEventListener("change", function () {
+         applyCloak(cloakPreset.value);
       });
-    </script>
-    <script>
-      var storedColor = localStorage.getItem('backgroundColor') || 'black';
-      document.body.style.backgroundColor = storedColor;
-      var colorPicker = document.getElementById('backgroundColorPicker');
-      colorPicker.value = storedColor;
-      colorPicker.addEventListener('input', function() {
-        document.body.style.backgroundColor = colorPicker.value;
-        localStorage.setItem('backgroundColor', colorPicker.value);
+
+      resetCloak.addEventListener("click", function () {
+         cloakPreset.value = "default";
+         applyCloak("default");
       });
-    </script>
-    <script type="text/javascript" src="/storage/js/notify.js"></script>
-    <script type="text/javascript" src="/storage/js/background.js"></script>
-    <script type="text/javascript" src="/storage/js/cheese-algorithm.js"></script>
-    <scrit type="text/javascript" src="/storage/js/settings-1.js">
-  </body>
+
+      themeSelect.addEventListener("change", function () {
+         const selectedTheme = themeSelect.value;
+
+         localStorage.setItem("nexusTheme", selectedTheme);
+         applyThemeLabel(selectedTheme);
+
+         location.reload();
+      });
+
+      saveBareServer.addEventListener("click", function () {
+         const url = bareServerUrl.value.trim();
+
+         if (!url) {
+            localStorage.removeItem("customBareServer");
+            updateBareServerStatus();
+            return;
+         }
+
+         localStorage.setItem("customBareServer", url);
+         updateBareServerStatus();
+      });
+
+      resetBareServer.addEventListener("click", function () {
+         bareServerUrl.value = "";
+         localStorage.removeItem("customBareServer");
+         updateBareServerStatus();
+      });
+
+      bareInfoButton.addEventListener("click", openBareModal);
+      bareModalClose.addEventListener("click", closeBareModal);
+
+      bareModal.addEventListener("click", function (event) {
+         if (event.target === bareModal) {
+            closeBareModal();
+         }
+      });
+
+      customCursorToggle.addEventListener("change", function () {
+         applyCursorMode(customCursorToggle.checked);
+      });
+
+      mobileModeToggle.addEventListener("change", function () {
+         applyMobileMode(mobileModeToggle.checked);
+      });
+
+      openBlank.addEventListener("click", function () {
+         const tab = window.open("about:blank", "_blank");
+
+         if (!tab) {
+            return;
+         }
+
+         tab.document.write(`
+            <!DOCTYPE html>
+            <html>
+               <head>
+                  <title>${document.title}</title>
+                  <style>
+                     html,
+                     body {
+                        margin: 0;
+                        width: 100%;
+                        height: 100%;
+                        overflow: hidden;
+                        background: black;
+                     }
+
+                     iframe {
+                        width: 100%;
+                        height: 100%;
+                        border: 0;
+                        display: block;
+                     }
+                  </style>
+               </head>
+               <body>
+                  <iframe src="${location.origin}"></iframe>
+               </body>
+            </html>
+         `);
+
+         tab.document.close();
+      });
+
+      changePanicKey.addEventListener("click", function () {
+         panicKeyDisplay.textContent = "press any key...";
+
+         const setKey = function (event) {
+            event.preventDefault();
+
+            localStorage.setItem("panicKey", event.key);
+            panicKeyDisplay.textContent = event.key;
+
+            window.removeEventListener("keydown", setKey);
+         };
+
+         window.addEventListener("keydown", setKey);
+      });
+
+      savePanicUrl.addEventListener("click", function () {
+         const url = panicUrl.value.trim() || "https://www.google.com";
+
+         localStorage.setItem("panicUrl", url);
+         panicUrlDisplay.textContent = url;
+      });
+
+      window.addEventListener("keydown", function (event) {
+         const panicKey = localStorage.getItem("panicKey");
+         const url = localStorage.getItem("panicUrl");
+
+         if (panicKey && url && event.key === panicKey) {
+            window.location.href = url;
+         }
+      });
+
+      exportData.addEventListener("click", function () {
+         const data = {};
+
+         for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            data[key] = localStorage.getItem(key);
+         }
+
+         const blob = new Blob([JSON.stringify(data, null, 2)], {
+            type: "application/json"
+         });
+
+         const link = document.createElement("a");
+         link.href = URL.createObjectURL(blob);
+         link.download = "nexus-data.json";
+         link.click();
+
+         URL.revokeObjectURL(link.href);
+      });
+
+      importData.addEventListener("click", function () {
+         importFile.click();
+      });
+
+      importFile.addEventListener("change", function () {
+         const file = importFile.files[0];
+
+         if (!file) {
+            return;
+         }
+
+         const reader = new FileReader();
+
+         reader.onload = function () {
+            try {
+               const data = JSON.parse(reader.result);
+
+               Object.keys(data).forEach(function (key) {
+                  localStorage.setItem(key, data[key]);
+               });
+
+               location.reload();
+            } catch (error) {
+               alert("that file could not be imported.");
+            }
+         };
+
+         reader.readAsText(file);
+      });
+
+      clearData.addEventListener("click", function () {
+         const confirmed = confirm("clear all nexus data?");
+
+         if (confirmed) {
+            localStorage.clear();
+            location.reload();
+         }
+      });
+
+      window.addEventListener("message", function (event) {
+         if (!event.data || event.data.type !== "nexus-cloak-change") {
+            return;
+         }
+
+         document.title = event.data.title;
+         setTopFavicon(event.data.icon);
+
+         localStorage.setItem("cloakPreset", event.data.preset);
+         localStorage.setItem("siteTitle", event.data.title);
+         localStorage.setItem("siteLogo", event.data.icon);
+      });
+   </script>
+
+   <script type="module" src="../storage/themes/minecraft/theme.js"></script>
+
+</body>
+
 </html>

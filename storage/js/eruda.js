@@ -1,142 +1,147 @@
-const iframe = document.querySelector('.tab-iframe.active');
-const observer = new MutationObserver(function (mutationsList) {
-  mutationsList.forEach(function (mutation) {
-    if (
-      mutation.type === 'attributes' &&
-      mutation.attributeName === 'src'
-    ) {
-      iframe.addEventListener(
-        'load',
-        function () {
-          const initialUrl = iframe.contentWindow.location.href;
-          updateGointospace2(initialUrl);
-          startURLMonitoring();
-        },
-        { once: true }
-      );
-    }
-  });
-});
-
-if (iframe) {
-  observer.observe(iframe, {
-    attributes: true,
-    attributeFilter: ['src']
-  });
-}
-
-let devToggle = false;
-let erudaScriptLoaded = false;
-let erudaScriptInjecting = false;
-
-function injectErudaScript(iframeDocument) {
-  return new Promise((resolve, reject) => {
-    if (erudaScriptLoaded) {
-      resolve();
-      return;
-    }
-
-    if (erudaScriptInjecting) {
-      console.warn('Eruda script is already being injected.');
-      resolve();
-      return;
-    }
-
-    erudaScriptInjecting = true;
-
-    const script = iframeDocument.createElement('script');
-    script.type = 'text/javascript';
-    script.src = 'https://cdn.jsdelivr.net/npm/eruda';
-    script.onload = () => {
-      erudaScriptLoaded = true;
-      erudaScriptInjecting = false;
-      resolve();
-    };
-    script.onerror = event => {
-      erudaScriptInjecting = false;
-      reject(new Error('Failed to load Eruda script:', event));
-    };
-    iframeDocument.body.appendChild(script);
-  });
-}
-
-function injectShowScript(iframeDocument) {
-  return new Promise(resolve => {
-    const script = iframeDocument.createElement('script');
-    script.type = 'text/javascript';
-    script.textContent = `
-      eruda.init({
-        defaults: {
-          displaySize: 50,
-          transparency: 1,
-          theme: 'Material Deep Ocean'
-        }
-      });
-      eruda.show();
-      document.currentScript.remove();
-    `;
-    iframeDocument.body.appendChild(script);
-    resolve();
-  });
-}
-
-function injectHideScript(iframeDocument) {
-  return new Promise(resolve => {
-    const script = iframeDocument.createElement('script');
-    script.type = 'text/javascript';
-    script.textContent = `
-      eruda.hide();
-      document.currentScript.remove();
-    `;
-    iframeDocument.body.appendChild(script);
-    resolve();
-  });
-}
-
-function inspectelement() {
-  const iframe = document.querySelector('.tab-iframe.active');
-  if (!iframe || !iframe.contentWindow) {
-    console.error(
-      "Iframe not found or inaccessible. \\(Â°â–¡Â°)/ (This shouldn't happen btw)"
-    );
-    return;
-  }
-
-  const iframeDocument = iframe.contentWindow.document;
-
-  const forbiddenSrcs = ['about:blank', null, 'a%60owt8bnalk', 'a`owt8bnalk'];
-  if (iframe.contentWindow.location.href.includes(forbiddenSrcs)) {
-    console.warn('Iframe src is forbidden, skipping.');
-    return;
-  }
-
-  if (iframe.contentWindow.document.readyState == 'loading') {
-    console.warn(
-      'Iframe has not finished loading, skipping Eruda injection. Be patient, jesus fuck.'
-    );
-    return;
-  }
-
-  injectErudaScript(iframeDocument)
-    .then(() => {
-      if (!devToggle) {
-        injectShowScript(iframeDocument);
-      } else {
-        injectHideScript(iframeDocument);
+(function () {
+   if (window.__nexusErudaRunning) {
+      if (window.inspectelement) {
+         window.inspectelement();
       }
 
+      return;
+   }
+
+   window.__nexusErudaRunning = true;
+
+   let devToggle = false;
+   let erudaLoading = false;
+
+   function findFrame() {
+      return (
+         document.querySelector("#proxy-frame") ||
+         document.querySelector("#game-frame") ||
+         document.querySelector("#page-frame") ||
+         document.querySelector(".proxy-frame") ||
+         document.querySelector(".game-iframe") ||
+         document.querySelector(".tab-iframe.active") ||
+         document.querySelector("iframe")
+      );
+   }
+
+   function getFrameDocument(frame) {
+      try {
+         return frame.contentDocument || frame.contentWindow.document;
+      } catch (error) {
+         return null;
+      }
+   }
+
+   function waitForFrame(callback) {
+      let tries = 0;
+
+      const timer = setInterval(function () {
+         const frame = findFrame();
+
+         if (frame) {
+            clearInterval(timer);
+            callback(frame);
+            return;
+         }
+
+         tries++;
+
+         if (tries > 80) {
+            clearInterval(timer);
+            console.error("iframe not found");
+         }
+      }, 100);
+   }
+
+   function loadErudaInto(frameDocument) {
+      return new Promise(function (resolve, reject) {
+         if (frameDocument.getElementById("nexus-eruda-script")) {
+            resolve();
+            return;
+         }
+
+         if (erudaLoading) {
+            resolve();
+            return;
+         }
+
+         erudaLoading = true;
+
+         const script = frameDocument.createElement("script");
+         script.id = "nexus-eruda-script";
+         script.src = "https://cdn.jsdelivr.net/npm/eruda";
+
+         script.onload = function () {
+            erudaLoading = false;
+            resolve();
+         };
+
+         script.onerror = function () {
+            erudaLoading = false;
+            reject(new Error("failed to load eruda"));
+         };
+
+         frameDocument.body.appendChild(script);
+      });
+   }
+
+   function toggleEruda(frameDocument) {
+      const script = frameDocument.createElement("script");
+
+      script.textContent = `
+         if (window.eruda) {
+            if (!window.__nexusErudaReady) {
+               window.eruda.init({
+                  defaults: {
+                     displaySize: 50,
+                     transparency: 1,
+                     theme: "Material Deep Ocean"
+                  }
+               });
+
+               window.__nexusErudaReady = true;
+            }
+
+            if (${!devToggle}) {
+               window.eruda.show();
+            } else {
+               window.eruda.hide();
+            }
+         }
+
+         document.currentScript.remove();
+      `;
+
+      frameDocument.body.appendChild(script);
       devToggle = !devToggle;
-    })
-    .catch(error => {
-      console.error('Error injecting Eruda script:', error);
-    });
+   }
 
-  iframe.contentWindow.addEventListener('unload', () => {
-    devToggle = false;
-    erudaScriptLoaded = false;
-    erudaScriptInjecting = false;
-    console.log('Iframe navigation detected, Eruda toggle reset.');
-  });
-}
+   window.inspectelement = function () {
+      waitForFrame(function (frame) {
+         const frameDocument = getFrameDocument(frame);
 
-inspectelement();
+         if (!frameDocument || !frameDocument.body) {
+            console.error("iframe is not accessible. make sure the page is loaded through uv, not directly cross-origin.");
+            return;
+         }
+
+         if (frameDocument.readyState === "loading") {
+            frame.addEventListener("load", function () {
+               window.inspectelement();
+            }, { once: true });
+
+            return;
+         }
+
+         loadErudaInto(frameDocument)
+            .then(function () {
+               toggleEruda(frameDocument);
+            })
+            .catch(function (error) {
+               console.error(error);
+            });
+      });
+   };
+
+   window.inspectelement();
+})();

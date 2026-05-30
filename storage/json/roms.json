@@ -3,90 +3,90 @@
     "title": "Load ROM",
     "img": "images/loadrom.png",
     "alt": "(A) Load ROM",
-    "url": "/pages/games-frame?url=/pages/roms/load-rom/"
+    "url": "/pages/iframe.html?url=/pages/roms/load-rom/"
   },
   {
     "title": "Mario Kart DS",
     "img": "images/mariokartds.jpg",
     "alt": "(DS) Mario Kart DS",
-    "url": "/pages/games-frame?url=/pages/roms/mariokart-ds/"
+    "url": "/pages/iframe.html?url=/pages/roms/mariokart-ds/"
   },
   {
     "title": "Mario & Luigi Superstar Saga",
     "img": "images/superstarsaga.webp",
     "alt": "(GBA) Mario & Luigi Superstar Saga",
-    "url": "/pages/games-frame?url=/pages/roms/superstarsaga/"
+    "url": "/pages/iframe.html?url=/pages/roms/superstarsaga/"
   },
   {
     "title": "Mario Party DS",
     "img": "images/marioparty.png",
     "alt": "(DS) Mario Party DS",
-    "url": "/pages/games-frame?url=/pages/roms/marioparty/"
+    "url": "/pages/iframe.html?url=/pages/roms/marioparty/"
   },
   {
     "title": "Mario Kart 64",
     "img": "images/mk64.jpg",
     "alt": "(N64) Mario Kart 64",
-    "url": "/pages/games-frame?url=/pages/roms/mariokart64/"
+    "url": "/pages/iframe.html?url=/pages/roms/mariokart64/"
   },
   {
     "title": "Super Mario Kart",
     "img": "images/smk.png",
     "alt": "(SNES) Super Mario Kart",
-    "url": "/pages/games-frame?url=/pages/roms/super-mario-kart/"
+    "url": "/pages/iframe.html?url=/pages/roms/super-mario-kart/"
   },
   {
     "title": "Super Smash Bros.",
     "img": "images/smashbros.jpg",
     "alt": "(N64) Super Smash Bros.",
-    "url": "/pages/games-frame?url=/pages/roms/supersmashbros/"
+    "url": "/pages/iframe.html?url=/pages/roms/supersmashbros/"
   },
   {
     "title": "Sonic Advance",
     "img": "images/sonicadv.png",
     "alt": "(GBA) Sonic Advance",
-    "url": "/pages/games-frame?url=/pages/roms/sonic-adv/"
+    "url": "/pages/iframe.html?url=/pages/roms/sonic-adv/"
   },
   {
     "title": "Kirby & The Amazing Mirror",
     "img": "images/amazingmirror.png",
     "alt": "(GBA) Kirby & The Amazing Mirror",
-    "url": "/pages/games-frame?url=/pages/roms/amazing-mirror/"
+    "url": "/pages/iframe.html?url=/pages/roms/amazing-mirror/"
   },
   {
     "title": "Paper Mario 64",
     "img": "images/pm64.png",
     "alt": "(N64) Paper Mario 64",
-    "url": "/pages/games-frame?url=/pages/roms/papermario-64/"
+    "url": "/pages/iframe.html?url=/pages/roms/papermario-64/"
   },
   {
     "title": "Super Mario Bros.",
     "img": "images/smbnes.png",
     "alt": "(NES) Super Mario Bros",
-    "url": "/pages/games-frame?url=/pages/roms/supermariobros/"
+    "url": "/pages/iframe.html?url=/pages/roms/supermariobros/"
   },
   {
     "title": "Super Mario World",
     "img": "images/smw.png",
     "alt": "(SNES) Super Mario World",
-    "url": "/pages/games-frame?url=/pages/roms/super-mario-world/"
+    "url": "/pages/iframe.html?url=/pages/roms/super-mario-world/"
   },
   {
     "title": "Super Mario Bros. 3",
     "img": "images/smb3.jpg",
     "alt": "(NES) Super Mario Bros. 3",
-    "url": "/pages/games-frame?url=/pages/roms/supermariobros3/"
+    "url": "/pages/iframe.html?url=/pages/roms/supermariobros3/"
   },
   {
     "title": "Super Mario 64",
     "img": "images/sm64.png",
     "alt": "(N64) Super Mario 64",
-    "url": "/pages/games-frame?url=/pages/roms/supermario-64/"
+    "url": "/pages/iframe.html?url=/pages/roms/supermario-64/"
   },
   {
     "title": "New Super Mario Bros.",
     "img": "images/new-smb.png",
     "alt": "(DS) New Super Mario Bros.",
-    "url": "/pages/games-frame?url=/pages/roms/new-smb/"
+    "url": "/pages/iframe.html?url=/pages/roms/new-smb/"
   }
 ]

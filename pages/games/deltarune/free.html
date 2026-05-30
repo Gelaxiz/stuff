@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
   <base href="./">
@@ -63,7 +63,7 @@
     <source src="audios/AUDIO_DRONE.ogg" type="audio/ogg">
     Your browser does not support the audio element.
   </audio>
-  <button id="mute">🔊</button>
+  <button id="mute">ðŸ”Š</button>
   <script>
     const audio = document.getElementById('drone');
     const mute = document.getElementById('mute');
@@ -78,7 +78,7 @@
   
     function updateButton() {
       if (!gamestarted) {
-        mute.textContent = audio.muted ? '🔊' : '🔇';
+        mute.textContent = audio.muted ? 'ðŸ”Š' : 'ðŸ”‡';
       }
     }
   
@@ -166,3 +166,5 @@
   </script>
 </body>
 </html>
+
+

@@ -138,3 +138,35 @@ a {
   opacity: 1;
   transform: translateY(0);
 }
+
+html,
+body {
+    min-height: 100%;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+html.in-frame,
+html.in-frame body {
+    background: transparent;
+    background-color: transparent;
+    background-image: none;
+}
+
+html.in-frame body::before,
+html.in-frame body::after,
+html.in-frame #minecraft-theme-layer,
+html.in-frame #particles-js,
+html.in-frame .particles-js-canvas-el {
+    display: none;
+    content: none;
+}
+
+body {
+    box-sizing: border-box;
+    padding: 28px 44px 150px;
+}
+
+.navbar {
+    display: none;
+}

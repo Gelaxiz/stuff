@@ -1,28 +1,322 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loading Screen</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap">
-    <link rel="stylesheet" href="../storage/css/static-embed.css">
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Home - Classroom</title>
+
+   <link rel="icon" href="/storage/images/googleclassroom.png" type="image/png">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   <link rel="stylesheet" href="../storage/css/proxy.css">
 </head>
+
 <body>
 
-<script src="/particles.js"></script>
-<script src="/storage/js/app.js"></script>
-<div id="particles-js"></div>
+   <div id="proxy-loading" class="proxy-loading">
+      <div class="yt-loader">
+         <div class="yt-top">
+            <div class="yt-logo"></div>
+            <div class="yt-search"></div>
+            <div class="yt-avatar"></div>
+         </div>
 
-<div id="loadingScreen">
-    <div class="spinner"></div>
-</div>
+         <div class="yt-progress">
+            <div class="yt-progress-bar"></div>
+         </div>
 
-<script src="uv/uv.bundle.js"></script>
-<script src="uv/uv.config.js"></script>
-<script src="register-sw.js"></script>
-<script src="embed.js"></script>
-<script type="text/javascript" src="/storage/js/background.js"></script>
+         <div class="yt-grid">
+            <div class="yt-video-card">
+               <div class="yt-thumb"></div>
+               <div class="yt-info">
+                  <div class="yt-circle"></div>
+                  <div class="yt-lines">
+                     <div></div>
+                     <div></div>
+                     <div></div>
+                  </div>
+               </div>
+            </div>
+
+            <div class="yt-video-card">
+               <div class="yt-thumb"></div>
+               <div class="yt-info">
+                  <div class="yt-circle"></div>
+                  <div class="yt-lines">
+                     <div></div>
+                     <div></div>
+                     <div></div>
+                  </div>
+               </div>
+            </div>
+
+            <div class="yt-video-card">
+               <div class="yt-thumb"></div>
+               <div class="yt-info">
+                  <div class="yt-circle"></div>
+                  <div class="yt-lines">
+                     <div></div>
+                     <div></div>
+                     <div></div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <iframe id="proxy-frame" class="proxy-frame" allowfullscreen></iframe>
+
+   <div class="proxy-bar">
+      <a class="proxy-logo" href="/" target="_top" aria-label="home">
+         <img src="/storage/images/logo.png" alt="nexus">
+      </a>
+
+      <form id="proxy-form" class="proxy-form">
+         <input id="proxy-address" type="text" autocomplete="off" spellcheck="false">
+      </form>
+
+      <div class="proxy-actions">
+         <button id="back-button" type="button" aria-label="back">
+            <i class="fa-solid fa-arrow-left"></i>
+         </button>
+
+         <button id="forward-button" type="button" aria-label="forward">
+            <i class="fa-solid fa-arrow-right"></i>
+         </button>
+
+         <button id="reload-button" type="button" aria-label="reload">
+            <i class="fa-solid fa-rotate-right"></i>
+         </button>
+
+         <button id="home-button" type="button" aria-label="home">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+         </button>
+
+         <button id="eruda-button" type="button" aria-label="eruda">
+            <i class="fa-solid fa-code"></i>
+         </button>
+      </div>
+   </div>
+
+   <script src="uv/uv.bundle.js"></script>
+   <script src="uv/uv.config.js"></script>
+   <script src="register-sw.js"></script>
+
+   <script>
+      const proxyFrame = document.getElementById("proxy-frame");
+      const proxyLoading = document.getElementById("proxy-loading");
+      const proxyForm = document.getElementById("proxy-form");
+      const proxyAddress = document.getElementById("proxy-address");
+      const backButton = document.getElementById("back-button");
+      const forwardButton = document.getElementById("forward-button");
+      const reloadButton = document.getElementById("reload-button");
+      const homeButton = document.getElementById("home-button");
+      const erudaButton = document.getElementById("eruda-button");
+
+      const defaultUrl = "https://duckduckgo.com/";
+      let loadingTimer = null;
+
+      function showLoading() {
+         clearTimeout(loadingTimer);
+         proxyLoading.classList.remove("proxy-loading-hidden");
+      }
+
+      function hideLoading() {
+         clearTimeout(loadingTimer);
+
+         loadingTimer = setTimeout(function () {
+            proxyLoading.classList.add("proxy-loading-hidden");
+         }, 450);
+      }
+
+      function getUrlParam() {
+         const params = new URLSearchParams(window.location.search);
+         return params.get("p") || params.get("url");
+      }
+
+      function isUrl(value) {
+         return /^https?:\/\//i.test(value) || /^[^\s]+\.[a-z]{2,}(\/.*)?$/i.test(value);
+      }
+
+      function normaliseUrl(value) {
+         const text = String(value || "").trim();
+
+         if (!text) {
+            return defaultUrl;
+         }
+
+         if (isUrl(text)) {
+            if (/^https?:\/\//i.test(text)) {
+               return text;
+            }
+
+            return "https://" + text;
+         }
+
+         return "https://duckduckgo.com/?q=" + encodeURIComponent(text) + "&ia=web";
+      }
+
+      function encodeProxyUrl(url) {
+         if (typeof __uv$config !== "undefined" && typeof __uv$config.encodeUrl === "function") {
+            return __uv$config.prefix + __uv$config.encodeUrl(url);
+         }
+
+         return url;
+      }
+
+      function decodeProxyUrl(url) {
+         if (typeof __uv$config === "undefined" || typeof __uv$config.decodeUrl !== "function") {
+            return "";
+         }
+
+         const parsed = new URL(url, window.location.origin);
+         const prefix = __uv$config.prefix;
+
+         if (!parsed.pathname.startsWith(prefix)) {
+            return "";
+         }
+
+         const encoded = parsed.pathname.slice(prefix.length);
+
+         if (!encoded) {
+            return "";
+         }
+
+         return __uv$config.decodeUrl(encoded);
+      }
+
+      function updateTopUrl(realUrl) {
+         if (!realUrl) {
+            return;
+         }
+
+         proxyAddress.value = realUrl;
+
+         const newUrl = "/static/embed.html?p=" + encodeURIComponent(realUrl);
+
+         if (window.location.pathname + window.location.search !== newUrl) {
+            history.replaceState(null, "", newUrl);
+         }
+      }
+
+      async function registerServiceWorker() {
+         if (!("serviceWorker" in navigator)) {
+            return;
+         }
+
+         try {
+            await navigator.serviceWorker.register("/static/uv-sw.js", {
+               scope: "/static/"
+            });
+         } catch (error) {}
+      }
+
+      async function loadUrl(url) {
+         const realUrl = normaliseUrl(url);
+
+         showLoading();
+
+         proxyAddress.value = realUrl;
+
+         await registerServiceWorker();
+
+         proxyFrame.src = encodeProxyUrl(realUrl);
+
+         updateTopUrl(realUrl);
+      }
+
+      proxyFrame.addEventListener("load", function () {
+         try {
+            const realUrl = decodeProxyUrl(proxyFrame.contentWindow.location.href);
+
+            if (realUrl) {
+               updateTopUrl(realUrl);
+            }
+         } catch (error) {}
+
+         hideLoading();
+      });
+
+      proxyForm.addEventListener("submit", function (event) {
+         event.preventDefault();
+         loadUrl(proxyAddress.value);
+      });
+
+      backButton.addEventListener("click", function () {
+         showLoading();
+
+         try {
+            proxyFrame.contentWindow.history.back();
+         } catch (error) {
+            hideLoading();
+         }
+      });
+
+      forwardButton.addEventListener("click", function () {
+         showLoading();
+
+         try {
+            proxyFrame.contentWindow.history.forward();
+         } catch (error) {
+            hideLoading();
+         }
+      });
+
+      reloadButton.addEventListener("click", function () {
+         showLoading();
+         proxyFrame.src = proxyFrame.src;
+      });
+
+      homeButton.addEventListener("click", function () {
+         loadUrl(defaultUrl);
+      });
+
+      function loadEruda() {
+         const oldScript = document.getElementById("eruda-loader-script");
+
+         if (oldScript && window.inspectelement) {
+            window.inspectelement();
+            return;
+         }
+
+         if (oldScript) {
+            return;
+         }
+
+         const script = document.createElement("script");
+         script.id = "eruda-loader-script";
+         script.src = "/storage/js/eruda.js?v=3";
+
+         script.onload = function () {
+            if (window.inspectelement) {
+               window.inspectelement();
+            }
+         };
+
+         document.body.appendChild(script);
+      }
+
+      erudaButton.addEventListener("click", loadEruda);
+
+      if (window.parent && window.parent !== window) {
+         window.parent.postMessage({
+            type: "nexus-proxy-open"
+         }, "*");
+      }
+
+      window.addEventListener("beforeunload", function () {
+         if (window.parent && window.parent !== window) {
+            window.parent.postMessage({
+               type: "nexus-proxy-close"
+            }, "*");
+         }
+      });
+
+      loadUrl(getUrlParam() || defaultUrl);
+   </script>
 
 </body>
+
 </html>

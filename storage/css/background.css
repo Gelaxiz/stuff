@@ -1,0 +1,75 @@
+:root {
+    --bg: #1C1C1D;
+    --grid: rgba(255, 255, 255, 0.035);
+    --grid-size: 48px;
+}
+
+html,
+body {
+    min-height: 100%;
+    margin: 0;
+}
+
+html {
+    background: var(--bg);
+}
+
+body {
+    background-color: var(--bg);
+    background-image:
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: var(--grid-size) var(--grid-size);
+    background-position: 0 0;
+    background-attachment: fixed;
+    overflow-x: hidden;
+}
+
+#particles-js,
+.particles-js-canvas-el {
+    display: none;
+}
+
+html.minecraft-theme,
+html.minecraft-theme body {
+    background: #000;
+    background-image: none;
+}
+
+html.minecraft-theme body::before,
+html.minecraft-theme body::after {
+    display: none;
+    content: none;
+}
+
+html.minecraft-theme #minecraft-theme-layer {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+    background: #000;
+}
+
+html.minecraft-theme #minecraft-theme-layer canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+html.minecraft-theme .settings-page,
+html.minecraft-theme .nexus-nav,
+html.minecraft-theme #home-screen,
+html.minecraft-theme #search-container {
+    position: relative;
+    z-index: 1;
+}
+
+html.minecraft-theme .settings-card,
+html.minecraft-theme .nexus-nav,
+html.minecraft-theme #uv-form {
+    background: rgba(22, 22, 24, 0.72);
+    backdrop-filter: blur(8px);
+}

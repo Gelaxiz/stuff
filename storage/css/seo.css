@@ -1,0 +1,221 @@
+#seo-content {
+   position: fixed;
+   inset: 0;
+   width: 100%;
+   min-height: 100vh;
+   z-index: 999999;
+   background: #eef1f5;
+   color: #1C1C1D;
+   font-family: "Poppins", Arial, sans-serif;
+   overflow-y: auto;
+   opacity: 1;
+   visibility: visible;
+   transition: opacity 180ms ease, visibility 180ms ease;
+}
+
+#seo-content.seo-hidden {
+   opacity: 0;
+   visibility: hidden;
+   pointer-events: none;
+}
+
+#seo-content * {
+   box-sizing: border-box;
+}
+
+#seo-content .school-nav {
+   height: 52px;
+   padding: 0 28px;
+   background: #1C1C1D;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+#seo-content .school-nav .logo {
+   margin: 0;
+   color: #ffffff;
+   font-size: 1.15rem;
+   font-weight: 700;
+   letter-spacing: -0.02em;
+}
+
+#seo-content .nav-items {
+   display: flex;
+   align-items: center;
+   gap: 24px;
+   color: rgba(255, 255, 255, 0.72);
+   font-size: 0.82rem;
+   font-weight: 500;
+}
+
+#seo-content .hero-section {
+   min-height: 225px;
+   padding: 48px 28px 44px;
+   background: #1C1C1D;
+   color: #ffffff;
+   border-bottom: 3px solid #d4a843;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+#seo-content .hero-inner {
+   width: min(1030px, calc(100% - 56px));
+   margin: 0 auto;
+   text-align: center;
+}
+
+#seo-content .hero-section h1 {
+   margin: 0 0 12px;
+   font-size: 1.95rem;
+   line-height: 1.2;
+   font-weight: 700;
+   letter-spacing: -0.04em;
+}
+
+#seo-content .tagline {
+   margin: 0 0 30px;
+   color: rgba(255, 255, 255, 0.92);
+   font-size: 1rem;
+   font-weight: 500;
+}
+
+#seo-content .cta-button {
+   display: inline-block;
+   color: #ffffff;
+   font-size: 0.8rem;
+   font-weight: 800;
+   line-height: 1;
+}
+
+#seo-content .main-content {
+   width: min(1030px, calc(100% - 56px));
+   margin: 0 auto;
+   padding: 38px 0 70px;
+   text-align: left;
+}
+
+#seo-content .intro-text {
+   margin: 0 0 18px;
+   color: rgba(20, 30, 42, 0.36);
+   font-size: 1.48rem;
+   line-height: 1.45;
+   font-weight: 400;
+}
+
+#seo-content .features-grid {
+   display: block;
+}
+
+#seo-content .features-grid section {
+   margin: 0 0 18px;
+   padding: 0;
+   background: transparent;
+   border: 0;
+}
+
+#seo-content .features-grid h2,
+#seo-content .features-grid h3 {
+   margin: 0 0 12px;
+   color: #1C1C1D;
+   font-size: 1.38rem;
+   line-height: 1.15;
+   font-weight: 800;
+   letter-spacing: -0.04em;
+}
+
+#seo-content .features-grid p {
+   margin: 0;
+   color: rgba(20, 30, 42, 0.36);
+   font-size: 1.36rem;
+   line-height: 1.45;
+   font-weight: 400;
+}
+
+#seo-content .trust-section {
+   margin-top: 30px;
+   padding-top: 0;
+   background: transparent;
+   border: 0;
+}
+
+#seo-content .trust-section h3 {
+   margin: 0 0 10px;
+   color: #1C1C1D;
+   font-size: 1.38rem;
+   line-height: 1.15;
+   font-weight: 800;
+   letter-spacing: -0.04em;
+}
+
+#seo-content .trust-section p {
+   margin: 0;
+   color: #1C1C1D;
+   font-size: 1.26rem;
+   line-height: 1.45;
+}
+
+#seo-content::-webkit-scrollbar {
+   width: 6px;
+}
+
+#seo-content::-webkit-scrollbar-track {
+   background: #e5e9ee;
+}
+
+#seo-content::-webkit-scrollbar-thumb {
+   background: #1C1C1D;
+   border-radius: 999px;
+}
+
+@media (max-width: 760px) {
+   #seo-content .school-nav {
+      height: 48px;
+      padding: 0 18px;
+   }
+
+   #seo-content .nav-items {
+      display: none;
+   }
+
+   #seo-content .hero-section {
+      min-height: 210px;
+      padding: 38px 18px 34px;
+   }
+
+   #seo-content .hero-inner,
+   #seo-content .main-content {
+      width: calc(100% - 36px);
+   }
+
+   #seo-content .hero-section h1 {
+      font-size: 1.45rem;
+   }
+
+   #seo-content .tagline {
+      font-size: 0.9rem;
+   }
+
+   #seo-content .main-content {
+      padding-top: 28px;
+   }
+
+   #seo-content .intro-text,
+   #seo-content .features-grid p {
+      font-size: 1.1rem;
+   }
+
+   #seo-content .features-grid h2,
+   #seo-content .features-grid h3,
+   #seo-content .trust-section h3 {
+      font-size: 1.22rem;
+   }
+}
+
+#seo-content,
+#seo-content * {
+   text-shadow: none !important;
+   box-shadow: none !important;
+   filter: none !important;
+}

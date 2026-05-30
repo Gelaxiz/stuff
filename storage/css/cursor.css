@@ -1,0 +1,44 @@
+html.nexus-cursor-on,
+html.nexus-cursor-on body,
+html.nexus-cursor-on * {
+   cursor: url("/storage/icons/cursor/cursor.png") 4 4, auto !important;
+}
+
+html.nexus-cursor-on a,
+html.nexus-cursor-on button,
+html.nexus-cursor-on .game-button,
+html.nexus-cursor-on .game-button *, 
+html.nexus-cursor-on select,
+html.nexus-cursor-on label,
+html.nexus-cursor-on summary,
+html.nexus-cursor-on [role="button"],
+html.nexus-cursor-on .nav-item,
+html.nexus-cursor-on .game-button,
+html.nexus-cursor-on .proxy-logo,
+html.nexus-cursor-on .proxy-actions button {
+   cursor: url("/storage/icons/cursor/pointer.png") 6 2, pointer !important;
+}
+
+
+html.nexus-cursor-on input,
+html.nexus-cursor-on textarea,
+html.nexus-cursor-on [contenteditable="true"] {
+   cursor: text !important;
+}
+
+html.nexus-cursor-off,
+html.nexus-cursor-off body,
+html.nexus-cursor-off * {
+   cursor: auto !important;
+}
+
+html.nexus-cursor-off a,
+html.nexus-cursor-off button,
+html.nexus-cursor-off select,
+html.nexus-cursor-off label,
+html.nexus-cursor-off summary,
+html.nexus-cursor-off [role="button"],
+html.nexus-cursor-off .nav-item,
+html.nexus-cursor-off .game-button {
+   cursor: pointer !important;
+}

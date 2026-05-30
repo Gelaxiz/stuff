@@ -1,0 +1,167 @@
+#home-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#page-frame {
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    border: 0;
+    background: transparent;
+    z-index: 10;
+}
+
+body.frame-open #home-screen {
+    display: none;
+}
+
+body.frame-open #page-frame {
+    display: block;
+}
+
+
+.nexus-nav {
+    position: fixed;
+    left: 50%;
+    bottom: 22px;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px;
+    border-radius: 20px;
+    background: rgba(26, 26, 30, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.38);
+    z-index: 50;
+}
+
+body.proxy-open .nexus-nav {
+   display: none;
+}
+
+.nav-item {
+    width: 48px;
+    height: 48px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    font-size: 1.25rem;
+    opacity: 0.78;
+    background: transparent;
+    cursor: pointer;
+    transition:
+        background 0.18s ease,
+        opacity 0.18s ease,
+        transform 0.18s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255, 255, 255, 0.12);
+    opacity: 1;
+    transform: translateY(-3px);
+}
+
+.nav-item:active {
+    transform: translateY(-1px) scale(0.95);
+}
+
+.nav-item.active {
+    background: rgba(255, 255, 255, 0.14);
+    opacity: 1;
+}
+
+.nav-item i {
+    pointer-events: none;
+}
+
+.nav-item,
+.nav-item:visited,
+.nav-item:hover,
+.nav-item:active,
+.nav-item:focus {
+    color: white;
+    text-decoration: none;
+    outline: none;
+}
+
+@media (max-width: 600px) {
+    .nexus-nav {
+        bottom: 14px;
+        gap: 5px;
+        padding: 7px;
+        border-radius: 17px;
+    }
+
+    .nav-item {
+        width: 41px;
+        height: 41px;
+        font-size: 1.05rem;
+        border-radius: 13px;
+    }
+}
+
+.nexus-nav {
+    position: fixed;
+    left: 50%;
+    right: auto;
+    bottom: 24px;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 8px;
+    border-radius: 20px;
+    background: rgba(26, 26, 30, 0.88);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.38);
+    z-index: 9999;
+}
+
+.nav-item {
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+html.minecraft-theme .nexus-nav,
+body.minecraft-theme .nexus-nav {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+}
+
+.nexus-nav {
+    position: fixed;
+    left: 50%;
+    right: auto;
+    bottom: 24px;
+    transform: translateX(-50%);
+    z-index: 9999;
+}
+
+html.minecraft-theme .nexus-nav {
+    position: fixed;
+    left: 50%;
+    right: auto;
+    bottom: 24px;
+    transform: translateX(-50%);
+    z-index: 9999;
+}
+
+#page-frame {
+    background: transparent;
+}

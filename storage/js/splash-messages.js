@@ -34,19 +34,13 @@ const phrases = [
     `iframe 0 nexus 1 👌`,
     `view this updates changelog {here}`,
     `gng if you pay me 10p ill add smth to my site 👌`,
-    { type: "image", width: '40%', src: `/storage/images/splash1.jpeg` },
-    { type: "image", width: '60%', src: `/storage/images/splash2.gif` },
-    { type: "image", width: '35%', src: `/storage/images/splash3.png` },
-    { type: "image", width: '40%', src: `/storage/images/splash4.gif` },
-    { type: "image", width: '99%', src: `/storage/images/splash5.gif` },
-    { type: "image", width: '99%', src: `/storage/images/splash6.png` },
     `i accidentally muted the teacher`,
     `who remembers when i had like 4 games 😭`,
     `window._mssdk.cacheOpts[aid] has not bee initialized yet!!!!`,
     `my homework ate my dog`,
     `late to class again`,
     `now with MORE html`,
-    `you can click me you know`,
+    `btw this isnt clickable anymore`,
     `omg i better not get iss for this 😭`,
     `made at school`,
     `made with javascript`,
@@ -374,7 +368,7 @@ const phrases = [
     `{battery}`,
 ];
 
-const paragraph = document.getElementById('dynamicParagraph');
+const paragraph = document.getElementById('randomText');
 paragraph.style.userSelect = 'none';
 
 let userIP = null;

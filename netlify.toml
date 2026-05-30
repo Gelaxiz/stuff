@@ -13,10 +13,3 @@
   from = "/pages/games/fnf-goose-mod/*"
   to = "/pages/games/fnf-goose-mod/:splat"
   status = 200
-
-# Trick to make absolute / paths inside FNF Goose Mod point to its folder
-[[redirects]]
-  from = "/fnf-goose-mod/*"
-  to = "/pages/games/fnf-goose-mod/:splat"
-  status = 200
-  force = true

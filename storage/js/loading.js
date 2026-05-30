@@ -6,16 +6,10 @@ document.addEventListener('DOMContentLoaded', function () {
   document.head.appendChild(fontLink);
 
   const loadingMessages = [
-    'made with love from the nexus team <3 (just me)',
-    'are the 19:36?',
-    'boiiii what u say about ajh phonk',
+    'made with love from nexus',
+    'boiiii what u say about yara yara phonk',
     'are you sure?',
-    'this is like technically release games v7 if you think about it',
     'æ³£ããŸããªã£ã¦ã‚‚ ãã‚Œã§ã‚‚ ã‹ãé›†ã‚',
-    'pixel jeff the goat',
-    'pablocp kinda tuff',
-    '"sealiee1 would want my milkshakes" - frogiee1',
-    'also try jobi.one',
     'today is 30/30',
     '"watch hfjone, it changed my life" - prolly someone',
     'young pokeballer i just leveled up',
@@ -26,8 +20,6 @@ document.addEventListener('DOMContentLoaded', function () {
     'hache tml',
     '"how to setup aws cloudflare"',
     'bog has a good site',
-    'rest in pork lil bro',
-    'when bro asks for one hawk tuah',
     'gurt: yo',
   ];
 

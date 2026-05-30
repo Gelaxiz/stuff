@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en-us">
 
 <head>
@@ -161,7 +161,7 @@
         document.onmouseup = null;
       };
     }
-    //éæºä¸ä¸ªnameId
+    //Ã©ÂšÂÃ¦ÂœÂºÃ¤Â¸Â€Ã¤Â¸ÂªnameId
     function GetNameIdByRandom(len, website) {
       var gamesArr;
       switch (website.trim().toLowerCase()) {
@@ -190,7 +190,7 @@
       console.log(nameIds);
       gameInstance.SendMessage("WWWLoader", "CallGetNameIds", nameIds);
     }
-    //éè¿NameIdè·åGameId
+    //Ã©Â€ÂšÃ¨Â¿Â‡NameIdÃ¨ÂŽÂ·Ã¥ÂÂ–GameId
     function GetGameIdByNameId(NameId, Games) {
       for (i = 0; i < Games.length; i++) {
         if (Games[i]["nameid"] == NameId) {
@@ -200,7 +200,7 @@
       console.log("ShowGames.js not exist ", NameId, " correspond to vaule");
       return "";
     }
-    //ç´æ¥æ ¹æ®ç½åæå¼ç½é¡µ
+    //Ã§Â›Â´Ã¦ÂŽÂ¥Ã¦Â Â¹Ã¦ÂÂ®Ã§Â½Â‘Ã¥ÂÂ€Ã¦Â‰Â“Ã¥Â¼Â€Ã§Â½Â‘Ã©Â¡Âµ
     function openWindowByUrl(Url) {
       var url = encodeURI(Url);
       document.onmouseup = function () {
@@ -219,3 +219,4 @@
 </body>
 
 </html>
+

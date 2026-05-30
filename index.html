@@ -1,743 +1,329 @@
-<!DOCTYPE html> 
+﻿<!DOCTYPE html>
 <html lang="en">
-  <head>
-	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2041198418344250" crossorigin="anonymous"></script>
-    <script src="/static/uv/uv.bundle.js" defer></script>
-    <script src="/static/uv/uv.config.js" defer></script>
-    <script src="/static/register-sw.js" defer></script>
-    <meta property="og:title" content="Nexus | Home">
-    <meta property="og:description" content="Search the web freely, watch your favorite movies and shows, and play your favorite gаmes with nexus.">
-    <meta name="keywords" content="nexus">
-    <link rel="manifest" href="manifest.json">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="icon" href="/storage/images/googleclassroom.png" type="image/png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Comfortaa', sans-serif;
-        font-weight: bold;
+
+<head>
+
+   <link rel="stylesheet" href="/storage/css/cursor.css">
+   <script src="/storage/js/cursor.js"></script>   
+
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta property="og:title" content="Classroom Management Tools & Resources - Google for Education">
+   <meta property="og:description" content="Google Classroom is your central place where teaching and learning come together. This easy-to-use and secure tool helps educators manage, measure and enrich learning experiences.">
+   <title>Home - Classroom</title>
+   <link rel="icon" href="../storage/images/googleclassroom.png" type="image/png">
+   <link rel="stylesheet" href="./storage/css/seo.css">
+   <link rel="stylesheet" href="./storage/css/evenmorestyles.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   <link rel="stylesheet" href="./storage/css/static.css">
+   <link rel="stylesheet" href="./storage/css/background.css">
+   <link rel="stylesheet" href="./storage/css/navigation.css">
+
+   <style>
+      @keyframes shake {
+         0% {
+            transform: translateX(0);
+         }
+
+         20% {
+            transform: translateX(-7px);
+         }
+
+         40% {
+            transform: translateX(7px);
+         }
+
+         60% {
+            transform: translateX(-7px);
+         }
+
+         80% {
+            transform: translateX(7px);
+         }
+
+         100% {
+            transform: translateX(0);
+         }
       }
 
-      body,
-      html {
-        height: 100%;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        background-color: black;
+      .shake {
+         animation: shake 0.35s;
       }
+   </style>
+</head>
 
-      .tabs {
-        display: flex;
-        align-items: center;
-        padding: 2px 5px;
-        width: 100%;
-        position: fixed;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 1200;
-        justify-content: flex-start;
-        overflow-x: auto;
-        overflow-y: hidden;
-        max-height: 40px;
-        transition: transform 0.3s ease-in-out;
-      }
-
-      .tab {
-        display: flex;
-        align-items: center;
-        padding: 3px 10px;
-        color: white;
-        cursor: pointer;
-        transition: background-color 0.3s;
-        flex-shrink: 0;
-        min-width: 15px;
-        max-width: 500px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        height: 40px;
-      }
-
-      .tab.active {
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-        background-color: rgba(0, 0, 0, 0.2);
-        color: white;
-      }
-
-      .tab:hover {
-        border-radius: 10px;
-        background-color: rgba(255, 255, 255, 0.1);
-      }
-
-      .tab.active:hover {
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-        border-bottom-left-radius: 0px;
-        border-bottom-right-radius: 0px;
-        background-color: rgba(0, 0, 0, 0.2);
-        color: white;
-      }
-
-      .tab .close-button {
-        align-items: right;
-        margin-left: 5px;
-        color: white;
-        cursor: pointer;
-        font-size: 14px;
-      }
-
-      .add-tab-button {
-        padding: 15px;
-        cursor: pointer;
-        background: none;
-        color: white;
-        border: none;
-        outline: none;
-        font-size: 20px;
-        border-radius: 70px;
-        transition: background-color 0.3s;
-      }
-
-      .add-tab-button:hover {
-        background: rgba(0, 0, 0, 0.2);
-      }
-
-      .tabs::-webkit-scrollbar {
-        height: 8px;
-      }
-
-      .tabs::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.2);
-        border-radius: 10px;
-      }
-
-      .tabs::-webkit-scrollbar-thumb {
-        background: rgba(255, 255, 255, 0.5);
-        border-radius: 10px;
-        transition: background-color 0.3s ease-in-out;
-      }
-
-      .tabs::-webkit-scrollbar-thumb:hover {
-        background: rgba(255, 255, 255, 0.7);
-      }
-
-      .navbar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background: rgba(0, 0, 0, 0.2);
-        border-bottom: 2px solid rgba(255, 255, 255);
-        padding: 10px 5%;
-        color: white;
-        position: fixed;
-        top: 40px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100%;
-        z-index: 1100;
-        transition: transform 0.3s ease-in-out;
-        height: 45px;
-      }
-
-      .navbar-left,
-      .navbar-right {
-        display: flex;
-        gap: 10px;
-      }
-
-      .nav-btn {
-        text-decoration: none;
-        color: white;
-        cursor: pointer;
-        font-size: 16px;
-        padding: 8px 15px;
-        border-radius: 70px;
-        background: none;
-        border: none;
-        transition: background-color 0.3s;
-        flex-grow: 1;
-        text-align: center;
-      }
-
-      .nav-btn:hover {
-        background: rgba(0, 0, 0, 0.3);
-      }
-
-      .search-bar-container {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        margin-left: 15px;
-      }
-
-      .search-bar {
-        flex-grow: 1;
-        padding: 10px;
-        border-radius: 20px;
-        border: 2px solid rgba(255, 255, 255);
-        background: rgba(0, 0, 0, 0.2);
-        backdrop-filter: blur(10px);
-        color: white;
-        font-size: 16px;
-        outline: none;
-        text-align: left;
-        height: 30px
-      }
-
-      .search-bar::placeholder {
-        color: rgba(255, 255, 255, 0.7);
-      }
-
-      .search-bar:focus {
-        border-color: rgba(255, 255, 255, 0.5);
-        background: rgba(255, 255, 255, 0.5);
-      }
-
-      .content-wrapper {
-        flex-grow: 1;
-        overflow: hidden;
-        position: relative;
-        padding-top: 85px;
-        padding-bottom: 60px;
-        height: calc(100% - 145px);
-      }
-
-      iframe {
-        width: 100%;
-        height: 100%;
-        border: none;
-        display: none;
-        position: absolute;
-        /*padding-top: 1px; */
-        padding-bottom: 95px;
-        height: calc(100% - 45px);
-      }
-
-      iframe.active {
-        display: block;
-      }
-
-      .lower-navbar {
-        background: rgba(0, 0, 0, 0.2);
-        position: fixed;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100%;
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        padding: 10px 0;
-        border-top: 2px solid rgba(255, 255, 255);
-        z-index: 999;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="tabs" id="tabs">
-      <div class="tab active" onclick="selectTab(this)">New Tab <span class="close-button" onclick="closeTab(event)">×</span>
+<div id="seo-content" aria-hidden="true">
+   <div class="school-nav">
+      <h2 class="logo">Classroom</h2>
+      <div class="nav-items">
+         <span>dashboard</span>
+         <span>resources</span>
+         <span>assignments</span>
+         <span>support</span>
       </div>
-      <button class="add-tab-button">+</button>
-    </div>
-    <div class="navbar" id="navbar">
-      <div class="navbar-left">
-        <button onclick="document.querySelector('.tab-iframe.active').contentWindow.history.back()" class="nav-btn">
-          <i class="fas fa-arrow-left"></i>
-        </button>
-        <button onclick="document.querySelector('.tab-iframe.active').contentWindow.history.forward()" class="nav-btn">
-          <i class="fas fa-arrow-right"></i>
-        </button>
-        <button onclick="document.querySelector('.tab-iframe.active').contentWindow.location.reload()" class="nav-btn">
-          <i class="fas fa-redo"></i>
-        </button>
-        <button onclick="setIframe('/static/', 'New Tab')" class="nav-btn">
-          <i class="fa fa-home"></i>
-        </button>
+   </div>
+
+   <div class="hero-section">
+      <div class="hero-inner">
+         <h1>The one secure place for online learning</h1>
+         <p class="tagline">Access classroom resources, study tools, and digital learning materials in one place</p>
+         <span class="cta-button">Continue</span>
       </div>
-      <div class="search-bar-container">
-        <input type="text" id="search-input" value="nexus://new-tab" class="search-bar" autocomplete="off" placeholder="Search or enter a URL">
+   </div>
+
+   <div class="main-content">
+      <p class="intro-text">
+         Classroom learning provides students with access to study resources, subject support, revision tools, and digital classroom materials through a simple online platform.
+      </p>
+
+      <div class="features-grid">
+         <section>
+            <h2>Academic subjects</h2>
+            <p>Mathematics, science, english, history, literature, writing, reading, geography, biology, chemistry, physics, computer science, languages, art, and music</p>
+         </section>
+
+         <section>
+            <h2>Student resources</h2>
+            <p>Online lessons, study guides, practice tasks, revision notes, learning videos, reading materials, classroom links, and homework support</p>
+         </section>
+
+         <section>
+            <h2>Learning levels</h2>
+            <p>Elementary school, middle school, high school, college preparation, independent study, home learning, and continuing education</p>
+         </section>
+
+         <section>
+            <h2>Exam preparation</h2>
+            <p>Practice questions, subject revision, assessment support, test preparation, study planning, and progress tracking</p>
+         </section>
+
+         <section>
+            <h2>Learning methods</h2>
+            <p>Interactive learning, digital activities, flashcards, quizzes, creative projects, problem solving, self-paced learning, and classroom collaboration</p>
+         </section>
       </div>
-      <div class="navbar-right">
-        <button onclick="openInAboutBlank()" class="nav-btn">
-          <i class="fa-solid fa-up-right-from-square"></i>
-        </button>
-        <button onclick="toggleFullscreen()" class="nav-btn">
-          <i class="fas fa-expand"></i>
-        </button>
-        <button onclick="inspect()" class="nav-btn">
-          <i class="fa fa-code"></i>
-        </button>
-        <button onclick="settings()" class="nav-btn">
-          <i class="fa fa-cog"></i>
-        </button>
+
+      <div class="trust-section">
+         <h3>Built for simple access</h3>
+         <p>Organised learning tools and resources designed to be quick, clean, and easy to use</p>
       </div>
-    </div>
-    <div class="content-wrapper" id="content-wrapper">
-      <iframe class="tab-iframe active" src="/static/"></iframe>
-    </div>
-    <div class="lower-navbar">
-      <button class="nav-btn" onclick="setIframe('/pages/games?upd=', 'Games')">
-        <i class="fas fa-gamepad"></i>
-      </button>
-      <button class="nav-btn" onclick="setIframe('/pages/evil-nexus?upd=', 'Nexus')">
-        <i class="fa-solid fa-cloud"></i>
-      </button>
-      <button class="nav-btn" onclick="setIframe('/pages/heartive?upd=', 'Media')">
-        <i class="fa-solid fa-video"></i>
-      </button>
-      <button class="nav-btn" onclick="setIframe('/pages/apps?upd=', 'Apps')">
-        <i class="fa-sharp fa-solid fa-layer-group"></i>
-      </button>
-      <button class="nav-btn" onclick="setIframe('/pages/partners?upd=', 'Partners')">
-        <i class="fa-solid fa-users"></i>
-      </button>
-      <button class="nav-btn" onclick="setIframe('/pages/data?upd=', 'Data')">
-        <i class="fa-solid fa-file-arrow-down"></i>
-      </button>
-      <button class="nav-btn" onclick="setIframe('/pages/extra?upd=', 'Extra')">
-        <i class="fas fa-plus"></i>
-      </button>
-    </div>
+   </div>
+</div>
 
-    <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      console.log(`
-                                       
+  <!-- <div id="particles-js"></div>
 
-/$$   /$$ /$$$$$$$$ /$$   /$$ /$$   /$$  /$$$$$$ 
-| $$$ | $$| $$_____/| $$  / $$| $$  | $$ /$$__  $$
-| $$$$| $$| $$      |  $$/ $$/| $$  | $$| $$  \\__/
-| $$ $$ $$| $$$$$    \\  $$$$/ | $$  | $$|  $$$$$$        wow you found me!!
-| $$  $$$$| $$__/     >$$  $$ | $$  | $$ \\____  $$
-| $$\\  $$$| $$       /$$/\\  $$| $$  | $$ /$$  \\ $$
-| $$ \\  $$| $$$$$$$$| $$  \\ $$|  $$$$$$/|  $$$$$$/
-|__/  \\__/|________/|__/  |__/ \\______/  \\______/
-                                                                                                                                               
-      `);
- });
-  </script>
-	  
-    <script>
-let tabCount = 1;
+   <script src="/storage/js/particles-toggle.js" defer></script> -->
 
-function selectTab(tab) {
-  document.querySelectorAll('.tab, .tab-iframe').forEach(el => el.classList.remove('active'));
-  tab.classList.add('active');
-  const tabIndex = Array.from(tab.parentNode.children).indexOf(tab);
-  document.querySelectorAll('.tab-iframe')[tabIndex].classList.add('active');
-  const iframe = document.querySelector('.tab-iframe.active');
-  updateSearchBar(iframe);
-  updateTabName(iframe);
-}
+   <div id="home-screen">
+      <h1>NEXUS</h1>
 
-function addTab() {
-  tabCount++;
-  const tabsContainer = document.getElementById('tabs');
-  const newTab = document.createElement('div');
-  newTab.classList.add('tab');
-  newTab.innerHTML = `New Tab <span class="close-button" onclick="closeTab(event)">×</span>`;
-  newTab.addEventListener("click", () => selectTab(newTab));
-  tabsContainer.insertBefore(newTab, document.querySelector('.add-tab-button'));
-  const iframe = document.createElement('iframe');
-  iframe.classList.add('tab-iframe');
-  iframe.src = '/static/';
-  iframe.onload = function() {
-    updateSearchBar(iframe);
-    updateTabName(iframe);
-  };
-  document.getElementById('content-wrapper').appendChild(iframe);
-  selectTab(newTab);
-}
+      <div id="search-container">
 
-function closeTab(event) {
-  event.stopPropagation();
-  const tab = event.target.closest('.tab');
-  const iframe = document.querySelectorAll('.tab-iframe')[Array.from(tab.parentNode.children).indexOf(tab)];
-  let previousTab = tab.previousElementSibling || tab.nextElementSibling;
-  tab.remove();
-  iframe.remove();
-  if (document.querySelectorAll('.tab').length === 0) {
-    addTab();
-  } else {
-    selectTab(previousTab);
-  }
-}
+         <form id="uv-form">
 
-function internal(url) {
-  try {
-    if (url.startsWith('nexus://games-frame')) {
-      const path = url.replace('nexus://', '/pages/');
-      return () => setIframe(path, 'Games');
-    }
-    if (url.startsWith('nexus://apps-frame')) {
-      const path = url.replace('nexus://', '/pages/');
-      return () => setIframe(path, 'Apps');
-    }
-    switch (url) {
-      case 'nexus://new-tab': return () => setIframe('/static/?upd=', 'New Tab');
-      case 'nexus://settings': return () => setIframe('/pages/prox/settings?upd=', 'Settings');
-      case 'nexus://games': return () => setIframe('/pages/games?upd=', 'Games');
-      case 'nexus://media': return () => setIframe('/pages/heartive?upd=', 'Media');
-      case 'nexus://apps': return () => setIframe('/pages/apps?upd=', 'Apps');
-      case 'nexus://partners': return () => setIframe('/pages/partners?upd=', 'Partners');
-      case 'nexus://evil-nexus': return () => setIframe('/pages/evil-nexus?upd=', 'evil-nexus');
-      case 'nexus://extra': return () => setIframe('/pages/extra?upd=', 'Extra');
-      case 'nexus://data': return () => setIframe('/pages/data?upd=', 'Data');
-      case 'nexus://data-usage': return () => setIframe('/pages/extra/data-use', 'Data Usage');
-      case 'nexus://secret': return () => setIframe('/pages/secret', 'super-secret');
-      case 'home': return '/static/';
-      case 'settings': return '/pages/prox/settings';
-    }
-  } catch (e) {
-    console.error('internal page failed:', e);
-    return url;
-  }
-  return url;
-}
+            <input id="uv-search-engine" value="https://duckduckgo.com/?q=%s&kp=1&ia=web" type="hidden">
 
-function search() {
-  const inputRaw = document.getElementById('search-input').value.trim();
-  const iframe = document.querySelector('.tab-iframe.active');
-  if (!inputRaw || !iframe) return;
+            <input id="uv-address" type="text" autocomplete="off" class="search-bar-home" placeholder="Search DuckDuckGo or type a URL">
 
-  let mapped = internal(inputRaw);
-  if (mapped == null) mapped = inputRaw;
+            <button id="search-button" type="submit">
+               SEARCH <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
 
-  if (typeof mapped === 'function') {
-    mapped();
-    return;
-  }
+         </form>
 
-  const isInternal = mapped === '/static/' || mapped === '/pages/prox/settings';
-  let finalURL = mapped;
+         <div class="desc left-margin">
+            <p id="uv-error"></p>
+            <pre id="uv-error-code"></pre>
+         </div>
 
-  if (!isInternal) {
-    const hasProtocol = /^https?:\/\//i.test(mapped);
-    const looksLikeURL = /\.[a-z]{2,}(\/|$)/i.test(mapped);
+         <p id="randomText"></p>
 
-    if (hasProtocol) {
-      finalURL = mapped;
-    } else if (looksLikeURL) {
-      finalURL = 'http://' + mapped;
-    } else {
-      finalURL = `https://duckduckgo.com/?q=${encodeURIComponent(mapped)}`;
-    }
+      </div>
+   </div>
 
-    finalURL = `/static/embed?p=${finalURL}`;
-  }
+   <iframe id="page-frame" title="Nexus page" allowtransparency="true"></iframe>
 
-  iframe.src = isInternal ? mapped : finalURL;
-  iframe.onload = () => {
-    updateSearchBar(iframe);
-    updateTabName(iframe);
-  };
-}
+   <nav class="nexus-nav">
+      <a href="./index.html" class="nav-item active" title="Home">
+         <i class="fa-solid fa-house"></i>
+      </a>
 
+      <a href="./pages/games.html" class="nav-item frame-link" data-frame="./pages/games.html" title="Games">
+         <i class="fa-solid fa-gamepad"></i>
+      </a>
 
-      function settings() {
-        tabCount++;
-        const tabsContainer = document.getElementById('tabs');
-        const newTab = document.createElement('div');
-        newTab.classList.add('tab');
-        newTab.innerHTML = `Settings 
-													
-													
-													
-													<span class="close-button" onclick="closeTab(event)">×</span>`;
-        newTab.addEventListener("click", () => selectTab(newTab));
-        tabsContainer.insertBefore(newTab, document.querySelector('.add-tab-button'));
-        const iframe = document.createElement('iframe');
-        iframe.classList.add('tab-iframe');
-        iframe.src = '/pages/prox/settings';
-        iframe.onload = function() {
-          updateSearchBar(iframe);
-          updateTabName(iframe);
-        };
-        document.getElementById('content-wrapper').appendChild(iframe);
-        selectTab(newTab);
-      }
+      <a href="./pages/apps.html" class="nav-item frame-link" data-frame="./pages/apps.html" title="Apps">
+         <i class="fa-solid fa-layer-group"></i>
+      </a>
 
-      function toggleFullscreen() {
-        const iframe = document.querySelector('.tab-iframe.active');
-        if (iframe.requestFullscreen) {
-          iframe.requestFullscreen();
-        } else if (iframe.mozRequestFullScreen) {
-          iframe.mozRequestFullScreen();
-        } else if (iframe.webkitRequestFullscreen) {
-          iframe.webkitRequestFullscreen();
-        } else if (iframe.msRequestFullscreen) {
-          iframe.msRequestFullscreen();
-        }
-      }
+      <a href="./pages/movies/index.html" class="nav-item frame-link" data-frame="./pages/movies/index.html" title="Movies">
+         <i class="fa-solid fa-video"></i>
+      </a>
 
-      function inspect() {
-        window.location.href = "javascript: (function() { fetch('/storage/js/eruda.js') .then(response => { if (!response.ok) throw new Error('Network response was not ok'); return response.text(); }) .then(scriptText => eval(scriptText)) .catch(error => console.error('Error fetching or executing the script:', error)); })();"
-      }
-      document.addEventListener("DOMContentLoaded", () => {
-        document.querySelector(".add-tab-button").addEventListener("click", addTab);
-        document.getElementById("search-input").addEventListener("keydown", (e) => {
-          if (e.key === "Enter") search();
-        });
+      <a href="./pages/extra.html" class="nav-item frame-link" data-frame="./pages/extra.html" title="Extras">
+         <i class="fa-solid fa-screwdriver-wrench"></i>
+      </a>
+
+      <a href="https://discord.gg/x5rdRMm48k" class="nav-item" title="Discord" target="_blank" rel="noopener noreferrer">
+         <i class="fa-brands fa-discord"></i>
+      </a>
+
+      <a href="./pages/settings.html" class="nav-item frame-link" data-frame="./pages/settings.html" title="Settings">
+         <i class="fa-solid fa-gear"></i>
+      </a>
+   </nav>
+
+   <audio id="errorSound" src="/storage/mp3/error.mp3" preload="auto"></audio>
+
+   <script src="./static/uv/uv.bundle.js" defer></script>
+   <script src="./static/uv/uv.config.js" defer></script>
+   <script src="./static/register-sw.js" defer></script>
+   <script src="./storage/js/splash-messages.js"></script>
+   <script src="./storage/js/search-terms.js"></script>
+
+   <script>
+   const pageFrame = document.getElementById("page-frame");
+   const navItems = document.querySelectorAll(".nav-item");
+   const frameLinks = document.querySelectorAll(".frame-link");
+
+   frameLinks.forEach(function (link) {
+      link.addEventListener("click", function (event) {
+         event.preventDefault();
+
+         pageFrame.src = link.dataset.frame;
+         document.body.classList.add("frame-open");
+
+         navItems.forEach(function (item) {
+            item.classList.remove("active");
+         });
+
+         link.classList.add("active");
       });
-      const proxyPrefix = "/static/embed.html?p=";
-      //unprxy
-      function getUnproxifiedUrl(proxifiedUrl) {
-        try {
-          const hostname = window.location.hostname;
-          const hostPrefix = `https://${hostname}/static/embed?p=`;
-          const staticLoadPrefix = `https://${hostname}/static/load/`;
-          const iframe = document.querySelector('.tab-iframe.active');
-          const docHref = iframe.contentWindow.location.href;
-          if (docHref.startsWith(staticLoadPrefix)) {
-            const path = docHref.replace(staticLoadPrefix, "");
-            const decodedUrl = __uv$config.decodeUrl(path);
-            return new URL(decodedUrl);
-          }
-          if (docHref.includes("/pages/games-frame") || docHref.includes("/pages/apps-frame")) {
-            const remaining = docHref.replace(`https://${hostname}/pages/`, "");
-            return `nexus://${remaining}`;
-          }
-          switch (docHref) {
-            case `https://${hostname}/static/`:
-              return "nexus://new-tab";
-            case `https://${hostname}/pages/prox/settings`:
-              return "nexus://settings";
-            case `https://${hostname}/pages/games?upd=`:
-              return "nexus://games";
-            case `https://${hostname}/pages/heartive?upd=`:
-              return "nexus://media";
-            case `https://${hostname}/pages/apps?upd=`:
-              return "nexus://apps";
-            case `https://${hostname}/pages/partners?upd=`:
-              return "nexus://partners";
-            case `https://${hostname}/pages/evil-nexus?upd=`:
-              return "nexus://evil-nexus";
-            case `https://${hostname}/pages/extra?upd=`:
-              return "nexus://extra";
-            case `https://${hostname}/pages/data?upd=`:
-              return "nexus://data";
-            case `https://${hostname}/pages/extra/data-use`:
-              return "nexus://data-usage";
-            case `https://${hostname}/pages/secret`:
-            case `https://${hostname}/pages/secret/`:
-              return "nexus://secret";
-            case `https://${hostname}/storage/images/cheese.png`:
-              return "nexus://cheese.png";
-            default:
-              if (docHref.startsWith(hostPrefix)) {
-                return decodeURI(docHref.replace(hostPrefix, ""));
-              }
-              return decodeURI(docHref);
-          }
-        } catch (e) {
-          console.error('Error unproxifying URL:', e);
-          return docHref;
-        }
+   });
+
+   const homeLink = document.querySelector('.nav-item[title="Home"]');
+
+   if (homeLink) {
+      homeLink.addEventListener("click", function (event) {
+         event.preventDefault();
+
+         pageFrame.removeAttribute("src");
+         document.body.classList.remove("frame-open");
+         document.body.classList.remove("proxy-open");
+
+         navItems.forEach(function (item) {
+            item.classList.remove("active");
+         });
+
+         homeLink.classList.add("active");
+      });
+   }
+</script>
+
+   <script>
+      async function regsw() {
+         await navigator.serviceWorker.register("/static/uv-sw.js", {
+            scope: "/static/"
+         });
       }
-      //updsb
-      function updateSearchBar(iframe) {
-        try {
-          let rawUrl = iframe.src;
-          try {
-            rawUrl = iframe.contentWindow.location.href;
-          } catch {}
-          const unproxifiedUrl = getUnproxifiedUrl(rawUrl);
-          document.getElementById('search-input').value = unproxifiedUrl;
-          const activeTab = document.querySelector('.tab.active');
-          updateTabName(iframe, activeTab);
-        } catch (e) {
-          console.error('Error updating search bar:', e);
-        }
-      }
-      //tabft
-      function updateTabName(iframe) {
-        setTimeout(() => {
-          const tabIndex = Array.from(document.querySelectorAll('.tab-iframe')).indexOf(iframe);
-          const tab = document.querySelectorAll('.tab')[tabIndex];
-          if (tab) {
-            const staticLoadPrefix = "https://" + window.location.hostname + "/static/load/";
-            const docHref = iframe.contentWindow.location.href;
-            if (docHref.startsWith(staticLoadPrefix)) {
-              const path = docHref.replace(staticLoadPrefix, "");
-              let host;
-              try {
-                host = new URL(__uv$config.decodeUrl(path));
-              } catch {
-                host = new URL("https://nexus-is.onthewifi.com");
-              }
-              const faviconUrl = `https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://${host.hostname}&size=24`;
-              let title = '';
-              try {
-                title = iframe.contentWindow.document.title || url.hostname;
-              } catch {
-                title = url.hostname || 'New Tab';
-              }
-              if (title.length > 29) {
-                title = title.substring(0, 26) + '...';
-              }
-              tab.innerHTML = `
-													
-													
-													
-													<img src="${faviconUrl}" alt="favicon" style="width:24px;height:24px;margin-right:6px;">${title} 
-														
-														
-														
-														<span class="close-button" onclick="closeTab(event)">×</span> `;
+
+      regsw();
+   </script>
+
+   <script>
+      const code = [
+         "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown",
+         "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight",
+         "b", "a", "Enter"
+      ];
+
+      let currentKeyIndex = 0;
+
+      document.addEventListener("keydown", function (event) {
+         if (event.key === code[currentKeyIndex]) {
+            currentKeyIndex++;
+
+            if (currentKeyIndex === code.length) {
+               window.location.href = "/pages/secret/";
+               currentKeyIndex = 0;
             }
-          }
-        }, 500);
-      }
-      //searchbar engage check
-      function engaged() {
-        const input = document.getElementById('search-input');
-        return document.activeElement === input || input.matches(':hover');
-      }
-      setInterval(() => {
-        const iframe = document.querySelector('.tab-iframe.active');
-        if (!iframe || engaged()) return;
-        try {
-          const docHref = iframe.contentWindow.location.href;
-          if (docHref) {
-            updateSearchBar(iframe);
-          }
-        } catch (e) {
-          console.warn('Unable to access iframe location:', e);
-        }
-      }, 500);
-      //param
-      document.addEventListener("DOMContentLoaded", () => {
-        const link = new URLSearchParams(window.location.search).get('link');
-        if (link) {
-          const startingtab = document.querySelector('.tab-iframe');
-          if (startingtab) {
-            startingtab.src = `/static/load/${__uv$config.encodeUrl(link)}`;
-            startingtab.onload = () => {
-              updateSearchBar(startingtab);
-              updateTabName(startingtab);
-            };
-          }
-        }
+         } else {
+            currentKeyIndex = 0;
+         }
       });
+      window.addEventListener("message", function (event) {
+    if (!event.data || event.data.type !== "nexus-theme-change") {
+        return;
+    }
 
-      function setIframe(url, name) {
-        const tabs = Array.from(document.querySelectorAll('.tab'));
-        const iframes = Array.from(document.querySelectorAll('.tab-iframe'));
-        const activeTab = document.querySelector('.tab.active');
-        const tabIndex = tabs.indexOf(activeTab);
-        if (activeTab && tabIndex !== -1) {
-          tabs[tabIndex].remove();
-          iframes[tabIndex].remove();
-        }
-        tabCount++;
-        const tabsContainer = document.getElementById('tabs');
-        const newTab = document.createElement('div');
-        newTab.classList.add('tab');
-        newTab.innerHTML = `${name} 
-														
-														
-														
-														<span class="close-button" onclick="closeTab(event)">×</span>`;
-        newTab.addEventListener("click", () => selectTab(newTab));
-        const referenceTab = document.querySelectorAll('.tab')[tabIndex];
-        if (referenceTab) {
-          tabsContainer.insertBefore(newTab, referenceTab);
-        } else {
-          tabsContainer.insertBefore(newTab, document.querySelector('.add-tab-button'));
-        }
-        const iframe = document.createElement('iframe');
-        iframe.classList.add('tab-iframe');
-        iframe.src = url;
-        iframe.onload = function() {
-          updateSearchBar(iframe);
-          updateTabName(iframe);
-        };
-        const contentWrapper = document.getElementById('content-wrapper');
-        const allIframes = document.querySelectorAll('.tab-iframe');
-        const referenceIframe = allIframes[tabIndex];
-        if (referenceIframe) {
-          contentWrapper.insertBefore(iframe, referenceIframe);
-        } else {
-          contentWrapper.appendChild(iframe);
-        }
-        selectTab(newTab);
-      }
-      document.addEventListener("DOMContentLoaded", () => {
-        const launch = new URLSearchParams(window.location.search).get('launch');
-        if (launch) {
-          const startingtab = document.querySelector('.tab-iframe');
-          if (startingtab) {
-            startingtab.src = `/static/load/${__uv$config.encodeUrl(launch)}`;
-            startingtab.onload = () => {
-              updateSearchBar(startingtab);
-              updateTabName(startingtab);
-            };
-          }
-        }
-      });
+    localStorage.setItem("nexusTheme", event.data.theme);
 
-      function openInAboutBlank() {
-        const siteTitle = localStorage.getItem('siteTitle') || "Home";
-        const siteLogo = localStorage.getItem('siteLogo') || "https://raw.githubusercontent.com/voucan/voucan.github.io/refs/heads/main/googleclassroom.png";
-        const newTab = window.open('about:blank', '_blank');
-        if (newTab) {
-          newTab.document.title = siteTitle;
-          const favicon = newTab.document.createElement('link');
-          favicon.rel = 'icon';
-          favicon.href = siteLogo;
-          newTab.document.head.appendChild(favicon);
-          const iframe = newTab.document.createElement('iframe');
-          const frame = document.querySelector('.tab-iframe.active');
-          const open = frame.contentWindow.location.href;
-          iframe.src = open;
-          iframe.style.width = '100vw';
-          iframe.style.height = '100vh';
-          iframe.style.border = 'none';
-          newTab.document.body.style.margin = '0';
-          newTab.document.body.appendChild(iframe);
-        } else {
-          console.error("Failed to open About:Blank page.");
-        }
+    if (window.applyNexusTheme) {
+        window.applyNexusTheme();
+    }
+
+    const frame = document.getElementById("page-frame");
+
+    if (frame && frame.contentWindow) {
+        frame.contentWindow.location.reload();
+    }
+});
+   </script>
+   <script>
+   function setTopFavicon(src) {
+      let icon = document.querySelector("link[rel='icon']");
+
+      if (!icon) {
+         icon = document.createElement("link");
+         icon.rel = "icon";
+         document.head.appendChild(icon);
       }
-    </script>
-    <script>
-      document.getElementById("tabs").addEventListener("dblclick", () => {
-        const docElm = document.documentElement;
-        if (!document.fullscreenElement) {
-          if (docElm.requestFullscreen) {
-            docElm.requestFullscreen();
-          } else if (docElm.mozRequestFullScreen) {
-            docElm.mozRequestFullScreen();
-          } else if (docElm.webkitRequestFullscreen) {
-            docElm.webkitRequestFullscreen();
-          } else if (docElm.msRequestFullscreen) {
-            docElm.msRequestFullscreen();
-          }
-        } else {
-          if (document.exitFullscreen) {
-            document.exitFullscreen();
-          } else if (document.mozCancelFullScreen) {
-            document.mozCancelFullScreen();
-          } else if (document.webkitExitFullscreen) {
-            document.webkitExitFullscreen();
-          } else if (document.msExitFullscreen) {
-            document.msExitFullscreen();
-          }
-        }
-      });
-    </script>
-    <script src="/storage/js/settings.js"></script>
-    <script type="text/javascript" src="/storage/js/cheese-algorithm.js"></script>
-    <script type="text/javascript" src="/storage/js/notify.js"></script>
-    <script type="text/javascript" src="/storage/js/panic.js"></script>
-    <script type="text/javascript" src="/storage/js/background.js"></script>
-  </body>
+
+      icon.href = src;
+   }
+
+   function applySavedCloak() {
+      const savedTitle = localStorage.getItem("siteTitle");
+      const savedIcon = localStorage.getItem("siteLogo");
+
+      if (savedTitle) {
+         document.title = savedTitle;
+      }
+
+      if (savedIcon) {
+         setTopFavicon(savedIcon);
+      }
+   }
+
+   window.addEventListener("message", function (event) {
+      if (!event.data || event.data.type !== "nexus-cloak-change") {
+         return;
+      }
+
+      document.title = event.data.title;
+      setTopFavicon(event.data.icon);
+
+      localStorage.setItem("cloakPreset", event.data.preset);
+      localStorage.setItem("siteTitle", event.data.title);
+      localStorage.setItem("siteLogo", event.data.icon);
+   });
+
+   applySavedCloak();
+</script>
+<script>
+   window.addEventListener("load", function () {
+      setTimeout(function () {
+         const seoContent = document.getElementById("seo-content");
+         seoContent.style.display = "none";
+
+         if (seoContent) {
+            seoContent.classList.add("seo-hidden");
+         }
+      }, 550);
+   });
+</script>
+<script type="module" src="./storage/themes/minecraft/theme.js"></script>
+
+</body>
+
 </html>

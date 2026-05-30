@@ -1,162 +1,162 @@
 [
   {
-    "url": "/pages/games-frame?url=/pages/games/2048/",
+    "url": "/pages/iframe.html?url=/pages/games/2048/",
     "img": "/pages/images/2048.png",
     "alt": "2048",
     "title": "2048"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/among-us/",
+    "url": "/pages/iframe.html?url=/pages/games/among-us/",
     "img": "/pages/images/amongus.png",
     "alt": "Among Us",
     "title": "Among Us"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/angrybirds/",
-    "img": "/pages/images/angrybirds.webp",
-    "alt": "Angry Birds",
-    "title": "Angry Birds"
+    "url": "/pages/iframe.html?url=/pages/games/angrybirds2/",
+    "img": "/pages/images/ab2.jpg",
+    "alt": "Angry Birds 2",
+    "title": "Angry Birds 2"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/animalcrossing/",
+    "url": "/pages/iframe.html?url=/pages/games/animalcrossing/",
     "img": "/pages/images/acpg.png",
     "alt": "Animal Crossing Population: Growing!",
     "title": "Animal Crossing Population: Growing!"
   },
     {
-    "url": "/pages/games-frame?url=/pages/games/angrybirdsepic/",
+    "url": "/pages/iframe.html?url=/pages/games/angrybirdsepic/",
     "img": "/pages/images/angrybirdsepic.webp",
     "alt": "Angry Birds Epic",
     "title": "Angry Birds Epic"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/animator-vs-animation/",
+    "url": "/pages/iframe.html?url=/pages/games/animator-vs-animation/",
     "img": "/pages/images/avsa.png",
     "alt": "Animator vs. Animation",
     "title": "Animator vs. Animation"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/bacon-may-die/",
+    "url": "/pages/iframe.html?url=/pages/games/bacon-may-die/",
     "img": "/pages/images/bacon.png",
     "alt": "Bacon May Die",
     "title": "Bacon May Die"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/bad-piggies/",
+    "url": "/pages/iframe.html?url=/pages/games/bad-piggies/",
     "img": "/pages/images/badpiggies.webp",
     "alt": "Bad Piggies",
     "title": "Bad Piggies"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/sans-fight/",
+    "url": "/pages/iframe.html?url=/pages/games/sans-fight/",
     "img": "/pages/images/sans.png",
     "alt": "Bad Time Simulator",
     "title": "Bad Time Simulator"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/basketbros/",
+    "url": "/pages/iframe.html?url=/pages/games/basketbros/",
     "img": "/pages/images/bbros.png",
     "alt": "Basket Bros",
     "title": "Basket Bros"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/basket-random/",
+    "url": "/pages/iframe.html?url=/pages/games/basket-random/",
     "img": "/pages/images/basketrandom.jfif",
     "alt": "Basket Random",
     "title": "Basket Random"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/bitlife/",
+    "url": "/pages/iframe.html?url=/pages/games/bitlife/",
     "img": "/pages/images/bitlife.png",
     "alt": "Bitlife",
     "title": "Bitlife"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/bite-size-beats/",
+    "url": "/pages/iframe.html?url=/pages/games/bite-size-beats/",
     "img": "/pages/images/bsb.png",
     "alt": "Bite Size Beats (Incredibox)",
     "title": "Bite Size Beats (Incredibox)"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/blockblast/",
+    "url": "/pages/iframe.html?url=/pages/games/blockblast/",
     "img": "/pages/images/blockblast.png",
     "alt": "Block Blast",
     "title": "Block Blast"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/bloonstd/",
+    "url": "/pages/iframe.html?url=/pages/games/bloonstd/",
     "img": "/pages/images/btd.avif",
     "alt": "Bloons TD",
     "title": "Bloons TD"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/bloonstd2/",
+    "url": "/pages/iframe.html?url=/pages/games/bloonstd2/",
     "img": "/pages/images/btd2.avif",
     "alt": "Bloons TD 2",
     "title": "Bloons TD 2"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/bloonstd3/",
+    "url": "/pages/iframe.html?url=/pages/games/bloonstd3/",
     "img": "/pages/images/btd3.avif",
     "alt": "Bloons TD 3",
     "title": "Bloons TD 3"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/bloonstd4/",
+    "url": "/pages/iframe.html?url=/pages/games/bloonstd4/",
     "img": "/pages/images/btd4.jpg",
     "alt": "Bloons TD 4",
     "title": "Bloons TD 4"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/bloonstd5/",
+    "url": "/pages/iframe.html?url=/pages/games/bloonstd5/",
     "img": "/pages/images/btd5.png",
     "alt": "Bloons TD 5",
     "title": "Bloons TD 5"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/bottle-flip3d/",
+    "url": "/pages/iframe.html?url=/pages/games/bottle-flip3d/",
     "img": "/pages/images/flip.webp",
     "alt": "Bottle Flip 3D",
     "title": "Bottle Flip 3D"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/bouncy-basketball/",
+    "url": "/pages/iframe.html?url=/pages/games/bouncy-basketball/",
     "img": "/pages/images/bouncybb.png",
     "alt": "Bouncy Basketball",
     "title": "Bouncy Basketball"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/boxing-random/",
+    "url": "/pages/iframe.html?url=/pages/games/boxing-random/",
     "img": "/pages/images/boxingrandom.jfif",
     "alt": "Boxing Random",
     "title": "Boxing Random"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/breaking-the-bank/",
+    "url": "/pages/iframe.html?url=/pages/games/breaking-the-bank/",
     "img": "/pages/images/btb.webp",
     "alt": "Breaking The Bank",
     "title": "Breaking The Bank"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/burrito/",
+    "url": "/pages/iframe.html?url=/pages/games/burrito/",
     "img": "/pages/images/burrito.webp",
     "alt": "Burrito Bison",
     "title": "Burrito Bison"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/cell-machine/",
+    "url": "/pages/iframe.html?url=/pages/games/cell-machine/",
     "img": "/pages/images/cell-machine.png",
     "alt": "Cell Machine",
     "title": "Cell Machine"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/chrome-dino",
+    "url": "/pages/iframe.html?url=/pages/games/chrome-dino",
     "img": "/pages/images/dino.png",
     "alt": "Chrome Dino",
     "title": "Chrome Dino"
   },
     {
-    "url": "/pages/games-frame?url=/pages/games/cluster-rush/",
+    "url": "/pages/iframe.html?url=/pages/games/cluster-rush/",
     "img": "/pages/images/clusterrush.png",
     "alt": "Cluster Rush",
     "title": "Cluster Rush"
@@ -168,175 +168,175 @@
     "title": "Clash Royale"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/cheeserolling/",
+    "url": "/pages/iframe.html?url=/pages/games/cheeserolling/",
     "img": "/pages/images/cheeser.webp",
     "alt": "Cheese Rolling",
     "title": "Cheese Rolling"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/cookie-clicker/",
+    "url": "/pages/iframe.html?url=/pages/games/cookie-clicker/",
     "img": "/pages/images/cck.webp",
     "alt": "Cookie Clicker",
     "title": "Cookie Clicker"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/cookie-clicker2/",
+    "url": "/pages/iframe.html?url=/pages/games/cookie-clicker2/",
     "img": "/pages/images/cck2.png",
     "alt": "Cookie Clicker 2",
     "title": "Cookie Clicker 2"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/crossyroad/",
+    "url": "/pages/iframe.html?url=/pages/games/crossyroad/",
     "img": "/pages/images/crossyroad.png",
     "alt": "Crossy Road",
     "title": "Crossy Road"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/cut-the-rope/",
+    "url": "/pages/iframe.html?url=/pages/games/cut-the-rope/",
     "img": "/pages/images/ctr.avif",
     "alt": "Cut The Rope",
     "title": "Cut The Rope"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/ctr-holiday/",
+    "url": "/pages/iframe.html?url=/pages/games/ctr-holiday/",
     "img": "/pages/images/ctr-holiday.png",
     "alt": "Cut The Rope - Holiday Gift",
     "title": "Cut The Rope - Holiday Gift"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/ctr-time-travel/",
+    "url": "/pages/iframe.html?url=/pages/games/ctr-time-travel/",
     "img": "/pages/images/ctr-ttr.png",
     "alt": "Cut The Rope - Time Travel",
     "title": "Cut The Rope - Time Travel"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/dadish/",
+    "url": "/pages/iframe.html?url=/pages/games/dadish/",
     "img": "/pages/images/dadish.avif",
     "alt": "Dadish",
     "title": "Dadish"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/dadish2/",
+    "url": "/pages/iframe.html?url=/pages/games/dadish2/",
     "img": "/pages/images/dadish2.png",
     "alt": "Dadish 2",
     "title": "Dadish 2"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/dadish3/",
+    "url": "/pages/iframe.html?url=/pages/games/dadish3/",
     "img": "/pages/images/dadish3.png",
     "alt": "Dadish 3",
     "title": "Dadish 3"
   },
     {
-    "url": "/pages/games-frame?url=/pages/games/deltarune/",
+    "url": "/pages/iframe.html?url=/pages/games/deltarune/",
     "img": "/pages/images/deltarune.jpg",
     "alt": "Deltarune",
     "title": "Deltarune"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/die-in-the-dungeon/",
+    "url": "/pages/iframe.html?url=/pages/games/die-in-the-dungeon/",
     "img": "/pages/images/ditd.jpg",
     "alt": "Die In The Dungeon",
     "title": "Die In The Dungeon"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/dino-bros/",
+    "url": "/pages/iframe.html?url=/pages/games/dino-bros/",
     "img": "/pages/images/dinobros.svg",
     "alt": "Dino Bros",
     "title": "Dino Bros"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/doodle-baseball/",
+    "url": "/pages/iframe.html?url=/pages/games/doodle-baseball/",
     "img": "/pages/images/googlebaseball.jpg",
     "alt": "Doodle Baseball",
     "title": "Doodle Baseball"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/champion-islands/",
+    "url": "/pages/iframe.html?url=/pages/games/champion-islands/",
     "img": "/pages/images/championisland.jpg",
     "alt": "Doodle Champion Islands",
     "title": "Doodle Champion Islands"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/doodle-cricket/",
+    "url": "/pages/iframe.html?url=/pages/games/doodle-cricket/",
     "img": "/pages/images/doodlecricket.png",
     "alt": "Doodle Cricket",
     "title": "Doodle Cricket"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/doodlejump/",
+    "url": "/pages/iframe.html?url=/pages/games/doodlejump/",
     "img": "/pages/images/doodlejump.webp",
     "alt": "Doodle Jump",
     "title": "Doodle Jump"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/doom/",
+    "url": "/pages/iframe.html?url=/pages/games/doom/",
     "img": "/pages/images/doom.png",
     "alt": "Doom",
     "title": "Doom"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/doodle-snake/",
+    "url": "/pages/iframe.html?url=/pages/games/doodle-snake/",
     "img": "/pages/games/doodle-snake/google-snake.png",
     "alt": "Doodle Snake",
     "title": "Doodle Snake"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/drift-boss/",
+    "url": "/pages/iframe.html?url=/pages/games/drift-boss/",
     "img": "/pages/images/driftboss.png",
     "alt": "Drift Boss",
     "title": "Drift Boss"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/drift-hunters/",
+    "url": "/pages/iframe.html?url=/pages/games/drift-hunters/",
     "img": "/pages/images/drifthunters.png",
     "alt": "Drift Hunters",
     "title": "Drift Hunters"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/drive-mad/",
+    "url": "/pages/iframe.html?url=/pages/games/drive-mad/",
     "img": "/pages/images/drivemad.png",
     "alt": "Drive Mad",
     "title": "Drive Mad"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/ducklife5/",
+    "url": "/pages/iframe.html?url=/pages/games/ducklife5/",
     "img": "/pages/images/ducklife5.png",
     "alt": "Duck Life 5: Treasure Hunt",
     "title": "Duck Life 5: Treasure Hunt"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/ducklifebattle/",
+    "url": "/pages/iframe.html?url=/pages/games/ducklifebattle/",
     "img": "/pages/images/ducklife7.png",
     "alt": "Duck Life 7: Battle",
     "title": "Duck Life 7: Battle"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/ducklife8/",
+    "url": "/pages/iframe.html?url=/pages/games/ducklife8/",
     "img": "/pages/images/ducklife8.png",
     "alt": "Duck Life 8: Adventure",
     "title": "Duck Life 8: Adventure"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/dud/",
+    "url": "/pages/iframe.html?url=/pages/games/dud/",
     "img": "/pages/images/dud.png",
     "alt": "dud",
     "title": "dud"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/eaglercraft/",
+    "url": "/pages/iframe.html?url=/pages/games/eaglercraft/",
     "img": "/pages/images/eaglercraft.png",
     "alt": "Eaglercraft (Minecraft)",
     "title": "Eaglercraft (Minecraft)"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/escaping-the-prison/",
+    "url": "/pages/iframe.html?url=/pages/games/escaping-the-prison/",
     "img": "/pages/images/prisonesc.png",
     "alt": "Escaping The Prison",
     "title": "Escaping The Prison"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/famidash/",
+    "url": "/pages/iframe.html?url=/pages/games/famidash/",
     "img": "/pages/images/famidash.png",
     "alt": "Famidash",
     "title": "Famidash"
@@ -348,55 +348,55 @@
     "title": "Fancade"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/fancypants2/",
+    "url": "/pages/iframe.html?url=/pages/games/fancypants2/",
     "img": "/pages/images/fp2.png",
     "alt": "Fancy Pants 2",
     "title": "Fancy Pants 2"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/fancypants3/",
+    "url": "/pages/iframe.html?url=/pages/games/fancypants3/",
     "img": "/pages/images/fp3.jpg",
     "alt": "Fancy Pants 3",
     "title": "Fancy Pants 3"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/fridaynightfunkin/",
+    "url": "/pages/iframe.html?url=/pages/games/fridaynightfunkin/",
     "img": "/pages/images/fnf.png",
     "alt": "Friday Night Funkin",
     "title": "Friday Night Funkin"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/gdl/",
+    "url": "/pages/iframe.html?url=/pages/games/gdl/",
     "img": "/pages/images/gdl.png",
     "alt": "Geometry Dash Lite",
     "title": "Geometry Dash Lite"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/getaway-shootout/",
+    "url": "/pages/iframe.html?url=/pages/games/getaway-shootout/",
     "img": "/pages/images/shootout.jpg",
     "alt": "Getaway Shootout",
     "title": "Getaway Shootout"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/gorillatag/",
+    "url": "/pages/iframe.html?url=/pages/games/gorillatag/",
     "img": "/pages/images/gorillatag.png",
     "alt": "Gorilla Tag",
     "title": "Gorilla Tag"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/hollowknight/",
+    "url": "/pages/iframe.html?url=/pages/games/hollowknight/",
     "img": "/pages/images/hollowknight.jpg",
     "alt": "Hollow Knight: Silksong",
     "title": "Hollow Knight: Silksong"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/incredibox/",
+    "url": "/pages/iframe.html?url=/pages/games/incredibox/",
     "img": "/pages/images/incredibox.png",
     "alt": "Incredibox",
     "title": "Incredibox"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/jetpack-joyride/",
+    "url": "/pages/iframe.html?url=/pages/games/jetpack-joyride/",
     "img": "/pages/images/jetpack.png",
     "alt": "Jetpack Joyride",
     "title": "Jetpack Joyride"
@@ -414,79 +414,79 @@
     "title": "Kirka"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/learntofly/",
+    "url": "/pages/iframe.html?url=/pages/games/learntofly/",
     "img": "/pages/images/ltf.png",
     "alt": "Learn To Fly",
     "title": "Learn To Fly"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/learntofly2/",
+    "url": "/pages/iframe.html?url=/pages/games/learntofly2/",
     "img": "/pages/images/ltf2.png",
     "alt": "Learn To Fly 2",
     "title": "Learn To Fly 2"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/learntofly3/",
+    "url": "/pages/iframe.html?url=/pages/games/learntofly3/",
     "img": "/pages/images/ltf3.webp",
     "alt": "Learn To Fly 3",
     "title": "Learn To Fly 3"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/lets-surf/",
+    "url": "/pages/iframe.html?url=/pages/games/lets-surf/",
     "img": "/pages/images/microsoftsurf.png",
     "alt": "Let's Surf",
     "title": "Let's Surf"
   },
  {
-    "url": "/pages/games-frame?url=/pages/roms/newsmb/",
+    "url": "/pages/iframe.html?url=/pages/roms/newsmb/",
     "img": "/pages/images/new-smb.png",
     "alt": "New Super Mario Bros.",
     "title": "New Super Mario Bros."
   },
  {
-    "url": "/pages/games-frame?url=/pages/roms/superstarsaga/",
+    "url": "/pages/iframe.html?url=/pages/roms/superstarsaga/",
     "img": "/pages/images/superstarsaga.webp",
     "alt": "Mario & Luigi: Superstar Saga",
     "title": "Mario & Luigi: Superstar Saga"
   },
  {
-    "url": "/pages/games-frame?url=/pages/roms/mario-party/",
+    "url": "/pages/iframe.html?url=/pages/roms/mario-party/",
     "img": "/pages/images/marioparty.png",
     "alt": "Mario Party DS",
     "title": "Mario Party DS"
   },
  {
-    "url": "/pages/games-frame?url=/pages/roms/mkds/",
+    "url": "/pages/iframe.html?url=/pages/roms/mkds/",
     "img": "/pages/images/mkds.png",
     "alt": "Mario Kart DS",
     "title": "Mario Kart DS"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/mcle/",
+    "url": "/pages/iframe.html?url=/pages/games/mcle/",
     "img": "/pages/images/mclegacy.webp",
     "alt": "Minecraft Legacy Edition",
     "title": "Minecraft Legacy Edition"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/monkey-mart/",
+    "url": "/pages/iframe.html?url=/pages/games/monkey-mart/",
     "img": "/pages/images/monkeymart.png",
     "alt": "Monkey Mart",
     "title": "Monkey Mart"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/monster-tracks/",
+    "url": "/pages/iframe.html?url=/pages/games/monster-tracks/",
     "img": "/pages/images/monstertracks.jpg",
     "alt": "Monster Tracks",
     "title": "Monster Tracks"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/motox3m/",
+    "url": "/pages/iframe.html?url=/pages/games/motox3m/",
     "img": "/pages/images/x3m.avif",
     "alt": "Moto X3M",
     "title": "Moto X3M"
   },
  {
-    "url": "/pages/games-frame?url=/pages/games/need-for-speed/",
+    "url": "/pages/iframe.html?url=/pages/games/need-for-speed/",
     "img": "/pages/images/nfs.jpg",
     "alt": "Need For Speed",
     "title": "Need For Speed"
@@ -498,67 +498,67 @@
     "title": "osu! (Web)"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/OvO/",
+    "url": "/pages/iframe.html?url=/pages/games/OvO/",
     "img": "/pages/images/OvO.jfif",
     "alt": "OvO",
     "title": "OvO"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/pacman/",
+    "url": "/pages/iframe.html?url=/pages/games/pacman/",
     "img": "/pages/images/pacman.png",
     "alt": "Pacman",
     "title": "Pacman"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/pako-highway/",
+    "url": "/pages/iframe.html?url=/pages/games/pako-highway/",
     "img": "/pages/images/pako-highway.png",
     "alt": "Pako Highway",
     "title": "Pako Highway"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/pako3/",
+    "url": "/pages/iframe.html?url=/pages/games/pako3/",
     "img": "/pages/images/pako3.webp",
     "alt": "Pako 3",
     "title": "Pako 3"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/polytrack/",
+    "url": "/pages/iframe.html?url=/pages/games/polytrack/",
     "img": "/pages/images/polytrack.jpg",
     "alt": "Poly Track",
     "title": "Poly Track"
   },
   {
-    "url": "/pages/games-frame?url=/pages/roms/pm64/",
+    "url": "/pages/iframe.html?url=/pages/roms/pm64/",
     "img": "/pages/images/pm64.png",
     "alt": "Paper Mario 64",
     "title": "Paper Mario 64"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/raftwars/",
+    "url": "/pages/iframe.html?url=/pages/games/raftwars/",
     "img": "/pages/images/raftwars.jpg",
     "alt": "Raft Wars",
     "title": "Raft Wars"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/raftwars2/",
+    "url": "/pages/iframe.html?url=/pages/games/raftwars2/",
     "img": "/pages/images/raftwars2.png",
     "alt": "Raft Wars 2",
     "title": "Raft Wars 2"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/retro-bowl/",
+    "url": "/pages/iframe.html?url=/pages/games/retro-bowl/",
     "img": "/pages/images/retro-bowl.png",
     "alt": "Retro Bowl",
     "title": "Retro Bowl"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/rb-college/",
+    "url": "/pages/iframe.html?url=/pages/games/rb-college/",
     "img": "/pages/images/rb-college.png",
     "alt": "Retro Bowl College",
     "title": "Retro Bowl College"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/rocketgoal/",
+    "url": "/pages/iframe.html?url=/pages/games/rocketgoal/",
     "img": "/pages/images/rocketgoal.png",
     "alt": "Rocket Goal",
     "title": "Rocket Goal"
@@ -570,43 +570,43 @@
     "title": "Roblox"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/rooftop-snipers/",
+    "url": "/pages/iframe.html?url=/pages/games/rooftop-snipers/",
     "img": "/pages/images/rpsnipers.png",
     "alt": "Rooftop Snipers",
     "title": "Rooftop Snipers"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/rooftop-snipers2/",
+    "url": "/pages/iframe.html?url=/pages/games/rooftop-snipers2/",
     "img": "/pages/images/rpsnipers2.jpg",
     "alt": "Rooftop Snipers 2",
     "title": "Rooftop Snipers 2"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/run3/",
+    "url": "/pages/iframe.html?url=/pages/games/run3/",
     "img": "/pages/images/run3.png",
     "alt": "Run 3",
     "title": "Run 3"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/sandtris/",
+    "url": "/pages/iframe.html?url=/pages/games/sandtris/",
     "img": "/pages/images/sandtris.png",
     "alt": "Sandtris",
     "title": "Sandtris"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/scrapdivers/",
+    "url": "/pages/iframe.html?url=/pages/games/scrapdivers/",
     "img": "/pages/images/scrapdivers.png",
     "alt": "Scrap Divers",
     "title": "Scrap Divers"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/slope/",
+    "url": "/pages/iframe.html?url=/pages/games/slope/",
     "img": "/pages/images/slope.jpg",
     "alt": "Slope",
     "title": "Slope"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/slow-roads/",
+    "url": "/pages/iframe.html?url=/pages/games/slow-roads/",
     "img": "/pages/images/slowroads.png",
     "alt": "Slow Roads",
     "title": "Slow Roads"
@@ -618,145 +618,145 @@
     "title": "Smash Karts"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/escroadcity2/",
+    "url": "/pages/iframe.html?url=/pages/games/escroadcity2/",
     "img": "/pages/images/escroad2.png",
     "alt": "Escape Road City 2",
     "title": "Escape Road City 2"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/snowrider/",
+    "url": "/pages/iframe.html?url=/pages/games/snowrider/",
     "img": "/pages/images/snowrider.webp",
     "alt": "Snow Rider 3D",
     "title": "Snow Rider 3D"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/soccer-random/",
+    "url": "/pages/iframe.html?url=/pages/games/soccer-random/",
     "img": "/pages/images/soccerrandom.jfif",
     "alt": "Soccer Random",
     "title": "Soccer Random"
   },
     {
-    "url": "/pages/games-frame?url=/pages/games/sonic-advance/",
+    "url": "/pages/iframe.html?url=/pages/games/sonic-advance/",
     "img": "/pages/images/sonicadv.png",
     "alt": "Sonic Advance",
     "title": "Sonic Advance"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/spacebarclicker/",
+    "url": "/pages/iframe.html?url=/pages/games/spacebarclicker/",
     "img": "/pages/images/spacebar.png",
     "alt": "Spacebar Clicker",
     "title": "Spacebar Clicker"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/speed-stars/",
+    "url": "/pages/iframe.html?url=/pages/games/speed-stars/",
     "img": "/pages/images/speedstars.jpg",
     "alt": "Speed Stars",
     "title": "Speed Stars"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/stick-fighter/",
+    "url": "/pages/iframe.html?url=/pages/games/stick-fighter/",
     "img": "/pages/images/stickfighter.jpg",
     "alt": "Stick Fighter",
     "title": "Stick Fighter"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/stickman-hook/",
+    "url": "/pages/iframe.html?url=/pages/games/stickman-hook/",
     "img": "/pages/images/stickmanhook.png",
     "alt": "Stickman Hook",
     "title": "Stickman Hook"
   },
   {
-    "url": "/pages/games-frame?url=/pages/roms/supersmashbros/",
+    "url": "/pages/iframe.html?url=/pages/roms/supersmashbros/",
     "img": "/pages/images/supersmashbros.png",
     "alt": "Super Smash Bros.",
     "title": "Super Smash Bros."
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/subway-surfers/",
+    "url": "/pages/iframe.html?url=/pages/games/subway-surfers/",
     "img": "/pages/images/subway.jfif",
     "alt": "Subway Surfers",
     "title": "Subway Surfers"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/super-fowlst/",
+    "url": "/pages/iframe.html?url=/pages/games/super-fowlst/",
     "img": "/pages/images/fowlst.jpg",
     "alt": "Super Fowlst",
     "title": "Super Fowlst"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/super-fowlst2/",
+    "url": "/pages/iframe.html?url=/pages/games/super-fowlst2/",
     "img": "/pages/images/fowlst2.png",
     "alt": "Super Fowlst 2",
     "title": "Super Fowlst 2"
   },
   {
-    "url": "/pages/games-frame?url=/pages/roms/supermariobros/",
+    "url": "/pages/iframe.html?url=/pages/roms/supermariobros/",
     "img": "/pages/images/smb.png",
     "alt": "Super Mario Bros.",
     "title": "Super Mario Bros."
   },
   {
-    "url": "/pages/games-frame?url=/pages/roms/supermariobros3/",
+    "url": "/pages/iframe.html?url=/pages/roms/supermariobros3/",
     "img": "/pages/images/smb3.png",
     "alt": "Super Mario Bros.",
     "title": "Super Mario Bros. 3"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/sm63/",
+    "url": "/pages/iframe.html?url=/pages/games/sm63/",
     "img": "/pages/images/63flash.png",
     "alt": "Super Mario 63 (Flash)",
     "title": "Super Mario 63 (Flash)"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/sm63redux/",
+    "url": "/pages/iframe.html?url=/pages/games/sm63redux/",
     "img": "/pages/images/63redux.png",
     "alt": "Super Mario 63 (Redux)",
     "title": "Super Mario 63 (Redux)"
   },
   {
-    "url": "/pages/games-frame?url=/pages/roms/sm64/",
+    "url": "/pages/iframe.html?url=/pages/roms/sm64/",
     "img": "/pages/images/sm64.png",
     "alt": "Super Mario 64",
     "title": "Super Mario 64"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/supermarioconstruct/",
+    "url": "/pages/iframe.html?url=/pages/games/supermarioconstruct/",
     "img": "/pages/images/smc.png",
     "alt": "Super Mario Construct",
     "title": "Super Mario Construct"
   },
   {
-    "url": "/pages/games-frame?url=/pages/roms/supermariokart/",
+    "url": "/pages/iframe.html?url=/pages/roms/supermariokart/",
     "img": "/pages/images/smk.webp",
     "alt": "Super Mario Kart",
     "title": "Super Mario Kart"
   },
   {
-    "url": "/pages/games-frame?url=/pages/roms/supermarioworld/",
+    "url": "/pages/iframe.html?url=/pages/roms/supermarioworld/",
     "img": "/pages/images/supermarioworld.png",
     "alt": "Super Mario World",
     "title": "Super Mario World"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/swingo/",
+    "url": "/pages/iframe.html?url=/pages/games/swingo/",
     "img": "/pages/images/swingo.avif",
     "alt": "Swingo",
     "title": "Swingo"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/tanuki-sunset/",
+    "url": "/pages/iframe.html?url=/pages/games/tanuki-sunset/",
     "img": "/pages/images/tanuki.jpg",
     "alt": "Tanuki Sunset",
     "title": "Tanuki Sunset"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/theimpossiblequiz/",
+    "url": "/pages/iframe.html?url=/pages/games/theimpossiblequiz/",
     "img": "/pages/images/tiq.png",
     "alt": "The Impossible Quiz",
     "title": "The Impossible Quiz"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/theimpossiblequiz2/",
+    "url": "/pages/iframe.html?url=/pages/games/theimpossiblequiz2/",
     "img": "/pages/images/tiq2.png",
     "alt": "The Impossible Quiz 2",
     "title": "The Impossible Quiz 2"
@@ -768,55 +768,55 @@
     "title": "The Password Game"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/there-is-no-game/",
+    "url": "/pages/iframe.html?url=/pages/games/there-is-no-game/",
     "img": "/pages/images/game.png",
     "alt": "There Is No Game",
     "title": "There Is No Game"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/tiny-fishing/",
+    "url": "/pages/iframe.html?url=/pages/games/tiny-fishing/",
     "img": "/pages/games/tiny-fishing/thumb.png",
     "alt": "Tiny Fishing",
     "title": "Tiny Fishing"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/totm/",
+    "url": "/pages/iframe.html?url=/pages/games/totm/",
     "img": "/pages/images/totm.png",
     "alt": "Tomb Of The Mask",
     "title": "Tomb Of The Mask"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/undertale/",
+    "url": "/pages/iframe.html?url=/pages/games/undertale/",
     "img": "/pages/images/undertale.png",
     "alt": "Undertale",
     "title": "Undertale"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/untitledgoosegame/",
+    "url": "/pages/iframe.html?url=/pages/games/untitledgoosegame/",
     "img": "/pages/images/goosegame.png",
     "alt": "Untitled Goose Game",
     "title": "Untitled Goose Game"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/vex-series/",
+    "url": "/pages/iframe.html?url=/pages/games/vex-series/",
     "img": "/pages/images/vex.png",
     "alt": "Vex Series (3-8)",
     "title": "Vex Series (3-8)"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/volley-random/",
+    "url": "/pages/iframe.html?url=/pages/games/volley-random/",
     "img": "/pages/images/volleyrandom.jfif",
     "alt": "Volley Random",
     "title": "Volley Random"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/wbwwb/",
+    "url": "/pages/iframe.html?url=/pages/games/wbwwb/",
     "img": "/pages/images/wbwwb.webp",
     "alt": "We Become What We Behold",
     "title": "We Become What We Behold"
   },
   {
-    "url": "/pages/games-frame?url=/pages/games/zeepkist-2d/",
+    "url": "/pages/iframe.html?url=/pages/games/zeepkist-2d/",
     "img": "/pages/images/zeepkist.jpg",
     "alt": "Zeepkist: Crash 2D",
     "title": "Zeepkist: Crash 2D"

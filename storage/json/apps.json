@@ -1,144 +1,144 @@
 [
   {
-    "url": "/static/embed?p=https://discord.com/",
+    "url": "/pages/iframe.html?p=https://discord.com/",
     "img": "/pages/apps/images/discord.png",
     "alt": "Discord",
     "title": "Discord"
   },
   {
-    "url": "/pages/apps-frame?url=/pages/apps/30$w/",
+    "url": "/pages/iframe.html?url=/pages/apps/30$w/",
     "img": "/pages/apps/images/dollar.png",
     "alt": "Thirty Dollar Website",
     "title": "Thirty Dollar Website"
   },
   {
-  "url": "/pages/apps-frame?url=/pages/youtube/",
+  "url": "/pages/iframe.html?url=/pages/youtube/",
   "img": "/pages/apps/images/youtube.png",
   "alt": "Youtube - API",
   "title": "Youtube - API"
 },
 {
-  "url": "/static/embed?p=https://inv.nadeko.net/",
+  "url": "/pages/iframe.html?p=https://inv.nadeko.net/",
   "img": "/pages/apps/images/invid.png",
   "alt": "Youtube (Invidious)",
   "title": "Youtube (Invidious)"
 },
   {
-    "url": "/static/embed?p=https://soundbuttonsworld.com/",
+    "url": "/pages/iframe.html?p=https://soundbuttonsworld.com/",
     "img": "/pages/apps/images/sound-button.png",
     "alt": "Sound Buttons World",
     "title": "Sound Buttons World"
   },
   {
-    "url": "/pages/apps-frame?url=/emujs/",
+    "url": "/pages/iframe.html?url=/emujs/",
     "img": "/pages/apps/images/emulatorjs.png",
     "alt": "Emulator JS",
     "title": "Emulator JS"
   },
   {
-    "url": "/pages/apps-frame?url=/pages/apps/soundboard/",
+    "url": "/pages/iframe.html?url=/pages/apps/soundboard/",
     "img": "/pages/apps/images/button.png",
     "alt": "Soundboard - Genizy",
     "title": "Soundboard - Genizy"
   },
   {
-    "url": "/static/embed?p=https://soundcloud.com/",
+    "url": "/pages/iframe.html?p=https://soundcloud.com/",
     "img": "/pages/apps/images/soundcloud.png",
     "alt": "Soundcloud",
     "title": "Soundcloud"
   },
   {
-    "url": "/pages/apps-frame?url=/pages/apps/v86/",
+    "url": "/pages/iframe.html?url=/pages/apps/v86/",
     "img": "/pages/apps/images/v86.png",
     "alt": "copy.sh - v86",
     "title": "copy.sh - v86"
   },
   {
-    "url": "/pages/apps-frame?url=/pages/apps/txtmoji/",
+    "url": "/pages/iframe.html?url=/pages/apps/txtmoji/",
     "img": "/pages/apps/images/txtmoji.avif",
     "alt": "Txtmoji",
     "title": "Txtmoji"
   },
   {
-    "url": "/static/embed?p=https://play.geforcenow.com/mall/#/loginwall",
+    "url": "/pages/iframe.html?p=https://play.geforcenow.com/mall/#/loginwall",
     "img": "/pages/apps/images/geforce.png",
     "alt": "Geforce",
     "title": "Geforce NOW"
   },
   {
-    "url": "/static/embed?p=https://gauthmath.com/",
+    "url": "/pages/iframe.html?p=https://gauthmath.com/",
     "img": "/pages/apps/images/gauth.png",
     "alt": "Gauth Math",
     "title": "Gauth Math"
   },
   {
-    "url": "/pages/apps-frame?url=/pages/apps/javascript-executor",
+    "url": "/pages/iframe.html?url=/pages/apps/javascript-executor",
     "img": "/pages/apps/images/script.webp",
     "alt": "Javascript Executor",
     "title": "Javascript Executor"
   },
   {
-    "url": "/static/embed?p=https://www.xbox.com/en-us/play",
+    "url": "/pages/iframe.html?p=https://www.xbox.com/en-us/play",
     "img": "/pages/apps/images/xbox.png",
     "alt": "Xbox Cloud Gaming",
     "title": "Xbox Cloud Gaming"
   },
   {
-    "url": "/pages/apps-frame?url=/pages/apps/gradecalc",
+    "url": "/pages/iframe.html?url=/pages/apps/gradecalc",
     "img": "/pages/apps/images/gradecalc.png",
     "alt": "Grade Calculator",
     "title": "Grade Calculator"
   },
   {
-    "url": "/pages/apps-frame?url=/pages/apps/mariosequencer/",
+    "url": "/pages/iframe.html?url=/pages/apps/mariosequencer/",
     "img": "/pages/apps/images/marioseq.jpg",
     "alt": "Mario Sequencer",
     "title": "Mario Sequencer"
   },
   {
-    "url": "/pages/apps-frame?url=/pages/apps/engine-sim/",
+    "url": "/pages/iframe.html?url=/pages/apps/engine-sim/",
     "img": "/pages/apps/images/engine.png",
     "alt": "Engine Simulator",
     "title": "Engine Simulator"
   },
   {
-    "url": "/static/embed?p=https://desmos.com",
+    "url": "/pages/iframe.html?p=https://desmos.com",
     "img": "/pages/apps/images/desmos.png",
     "alt": "Desmos",
     "title": "Desmos"
   },
   {
-    "url": "/pages/apps-frame?url=/pages/apps/kahoot",
+    "url": "/pages/iframe.html?url=/pages/apps/kahoot",
     "img": "/pages/apps/images/kahoot.png",
     "alt": "Kahoot (Hacked)",
     "title": "Kahoot (Hacked)"
   },
   {
-    "url": "/pages/apps-frame?url=/pages/apps/print3r",
+    "url": "/pages/iframe.html?url=/pages/apps/print3r",
     "img": "/pages/apps/images/print.png",
     "alt": "ExtPrint3r",
     "title": "ExtPrint3r"
   },
   {
-    "url": "/static/embed?p=https://google.com/",
+    "url": "/pages/iframe.html?p=https://google.com/",
     "img": "/pages/apps/images/google.jpg",
     "alt": "Google",
     "title": "Google"
   },
   {
-    "url": "/static/embed?p=https://start.duckduckgo.com/",
+    "url": "/pages/iframe.html?p=https://start.duckduckgo.com/",
     "img": "/pages/apps/images/ddg.png",
     "alt": "DuckDuckGo",
     "title": "DuckDuckGo"
   },
   {
-    "url": "/static/embed?p=https://tiktok.com",
+    "url": "/pages/iframe.html?p=https://tiktok.com",
     "img": "/pages/apps/images/tt.png",
     "alt": "TikTok",
     "title": "TikTok"
   },
   {
-    "url": "/static/embed?p=https://duck.ai",
+    "url": "/pages/iframe.html?p=https://duck.ai",
     "img": "/pages/apps/images/ddgai.png",
     "alt": "duck.ai",
     "title": "duck.ai"

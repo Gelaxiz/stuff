@@ -1,4 +1,4 @@
-# *What is US4?*
+# *What is Nexus?*
 
 https://github.com/voucan-us4/voucan-us4.github.io/blob/main/LICENSE
 

@@ -1,0 +1,381 @@
+html,
+body {
+    min-height: 100%;
+    margin: 0;
+}
+
+.game-button.is-hidden {
+    display: none !important;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: white;
+    text-shadow: 0 0 0.8px black;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    padding: 24px 44px 150px;
+    background: transparent;
+    user-select: none;
+}
+
+html.theme-default body {
+    background-color: transparent !important;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px) !important;
+    background-size: 48px 48px !important;
+    background-position: 0 0 !important;
+}
+
+html.in-frame.theme-minecraft,
+html.in-frame.theme-minecraft body {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+}
+
+html.in-frame.theme-minecraft body::before,
+html.in-frame.theme-minecraft body::after,
+html.in-frame.theme-minecraft #particles-js,
+html.in-frame.theme-minecraft .particles-js-canvas-el,
+html.in-frame.theme-minecraft #minecraft-theme-layer {
+    display: none !important;
+    content: none !important;
+}
+
+#particles-js,
+.navbar,
+.header {
+    display: none !important;
+}
+
+a,
+a:visited,
+a:hover,
+a:active,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    pointer-events: auto;
+    outline: none;
+}
+
+.game-title {
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 1;
+    margin: 0 0 24px;
+    text-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
+}
+
+.games-title {
+    text-align: center;
+    color: white;
+    font-size: 24px;
+    margin: 0 0 24px;
+    text-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
+}
+
+.search-bar-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: min(700px, 90vw);
+    height: 58px;
+    margin: 0 auto 40px;
+    padding: 0 8px 0 20px;
+    box-sizing: border-box;
+    border-radius: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.16);
+    background: #111;
+    overflow: hidden;
+    transform: scale(1);
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.search-bar-container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.18);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+.search-bar-container:hover {
+    transform: scale(1.018);
+    border-color: rgba(255, 255, 255, 0.95);
+    background: #2c2c33;
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.25);
+}
+
+.search-bar-container:hover::before {
+    opacity: 1;
+}
+
+.search-bar-container:focus-within {
+    transform: scale(1.018);
+    border-color: rgba(255, 255, 255, 0.95);
+    background: #2c2c33;
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.25);
+}
+
+.search-bar-container:focus-within::before {
+    opacity: 1;
+}
+
+.search-bar {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    height: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 0 14px 0 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: white;
+    font-size: 1rem;
+    font-family: Arial, sans-serif;
+    appearance: none;
+    box-shadow: none;
+    user-select: text;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+.search-bar:hover,
+.search-bar:focus {
+    background: transparent;
+    border: 0;
+    outline: 0;
+    box-shadow: none;
+}
+
+.search-bar::placeholder {
+    color: rgba(255, 255, 255, 0.62);
+}
+
+.search-bar-container:hover .search-bar::placeholder,
+.search-bar-container:focus-within .search-bar::placeholder {
+    color: rgba(255, 255, 255, 0.86);
+}
+
+#random-button {
+    position: relative;
+    z-index: 1;
+    min-width: 92px;
+    height: 42px;
+    margin: 0;
+    padding: 0 14px;
+    border: 0;
+    border-radius: 13px;
+    background: #1b1b1f;
+    color: white;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+        background 0.18s ease,
+        transform 0.18s ease;
+}
+
+#random-button:hover {
+    background: rgba(255, 255, 255, 0.24);
+    transform: scale(1.04);
+}
+
+#random-button:active {
+    transform: scale(0.96);
+}
+
+.search-bar-container:focus-within #random-button {
+    background: rgba(255, 255, 255, 0.22);
+}
+
+.game-grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    gap: 22px 20px;
+    width: min(1510px, calc(100vw - 88px));
+    margin: 0 auto;
+    padding: 0 0 150px;
+    box-sizing: border-box;
+}
+
+.game-button a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.game-button img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+}
+
+.tooltip {
+    position: absolute;
+    padding: 6px 10px;
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    font-size: 14px;
+    border-radius: 6px;
+    pointer-events: none;
+    opacity: 0;
+    transition:
+        opacity 0.15s ease,
+        transform 0.1s ease;
+    z-index: 9999;
+    white-space: nowrap;
+    transform: translateY(5px);
+    font-family: "Comfortaa", Arial, sans-serif;
+}
+
+.tooltip.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+* {
+    scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 999px;
+}
+
+*::-webkit-scrollbar-button {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+#gameGrid .game-button {
+    position: relative !important;
+    width: 150px !important;
+    height: 150px !important;
+    flex: 0 0 150px !important;
+    border-radius: 10px !important;
+    overflow: visible !important;
+    background: transparent !important;
+    transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease !important;
+}
+
+#gameGrid .game-button > a {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    z-index: 2 !important;
+}
+
+#gameGrid .game-button > a::after {
+    display: none !important;
+    content: none !important;
+}
+
+#gameGrid .game-button:hover {
+    transform: scale(1.06) !important;
+    box-shadow:
+        0 0 0 6.3px #ffffff,
+        0 16px 38px rgba(0, 0, 0, 0.34) !important;
+}
+
+#gameGrid .game-button img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+    border-radius: inherit !important;
+    transition: transform 0.18s ease !important;
+}
+
+#gameGrid .game-button:hover img {
+    transform: scale(1.02) !important;
+    filter: none !important;
+}
+
+@media (max-width: 700px) {
+    body {
+        padding: 22px 18px 130px;
+    }
+
+    .game-title {
+        font-size: 32px;
+    }
+
+    .games-title {
+        font-size: 19px;
+    }
+
+    .search-bar-container {
+        width: calc(100vw - 36px);
+        height: 54px;
+        margin-bottom: 28px;
+        padding: 0 7px 0 16px;
+        border-radius: 17px;
+    }
+
+    .search-bar {
+        font-size: 14px;
+    }
+
+    #random-button {
+        min-width: 74px;
+        height: 38px;
+        font-size: 0.75rem;
+        padding: 0 10px;
+        border-radius: 12px;
+    }
+
+    .game-grid {
+        width: calc(100vw - 36px);
+        gap: 16px;
+    }
+
+    .game-button {
+        width: 120px !important;
+        height: 120px !important;
+        flex-basis: 120px !important;
+    }
+
+    #gameGrid .game-button {
+        width: 120px !important;
+        height: 120px !important;
+        flex-basis: 120px !important;
+    }
+}

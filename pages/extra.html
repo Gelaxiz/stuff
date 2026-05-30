@@ -1,79 +1,51 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta property="og:title" content="US4 | Extra">
-    <meta property="og:description" content="Extra stuff idk">
-    <meta property="og:image" content="/storage/images/logo.png">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="icon" href="../storage/images/googleclassroom.png" type="image/png">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../storage/css/extra.css">
-    <link rel="stylesheet" href="../storage/css/style.css">
-    
-    <style>
-        /* Netlify badge styles */
-        #netlify-badge {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-            z-index: 9999;
-            cursor: pointer;
-        }
-        #netlify-badge img {
-            display: block;
-            height: 40px; /* Adjust size as needed */
-            width: auto;
-        }
-    </style>
+   <script>
+      const nexusTheme = localStorage.getItem("nexusTheme") || "default";
+
+      document.documentElement.classList.add("theme-" + nexusTheme);
+
+      if (window.self !== window.top) {
+         document.documentElement.classList.add("in-frame");
+      }
+   </script>
+
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta property="og:title" content="Classroom Management Tools & Resources - Google for Education">
+   <meta property="og:description" content="Google Classroom is your central place where teaching and learning come together. This easy-to-use and secure tool helps educators manage, measure and enrich learning experiences.">
+
+   <title>Home - Classroom</title>
+
+   <link rel="icon" href="../storage/images/googleclassroom.png" type="image/png">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="../storage/css/background.css">
+   <link rel="stylesheet" href="../storage/css/extra.css">
+     <link href="/storage/css/cursor.css" rel="stylesheet">
+
+  <script src="/storage/js/cursor.js"></script>
 </head>
+
 <body>
 
-<script src="/particles.js"></script>
-  <script src="/storage/js/app.js"></script>
-<div id="particles-js"></div>
+   <main class="wip-page">
+      <div class="wip-card">
+         <div class="wip-icon">
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+         </div>
 
-<div class="navbar">
-    <div class="left-side">
-        <a href="/">
-            <img src="/storage/images/logo.png" alt="logo">
-        </a>
-    </div>
-<div class="right-side">
-     <script type="text/javascript" src="/storage/js/nav.js"></script>
-</div>
-</div>
-    <div class="container">
-        <button onclick="window.open('/pages/links/', '_self')">More Links</button>
-        <button onclick="window.open('https://skibidylogan.cbu.net/', '_self')">Rammerhead</button>
-        <button onclick="window.location.href='/cloak'">Open in About:Blank</button>
-        <button onclick="window.open('https://discord.gg/umXMzCjcXX', '_blank')">Join our Discord</button>
-        <button onclick="window.open('https://www.google.com/search?q=site:https://nexus-sub.netlify.app', '_blank')">Boost our site on google (Not Working)</button>
-        <button onclick="window.location.href='/pages/extra/data-use'">How we use your data</button>
-        <button onclick="window.open('/pages/apps-frame?url=/storage/supersecrethtml/', '_self')">idk what this one does</button>
-        <div class="tip">
-            tip: you can go to <a href="/cloak" target="_blank" style="color: #DDD;">/cloak</a> to automatically open nexus in about:blank.
-        </div>
-    </div>
-    <script type="text/javascript" src="/storage/js/settings.js"></script>
-    <script type="text/javascript" src="/storage/js/background.js"></script>
-    <script type="text/javascript" src="/storage/js/cheese-algorithm.js"></script>
+         <h1>WIP</h1>
 
-<script>
-  const urlParams = new URLSearchParams(window.location.search);
-  const updParam = urlParams.get('upd');
+         <p>
+            This page is still being worked on.
+         </p>
 
-  if (updParam === null) {
-    window.location.href = '/';
-  }
-</script>
-
- <div id="netlify-badge">
-  <a href="https://app.netlify.com/projects/big-up/deploys" target="_blank" rel="noopener noreferrer">
-    <img src="https://api.netlify.com/api/v1/badges/5a42a5e3-46ac-42f5-8e5d-477db38e9d8f/deploy-status" alt="Netlify Status" />
-  </a>
-</div>
+         <span class="wip-tag">coming soon</span>
+      </div>
+   </main>
 
 </body>
+
 </html>

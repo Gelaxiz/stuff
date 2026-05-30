@@ -1,14 +1,1 @@
-window.addEventListener('load', function () {
-    const applyBackgroundColor = () => {
-        const color = localStorage.getItem('backgroundColor') || '#0d0d0d';
-        if (document.body.style.backgroundColor !== color) {
-            document.body.style.backgroundColor = color;
-        }
-    };
-
-    applyBackgroundColor();
-
-    setInterval(applyBackgroundColor, 250);
-});
-
-// #0d0d0d if not working
+(function () {    const color = localStorage.getItem("backgroundColor") || "#1C1C1D";    document.documentElement.style.backgroundColor = color;    window.addEventListener("DOMContentLoaded", function () {        document.body.style.backgroundColor = color;    });})();

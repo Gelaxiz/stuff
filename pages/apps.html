@@ -1,28 +1,43 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta property="og:title" content="Nexus | Apps and More"> 
-  <meta property="og:description" content="Use different apps, unblocking methods, and more">
-  <meta property="og:image" content="/storage/images/logo.png">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script>
+  const theme = localStorage.getItem("nexusTheme") || "default";
+
+  document.documentElement.classList.add("theme-" + theme);
+
+  if (window.self !== window.top) {
+    document.documentElement.classList.add("in-frame");
+  }
+</script>
+
+  <meta property="og:title" content="Classroom Management Tools & Resources - Google for Education">
+   <meta property="og:description" content="Google Classroom is your central place where teaching and learning come together. This easy-to-use and secure tool helps educators manage, measure and enrich learning experiences.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Home</title>
-  <link rel="icon" href="../storage/images/googleclassroom.png" type="image/png" />
-  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../storage/css/anotherstyle.css" />
-  <link rel="stylesheet" href="../storage/css/style.css" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+
+  <link rel="icon" href="../storage/images/googleclassroom.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../storage/css/anotherstyle.css">
+  <link rel="stylesheet" href="../storage/css/style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../storage/css/background.css">
+  <link rel="stylesheet" href="../storage/css/override.css">
+  <link href="/storage/css/cursor.css" rel="stylesheet">
+
+  <script src="/storage/js/cursor.js"></script>
 </head>
+
 <body>
-  <script src="/particles.js"></script>
-  <script src="/storage/js/app.js"></script>
-  <div id="particles-js"></div>
-  <script src="/storage/js/particles-toggle.js" defer></script>
 
   <div class="navbar">
     <div class="left-side">
       <a href="/"></a>
     </div>
+
     <div class="right-side">
       <script type="text/javascript" src="/storage/js/nav.js"></script>
     </div>
@@ -35,15 +50,16 @@
       type="text"
       id="gameSearch"
       class="search-bar"
-      placeholder="Search for a app..."
+      placeholder="Search for an app..."
+      autocomplete="off"
       oninput="filterApps()"
-    />
-    <button id="random-button">Let us pick</button>
+    >
+
+    <button id="random-button" type="button">Let us pick</button>
   </div>
 
   <div class="game-grid" id="gameGrid"></div>
 
-  <!-- Tooltip element (required for the tooltip script) -->
   <div class="tooltip"></div>
 
   <script>
@@ -58,110 +74,122 @@
         try {
           const apps = JSON.parse(cached);
           renderApps(apps);
-        } catch (e) {
-          console.warn("Failed to parse cached apps:", e);
+        } catch (error) {
+          console.warn("Failed to parse cached apps:", error);
         }
       }
 
       try {
         const res = await fetch(JSON_PATH, { cache: "no-store" });
-        if (!res.ok) throw new Error("Failed to fetch JSON");
+
+        if (!res.ok) {
+          throw new Error("Failed to fetch JSON");
+        }
+
         const freshApps = await res.json();
         const freshString = JSON.stringify(freshApps);
+
         if (freshString !== cached) {
           localStorage.setItem(CACHE_KEY, freshString);
           localStorage.setItem(CACHE_TIME_KEY, Date.now().toString());
           renderApps(freshApps);
         }
-      } catch (err) {
-        console.error(`Failed to fetch latest apps.json:`, err);
+      } catch (error) {
+        console.error("Failed to fetch latest apps.json:", error);
       }
     }
 
     function renderApps(apps) {
       const gameGrid = document.getElementById("gameGrid");
+
       gameGrid.innerHTML = "";
 
-      for (const game of apps) {
+      for (const app of apps) {
         const div = document.createElement("div");
         div.className = "game-button";
+
         div.innerHTML = `
-          <a href="${game.url}">
-            <img src="${game.img}" alt="${game.alt || game.title}" onerror="this.onerror=null;this.src='/storage/images/404.png';" />
+          <a href="${app.url}">
+            <img src="${app.img}" alt="${app.alt || app.title}" onerror="this.onerror=null;this.src='/storage/images/404.png';">
           </a>
         `;
+
         gameGrid.appendChild(div);
       }
 
-      sortGameButtons();
-      checkGridAlignment();
+      if (typeof sortGameButtons === "function") {
+        sortGameButtons();
+      }
     }
 
     function filterApps() {
-      const searchInput = document.getElementById("gameSearch").value.toLowerCase();
-      const apps = document.querySelectorAll(".game-button");
+        const searchInput = document.getElementById("gameSearch").value.trim().toLowerCase();
+        const apps = document.querySelectorAll(".game-button");
 
-      apps.forEach((game) => {
-        const img = game.querySelector("img");
-        const title = (img && img.alt ? img.alt : "").toLowerCase();
-        game.style.display = title.includes(searchInput) ? "block" : "none";
-      });
+        apps.forEach(function (app) {
+            const img = app.querySelector("img");
+            const title = img && img.alt ? img.alt.toLowerCase() : "";
+
+            if (title.includes(searchInput)) {
+                app.classList.remove("is-hidden");
+            } else {
+                app.classList.add("is-hidden");
+            }
+        });
     }
 
-    function checkGridAlignment() {
-      const buttons = document.querySelectorAll(".game-button");
-      const pageWidth = window.innerWidth;
-      buttons.forEach((button) => {
-        const rect = button.getBoundingClientRect();
-        const distanceToRightEdge = pageWidth - rect.right;
-        button.style.clear = distanceToRightEdge < 75 ? "both" : "none";
-      });
-    }
 
-    window.addEventListener("resize", checkGridAlignment);
-    window.addEventListener("load", () => {
+    window.addEventListener("load", function () {
       loadApps();
-      checkGridAlignment();
     });
 
-    document.getElementById("random-button").addEventListener("click", () => {
+    document.getElementById("random-button").addEventListener("click", function () {
       const apps = Array.from(document.querySelectorAll(".game-button a"));
-      if (apps.length === 0) return;
+
+      if (apps.length === 0) {
+        return;
+      }
+
       const randomIndex = Math.floor(Math.random() * apps.length);
-      const randomGame = apps[randomIndex];
-      window.location.href = randomGame.href;
+      const randomApp = apps[randomIndex];
+
+      window.location.href = randomApp.href;
     });
   </script>
 
-  <!-- Tooltip Script -->
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", function () {
       const tooltip = document.querySelector(".tooltip");
-      if (!tooltip) return;
 
-      document.body.addEventListener("mouseenter", (e) => {
-        if (e.target && e.target.tagName === "IMG" && e.target.alt) {
-          tooltip.textContent = e.target.alt;
+      if (!tooltip) {
+        return;
+      }
+
+      document.body.addEventListener("mouseenter", function (event) {
+        if (event.target && event.target.tagName === "IMG" && event.target.alt) {
+          tooltip.textContent = event.target.alt;
           tooltip.classList.add("show");
 
           const padding = 15;
           const maxX = window.innerWidth - tooltip.offsetWidth - padding;
-          tooltip.style.left = Math.min(e.pageX + padding, maxX) + "px";
-          tooltip.style.top = (e.pageY - 20) + "px";
+
+          tooltip.style.left = Math.min(event.pageX + padding, maxX) + "px";
+          tooltip.style.top = event.pageY - 20 + "px";
         }
       }, true);
 
-      document.body.addEventListener("mousemove", (e) => {
+      document.body.addEventListener("mousemove", function (event) {
         if (tooltip.classList.contains("show")) {
           const padding = 15;
           const maxX = window.innerWidth - tooltip.offsetWidth - padding;
-          tooltip.style.left = Math.min(e.pageX + padding, maxX) + "px";
-          tooltip.style.top = (e.pageY - 20) + "px";
+
+          tooltip.style.left = Math.min(event.pageX + padding, maxX) + "px";
+          tooltip.style.top = event.pageY - 20 + "px";
         }
       });
 
-      document.body.addEventListener("mouseleave", (e) => {
-        if (e.target && e.target.tagName === "IMG") {
+      document.body.addEventListener("mouseleave", function (event) {
+        if (event.target && event.target.tagName === "IMG") {
           tooltip.classList.remove("show");
         }
       }, true);
@@ -169,9 +197,7 @@
   </script>
 
   <script type="text/javascript" src="/storage/js/settings.js"></script>
-  <script type="text/javascript" src="/storage/js/background.js"></script>
   <script type="text/javascript" src="/storage/js/resort.js"></script>
-  <script type="text/javascript" src="/storage/js/cheese-algorithm.js"></script>
   <script src="/static/uv/uv.bundle.js" defer></script>
   <script src="/static/uv/uv.config.js" defer></script>
   <script src="/static/register-sw.js" defer></script>
@@ -181,10 +207,15 @@
   <script>
     async function regsw() {
       await navigator.serviceWorker.register("/static/uv-sw.js", {
-        scope: "/static/",
+        scope: "/static/"
       });
     }
+
     regsw();
   </script>
+
 </body>
+
 </html>
+
+
