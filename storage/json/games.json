@@ -162,7 +162,7 @@
     "title": "Cluster Rush"
   },
     {
-    "url": "/static/embed?p=https://www.easyfun.gg/embed/clash-royale-cloud-online.html",
+    "url": "/pages/pframe.html?url=https://www.easyfun.gg/embed/clash-royale-cloud-online.html",
     "img": "/pages/images/clashroyale.png",
     "alt": "Clash Royale",
     "title": "Clash Royale"
@@ -342,7 +342,7 @@
     "title": "Famidash"
   },
   {
-    "url": "/static/embed?p=https://play.fancade.com/",
+    "url": "/pages/pframe.html?url=https://play.fancade.com/",
     "img": "/pages/images/fancade.jpg",
     "alt": "Fancade",
     "title": "Fancade"
@@ -402,13 +402,13 @@
     "title": "Jetpack Joyride"
   },
   {
-    "url": "/static/embed?p=https://infinite-craft.org/",
+    "url": "/pages/pframe.html?p=https://infinite-craft.org/",
     "img": "/pages/images/infcraft.png",
     "alt": "Infinite Craft",
     "title": "Infinite Craft"
   },
   {
-    "url": "/static/load/hvtrs8%2F-gcmgs%2Ccpaxyeaoeq.aoo%2Fgn%5DUQ%2Fiipkc-ko-ildgx%2Chvmn",
+    "url": "/pages/pframe.html?url=https://kirka.io",
     "img": "/pages/images/kirka.png",
     "alt": "Kirka io",
     "title": "Kirka"
@@ -492,7 +492,7 @@
     "title": "Need For Speed"
   },
   {
-    "url": "/static/embed?p=https://webosu.online/",
+    "url": "/pages/iframe.html?url=https://webosu.online/",
     "img": "/pages/apps/images/osu.png",
     "alt": "osu! (Web)",
     "title": "osu! (Web)"
@@ -526,6 +526,12 @@
     "img": "/pages/images/polytrack.jpg",
     "alt": "Poly Track",
     "title": "Poly Track"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/ttyd/",
+    "img": "/pages/images/ttyd.webp",
+    "alt": "Paper Mario: TTYD (coming soon)",
+    "title": "Paper Mario: The Thousand Year Door"
   },
   {
     "url": "/pages/iframe.html?url=/pages/roms/pm64/",
@@ -564,7 +570,7 @@
     "title": "Rocket Goal"
   },
   {
-    "url": "/static/embed?p=https://easyfun.gg/embed/roblox.html",
+    "url": "/pages/pframe.html?url=https://easyfun.gg/embed/roblox.html",
     "img": "/pages/images/rblx.png",
     "alt": "Roblox",
     "title": "Roblox"
@@ -762,7 +768,7 @@
     "title": "The Impossible Quiz 2"
   },
   {
-    "url": "/static/embed?p=https://quirkylock.netlify.app/",
+    "url": "/pages/pframe.html?url=https://quirkylock.netlify.app/",
     "img": "/pages/images/quirky.png",
     "alt": "The Password Game",
     "title": "The Password Game"

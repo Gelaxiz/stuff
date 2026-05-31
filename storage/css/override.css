@@ -19,14 +19,6 @@ body {
     user-select: none;
 }
 
-html.theme-default body {
-    background-color: transparent !important;
-    background-image:
-        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px) !important;
-    background-size: 48px 48px !important;
-    background-position: 0 0 !important;
-}
 
 html.in-frame.theme-minecraft,
 html.in-frame.theme-minecraft body {

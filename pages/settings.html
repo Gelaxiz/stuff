@@ -19,16 +19,28 @@
    <link href="/storage/css/settings.css" rel="stylesheet">
 
    <script src="/storage/js/cursor.js"></script>
-   <script>
-   localStorage.setItem("nexusCustomCursor", "true");
+   <style>
+      .settings-grid {
+         display: grid !important;
+         grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+         gap: 26px !important;
+         align-items: stretch !important;
+      }
 
-   if (window.setNexusCustomCursor) {
-      window.setNexusCustomCursor(true);
-   } else {
-      document.documentElement.classList.add("nexus-cursor-on");
-      document.documentElement.classList.remove("nexus-cursor-off");
-   }
-</script>
+      .settings-grid > .settings-card,
+      .settings-grid > .data-card {
+         grid-column: auto !important;
+         width: 100% !important;
+         max-width: none !important;
+         justify-self: stretch !important;
+      }
+
+      @media (max-width: 850px) {
+         .settings-grid {
+            grid-template-columns: 1fr !important;
+         }
+      }
+   </style>
 </head>
 
 <body>
@@ -67,28 +79,18 @@
 
             <p class="setting-status" id="themeStatus">default theme selected</p>
          </div>
+         <div class="settings-card data-card">
+            <h2>data saving</h2>
+            <p>export or import your local nexus data</p>
 
-         <div class="settings-card bare-card">
-            <div class="card-title-row">
-               <div>
-                  <h2>custom bare server</h2>
-                  <p>set a static bare server url for ultraviolet</p>
-               </div>
+            <button id="exportData" type="button">export your data</button>
 
-               <button type="button" class="info-button" id="bareInfoButton" aria-label="bare server information">
-                  ?
-               </button>
+            <div class="button-row">
+               <button id="importData" type="button">import data</button>
+               <button id="clearData" type="button">clear all data</button>
             </div>
 
-            <label for="bareServerUrl">bare server url</label>
-            <input type="text" id="bareServerUrl" placeholder="" autocomplete="off">
-
-            <div class="button-row compact">
-               <button id="saveBareServer" type="button">save bare server</button>
-               <button id="resetBareServer" type="button">reset</button>
-            </div>
-
-            <p class="setting-status" id="bareServerStatus">no custom bare server set.</p>
+            <input type="file" id="importFile" accept="application/json">
          </div>
 
          <div class="settings-card">
@@ -141,39 +143,8 @@
 
             <button id="savePanicUrl" type="button">set url</button>
          </div>
-
-         <div class="settings-card data-card">
-            <h2>data saving</h2>
-            <p>export or import your local nexus data</p>
-
-            <button id="exportData" type="button">export your data</button>
-
-            <div class="button-row">
-               <button id="importData" type="button">import data</button>
-               <button id="clearData" type="button">clear all data</button>
-            </div>
-
-            <input type="file" id="importFile" accept="application/json">
-         </div>
-
       </section>
    </main>
-
-   <div class="modal-backdrop" id="bareModal" hidden>
-      <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="bareModalTitle">
-         <button type="button" class="modal-close" id="bareModalClose" aria-label="close modal">
-            <i class="fa-solid fa-xmark"></i>
-         </button>
-
-         <h2 id="bareModalTitle">custom bare server</h2>
-
-         <p>a bare server is the backend which lets ultraviolet route web requests through a proxy setup.</p>
-
-         <p>this setting is for a static bare server url. it saves locally so it can be connected to the ultraviolet proxy.</p>
-
-         <div class="modal-example">https://tomp.app/</div>
-      </div>
-   </div>
 
    <script>
       const cloakPreset = document.getElementById("cloakPreset");
@@ -181,14 +152,6 @@
 
       const themeSelect = document.getElementById("themeSelect");
       const themeStatus = document.getElementById("themeStatus");
-
-      const bareServerUrl = document.getElementById("bareServerUrl");
-      const saveBareServer = document.getElementById("saveBareServer");
-      const resetBareServer = document.getElementById("resetBareServer");
-      const bareServerStatus = document.getElementById("bareServerStatus");
-      const bareInfoButton = document.getElementById("bareInfoButton");
-      const bareModal = document.getElementById("bareModal");
-      const bareModalClose = document.getElementById("bareModalClose");
 
       const customCursorToggle = document.getElementById("customCursorToggle");
       const cursorStatus = document.getElementById("cursorStatus");
@@ -286,16 +249,6 @@
          themeStatus.textContent = value + " theme selected";
       }
 
-      function updateBareServerStatus() {
-         const savedBare = localStorage.getItem("customBareServer");
-
-         if (savedBare) {
-            bareServerStatus.textContent = "saved: " + savedBare;
-         } else {
-            bareServerStatus.textContent = "no custom bare server set.";
-         }
-      }
-
       function applyCursorMode(enabled) {
          localStorage.setItem("nexusCustomCursor", enabled ? "true" : "false");
 
@@ -315,28 +268,10 @@
          deviceStatus.textContent = enabled ? "device: mobile" : "device: desktop";
       }
 
-      function openBareModal() {
-         bareModal.hidden = false;
-
-         requestAnimationFrame(function () {
-            bareModal.classList.add("active");
-            document.body.classList.add("modal-open");
-         });
-      }
-
-      function closeBareModal() {
-         bareModal.classList.remove("active");
-         document.body.classList.remove("modal-open");
-
-         setTimeout(function () {
-            bareModal.hidden = true;
-         }, 180);
-      }
-
       cloakPreset.value = localStorage.getItem("cloakPreset") || "default";
       themeSelect.value = localStorage.getItem("nexusTheme") || "default";
-      bareServerUrl.value = localStorage.getItem("customBareServer") || "";
-      customCursorToggle.checked = localStorage.getItem("nexusCustomCursor") === "true";
+      const savedCursorSetting = localStorage.getItem("nexusCustomCursor");
+      customCursorToggle.checked = savedCursorSetting === null ? true : savedCursorSetting === "true";
       mobileModeToggle.checked = localStorage.getItem("mobileMode") === "true";
       panicUrl.value = localStorage.getItem("panicUrl") || "https://www.google.com";
 
@@ -345,7 +280,6 @@
 
       applySavedCloak();
       applyThemeLabel(themeSelect.value);
-      updateBareServerStatus();
       applyCursorMode(customCursorToggle.checked);
       applyMobileMode(mobileModeToggle.checked);
 
@@ -365,34 +299,6 @@
          applyThemeLabel(selectedTheme);
 
          location.reload();
-      });
-
-      saveBareServer.addEventListener("click", function () {
-         const url = bareServerUrl.value.trim();
-
-         if (!url) {
-            localStorage.removeItem("customBareServer");
-            updateBareServerStatus();
-            return;
-         }
-
-         localStorage.setItem("customBareServer", url);
-         updateBareServerStatus();
-      });
-
-      resetBareServer.addEventListener("click", function () {
-         bareServerUrl.value = "";
-         localStorage.removeItem("customBareServer");
-         updateBareServerStatus();
-      });
-
-      bareInfoButton.addEventListener("click", openBareModal);
-      bareModalClose.addEventListener("click", closeBareModal);
-
-      bareModal.addEventListener("click", function (event) {
-         if (event.target === bareModal) {
-            closeBareModal();
-         }
       });
 
       customCursorToggle.addEventListener("change", function () {

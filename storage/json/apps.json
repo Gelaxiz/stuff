@@ -1,6 +1,6 @@
 [
   {
-    "url": "/pages/iframe.html?p=https://discord.com/",
+    "url": "/pages/pframe.html?url=https://discord.com/",
     "img": "/pages/apps/images/discord.png",
     "alt": "Discord",
     "title": "Discord"
@@ -18,13 +18,19 @@
   "title": "Youtube - API"
 },
 {
-  "url": "/pages/iframe.html?p=https://inv.nadeko.net/",
+  "url": "/pages/pframe.html?url=https://inv.nadeko.net/",
   "img": "/pages/apps/images/invid.png",
   "alt": "Youtube (Invidious)",
   "title": "Youtube (Invidious)"
 },
   {
-    "url": "/pages/iframe.html?p=https://soundbuttonsworld.com/",
+    "url": "/pages/pframe.html?url=https://snapchat.com/",
+    "img": "/pages/apps/images/snapchat.png",
+    "alt": "Snapchat",
+    "title": "Snapchat"
+  },
+  {
+    "url": "/pages/pframe.html?url=https://soundbuttonsworld.com/",
     "img": "/pages/apps/images/sound-button.png",
     "alt": "Sound Buttons World",
     "title": "Sound Buttons World"
@@ -42,7 +48,7 @@
     "title": "Soundboard - Genizy"
   },
   {
-    "url": "/pages/iframe.html?p=https://soundcloud.com/",
+    "url": "/pages/pframe.html?url=https://soundcloud.com/",
     "img": "/pages/apps/images/soundcloud.png",
     "alt": "Soundcloud",
     "title": "Soundcloud"
@@ -60,13 +66,13 @@
     "title": "Txtmoji"
   },
   {
-    "url": "/pages/iframe.html?p=https://play.geforcenow.com/mall/#/loginwall",
+    "url": "/pages/pframe.html?url=https://play.geforcenow.com/mall/#/loginwall",
     "img": "/pages/apps/images/geforce.png",
     "alt": "Geforce",
     "title": "Geforce NOW"
   },
   {
-    "url": "/pages/iframe.html?p=https://gauthmath.com/",
+    "url": "/pages/pframe.html?url=https://gauthmath.com/",
     "img": "/pages/apps/images/gauth.png",
     "alt": "Gauth Math",
     "title": "Gauth Math"
@@ -78,7 +84,7 @@
     "title": "Javascript Executor"
   },
   {
-    "url": "/pages/iframe.html?p=https://www.xbox.com/en-us/play",
+    "url": "/pages/pframe.html?url=https://www.xbox.com/en-us/play",
     "img": "/pages/apps/images/xbox.png",
     "alt": "Xbox Cloud Gaming",
     "title": "Xbox Cloud Gaming"
@@ -102,7 +108,7 @@
     "title": "Engine Simulator"
   },
   {
-    "url": "/pages/iframe.html?p=https://desmos.com",
+    "url": "/pages/pframe.html?url=https://desmos.com",
     "img": "/pages/apps/images/desmos.png",
     "alt": "Desmos",
     "title": "Desmos"
@@ -120,25 +126,25 @@
     "title": "ExtPrint3r"
   },
   {
-    "url": "/pages/iframe.html?p=https://google.com/",
+    "url": "/pages/pframe.html?url=https://google.com/",
     "img": "/pages/apps/images/google.jpg",
     "alt": "Google",
     "title": "Google"
   },
   {
-    "url": "/pages/iframe.html?p=https://start.duckduckgo.com/",
+    "url": "/pages/pframe.html?url=https://start.duckduckgo.com/",
     "img": "/pages/apps/images/ddg.png",
     "alt": "DuckDuckGo",
     "title": "DuckDuckGo"
   },
   {
-    "url": "/pages/iframe.html?p=https://tiktok.com",
+    "url": "/pages/pframe.html?url=https://tiktok.com",
     "img": "/pages/apps/images/tt.png",
     "alt": "TikTok",
     "title": "TikTok"
   },
   {
-    "url": "/pages/iframe.html?p=https://duck.ai",
+    "url": "/pages/pframe.html?url=https://duck.ai",
     "img": "/pages/apps/images/ddgai.png",
     "alt": "duck.ai",
     "title": "duck.ai"
