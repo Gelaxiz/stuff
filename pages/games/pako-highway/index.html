@@ -1,38 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pako Highway Unblocked</title>
+
   <style>
-    body, html {
-      margin: 0; padding: 0; overflow: hidden; height: 100%;
-      background: black;
+    * {
+      box-sizing: border-box;
     }
-    /* Make canvas fill viewport */
+
+    html,
+    body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+      font-family: Arial, sans-serif;
+    }
+
     #unity-canvas {
       width: 100vw;
       height: 100vh;
       display: block;
+      background: #000;
+    }
+
+    #loading-screen {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000;
+      z-index: 10;
+      transition: opacity 0.3s ease;
+    }
+
+    #loading-box {
+      width: 320px;
+      max-width: calc(100% - 40px);
+      text-align: center;
+    }
+
+    #loading-title {
+      margin-bottom: 20px;
+      color: white;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    #progress-background {
+      width: 100%;
+      height: 10px;
+      overflow: hidden;
+      border-radius: 20px;
+      background: #333;
+    }
+
+    #progress-bar {
+      width: 0%;
+      height: 100%;
+      background: white;
+      transition: width 0.1s linear;
+    }
+
+    #progress-text {
+      margin-top: 12px;
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    #loading-screen.hidden {
+      opacity: 0;
+      pointer-events: none;
     }
   </style>
 </head>
+
 <body>
-  <!-- Unity requires a canvas element here, not a div -->
   <canvas id="unity-canvas"></canvas>
 
-  <script src="Build/phhhh.loader.js"></script>
+  <div id="loading-screen">
+    <div id="loading-box">
+      <div id="loading-title">Pako Highway</div>
+
+      <div id="progress-background">
+        <div id="progress-bar"></div>
+      </div>
+
+      <div id="progress-text">Loading 0%</div>
+    </div>
+  </div>
+
+  <script src="https://pub-e23e933511954d6b800894eb915b67c3.r2.dev/pako-highway/phhhh.loader.js"></script>
+
   <script>
-    createUnityInstance(document.querySelector("#unity-canvas"), {
-      dataUrl: "Build/phhhh.data",
-      frameworkUrl: "Build/phhhh.framework.js",
-      codeUrl: "Build/phhhh.wasm",
-      streamingAssetsUrl: "StreamingAssets",
-      // Optional: companyName, productName, productVersion
+    const canvas = document.getElementById("unity-canvas");
+    const loadingScreen = document.getElementById("loading-screen");
+    const progressBar = document.getElementById("progress-bar");
+    const progressText = document.getElementById("progress-text");
+
+    createUnityInstance(canvas, {
+      dataUrl: "https://pub-e23e933511954d6b800894eb915b67c3.r2.dev/pako-highway/phhhh.data",
+      frameworkUrl: "https://pub-e23e933511954d6b800894eb915b67c3.r2.dev/pako-highway/phhhh.framework.js",
+      codeUrl: "https://pub-e23e933511954d6b800894eb915b67c3.r2.dev/pako-highway/phhhh.wasm",
+      streamingAssetsUrl: "https://pub-e23e933511954d6b800894eb915b67c3.r2.dev/pako-highway/StreamingAssets"
+    }, progress => {
+      const percent = Math.round(progress * 100);
+
+      progressBar.style.width = percent + "%";
+      progressText.textContent = "Loading " + percent + "%";
     }).then(unityInstance => {
-      console.log("Unity loaded");
+      progressBar.style.width = "100%";
+      progressText.textContent = "Loading 100%";
+
+      setTimeout(() => {
+        loadingScreen.classList.add("hidden");
+
+        setTimeout(() => {
+          loadingScreen.remove();
+        }, 300);
+      }, 200);
     }).catch(error => {
+      progressText.textContent = "Failed to load";
       console.error(error);
-      alert("Failed to load Unity game: " + error);
     });
   </script>
 </body>

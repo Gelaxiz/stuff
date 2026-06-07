@@ -522,6 +522,12 @@
     "title": "Pako 3"
   },
   {
+    "url": "/pages/iframe.html?url=/pages/games/pikuniku/",
+    "img": "/pages/images/pikuniku.jpg",
+    "alt": "Pikuniku",
+    "title": "Pikuniku"
+  },
+  {
     "url": "/pages/iframe.html?url=/pages/games/polytrack/",
     "img": "/pages/images/polytrack.jpg",
     "alt": "Poly Track",
