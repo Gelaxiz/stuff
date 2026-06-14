@@ -101,6 +101,10 @@ a:focus {
     opacity: 1;
 }
 
+#uv-address {
+    text-align: center;
+}
+
 .search-bar-home {
     position: relative;
     z-index: 1;
@@ -136,43 +140,6 @@ a:focus {
     color: rgba(255, 255, 255, 0.86);
 }
 
-#search-button {
-    position: relative;
-    z-index: 1;
-    width: 42px;
-    height: 42px;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    border-radius: 13px;
-    background: #1b1b1f;
-    color: white;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0;
-    transition: background 0.18s ease, transform 0.18s ease;
-}
-
-#search-button i {
-    display: block;
-    margin: 0;
-    font-size: 1rem;
-}
-
-#search-button:hover {
-    background: rgba(255, 255, 255, 0.24);
-    transform: scale(1.04);
-}
-
-#search-button:active {
-    transform: scale(0.96);
-}
-
-#uv-form:focus-within #search-button {
-    background: rgba(255, 255, 255, 0.22);
-}
 
 .desc {
     margin: 0;

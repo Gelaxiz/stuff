@@ -67,7 +67,6 @@ body.proxy-open .nexus-nav {
 .nav-item:hover {
     background: rgba(255, 255, 255, 0.12);
     opacity: 1;
-    transform: translateY(-3px);
 }
 
 .nav-item:active {

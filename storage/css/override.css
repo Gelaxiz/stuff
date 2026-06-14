@@ -137,12 +137,12 @@ a:focus {
     outline: 0;
     background: transparent;
     color: white;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-family: Arial, sans-serif;
     appearance: none;
     box-shadow: none;
     user-select: text;
-    text-align: left;
+    text-align: center;
     box-sizing: border-box;
 }
 
@@ -161,42 +161,6 @@ a:focus {
 .search-bar-container:hover .search-bar::placeholder,
 .search-bar-container:focus-within .search-bar::placeholder {
     color: rgba(255, 255, 255, 0.86);
-}
-
-#random-button {
-    position: relative;
-    z-index: 1;
-    min-width: 92px;
-    height: 42px;
-    margin: 0;
-    padding: 0 14px;
-    border: 0;
-    border-radius: 13px;
-    background: #1b1b1f;
-    color: white;
-    cursor: pointer;
-    font-family: Arial, sans-serif;
-    font-size: 0.82rem;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition:
-        background 0.18s ease,
-        transform 0.18s ease;
-}
-
-#random-button:hover {
-    background: rgba(255, 255, 255, 0.24);
-    transform: scale(1.04);
-}
-
-#random-button:active {
-    transform: scale(0.96);
-}
-
-.search-bar-container:focus-within #random-button {
-    background: rgba(255, 255, 255, 0.22);
 }
 
 .game-grid {
@@ -344,14 +308,6 @@ a:focus {
 
     .search-bar {
         font-size: 14px;
-    }
-
-    #random-button {
-        min-width: 74px;
-        height: 38px;
-        font-size: 0.75rem;
-        padding: 0 10px;
-        border-radius: 12px;
     }
 
     .game-grid {
