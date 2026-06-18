@@ -10,10 +10,11 @@
    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
    <link rel="stylesheet" href="../storage/css/proxy.css">
+   <link id="loading-css" rel="stylesheet" href="/storage/css/loading.css">
 
    <style>
-      :root {
-         --bg: #17171b;
+:root {
+         --bg: #111;
          --panel: #111;
          --panel-2: #1d1d22;
          --hover: #2c2c33;
@@ -398,68 +399,6 @@
          box-shadow: 0 12px 26px var(--shadow);
       }
 
-      .proxy-loading {
-         position: fixed;
-         top: var(--top-height);
-         left: 0;
-         right: 0;
-         bottom: var(--bottom-height);
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         background: var(--bg);
-         z-index: 10030;
-         opacity: 1;
-         visibility: visible;
-         pointer-events: auto;
-         transition: opacity 0.25s ease, visibility 0.25s ease;
-      }
-
-      body.proxy-bar-hidden .proxy-loading {
-         bottom: 0;
-      }
-
-      .proxy-loading.proxy-loading-hidden {
-         opacity: 0;
-         visibility: hidden;
-         pointer-events: none;
-      }
-
-      .loader-dots {
-         display: flex;
-         gap: 8px;
-      }
-
-      .loader-dots span {
-         width: 9px;
-         height: 9px;
-         border-radius: 50%;
-         background: var(--muted);
-         opacity: 0.45;
-         animation: dotPulse 0.9s infinite ease-in-out;
-      }
-
-      .loader-dots span:nth-child(2) {
-         animation-delay: 0.12s;
-      }
-
-      .loader-dots span:nth-child(3) {
-         animation-delay: 0.24s;
-      }
-
-      @keyframes dotPulse {
-         0%,
-         100% {
-            transform: translateY(0);
-            opacity: 0.35;
-         }
-
-         50% {
-            transform: translateY(-5px);
-            opacity: 0.9;
-         }
-      }
-
       .history-overlay {
          position: fixed;
          inset: 0;
@@ -691,6 +630,7 @@
          }
       }
    </style>
+
 </head>
 
 <body>
@@ -701,6 +641,8 @@
          <span></span>
       </div>
    </div>
+
+   
 
    <div id="tabbar">
       <div id="tabs-list"></div>
@@ -766,17 +708,68 @@
    <script src="uv/uv.bundle.js"></script>
    <script src="uv/uv.config.js"></script>
    <script src="register-sw.js"></script>
+   <script id="loading-js" src="/storage/js/loading.js"></script>
 
    <script>
-      const defaultUrl = "https://duckduckgo.com/";
+const defaultUrl = "https://duckduckgo.com/";
       const newTabUrl = "nexus://pages/search.html";
+      const prettyNewTabUrl = "nexus://new";
       const historyKey = "nexusProxyHistory";
       const historyPasswordKey = "nexusHistoryPassword";
       const maxHistoryItems = 120;
 
-      const cursorDefault = "/storage/icons/cursor/cursor.png";
-      const cursorLink = "/storage/icons/cursor/pointer.png";
-      const cursorText = "/storage/icons/cursor/cursor.png";
+
+      function cleanCursorPath(value) {
+         return String(value || "").replace(/\\/g, "/").replace(/^https?:\/\/[^/]+/i, "");
+      }
+
+      function isCustomCursorEnabled() {
+         const saved = localStorage.getItem("nexusCustomCursor");
+         return saved === null ? true : saved === "true";
+      }
+
+      function getCursorDefault() {
+         return cleanCursorPath(localStorage.getItem("nexusCursorDefault") || "/storage/icons/cursor/cursor.png");
+      }
+
+      function inferPointerFromCursor(cursor) {
+         cursor = cleanCursorPath(cursor);
+
+         if (/\/cursor\.png$/i.test(cursor)) {
+            return cursor.replace(/\/cursor\.png$/i, "/pointer.png");
+         }
+
+         const parts = cursor.split("/");
+         parts.pop();
+
+         if (parts.length > 1) {
+            return parts.join("/") + "/pointer.png";
+         }
+
+         return "/storage/icons/cursor/pointer.png";
+      }
+
+      function getCursorPointer() {
+         const normal = getCursorDefault();
+         const saved = cleanCursorPath(localStorage.getItem("nexusCursorPointer"));
+
+         if (!saved) {
+            return inferPointerFromCursor(normal);
+         }
+
+         if (
+            saved === "/storage/icons/cursor/pointer.png" &&
+            normal !== "/storage/icons/cursor/cursor.png"
+         ) {
+            return inferPointerFromCursor(normal);
+         }
+
+         return saved;
+      }
+
+      function getCursorText() {
+         return getCursorDefault();
+      }
 
       const proxyFrames = document.getElementById("frames");
       const proxyLoading = document.getElementById("proxy-loading");
@@ -804,24 +797,11 @@
       let tabs = [];
       let activeTabId = "";
       let nextTabId = 1;
-      let loadingTimer = null;
-      let serviceWorkerPromise = null;
+let serviceWorkerPromise = null;
       let draggingTabId = "";
       let dragStartX = 0;
       let dragStartY = 0;
       let didDragTab = false;
-
-      function showLoading() {
-         clearTimeout(loadingTimer);
-         proxyLoading.classList.remove("proxy-loading-hidden");
-      }
-
-      function hideLoading() {
-         clearTimeout(loadingTimer);
-         loadingTimer = setTimeout(function () {
-            proxyLoading.classList.add("proxy-loading-hidden");
-         }, 450);
-      }
 
       function getUrlParam() {
          const params = new URLSearchParams(window.location.search);
@@ -872,8 +852,16 @@
             return defaultUrl;
          }
 
+         if (/^nexus:\/\/new$/i.test(text)) {
+            return newTabUrl;
+         }
          if (isNexusUrl(text)) {
-            return "nexus://" + text.replace(/^nexus:\/\//i, "").replace(/^\/+/, "");
+            const clean = text.replace(/^nexus:\/\//i, "").replace(/^\/+/, "");
+            if (/^new$/i.test(clean)) {
+               return newTabUrl;
+            }
+         return "nexus://" + clean;
+
          }
 
          if (isLocalPath(text)) {
@@ -924,17 +912,19 @@
          }
       }
 
-      function getFrameSrc(url) {
-         if (isNexusUrl(url)) {
-            return nexusToLocal(url);
-         }
+function getFrameSrc(url) {
+   const resolvedUrl = normaliseUrl(url);
 
-         if (isHttpUrl(url)) {
-            return encodeProxyUrl(url);
-         }
+   if (isNexusUrl(resolvedUrl)) {
+      return nexusToLocal(resolvedUrl);
+   }
 
-         return url;
-      }
+   if (isHttpUrl(resolvedUrl)) {
+      return encodeProxyUrl(resolvedUrl);
+   }
+
+   return resolvedUrl;
+}
 
       function displayUrlFromFrameUrl(url) {
          const decoded = decodeProxyUrl(url);
@@ -989,19 +979,21 @@
          }) || null;
       }
 
-      function updateTopUrl(realUrl) {
-         if (!realUrl) {
-            return;
-         }
+function updateTopUrl(realUrl) {
+   if (!realUrl) {
+      return;
+   }
 
-         proxyAddress.value = realUrl;
+   const displayUrl = realUrl === newTabUrl ? prettyNewTabUrl : realUrl;
 
-         const newUrl = "/static/embed.html?p=" + encodeURIComponent(realUrl);
+   proxyAddress.value = displayUrl;
 
-         if (window.location.pathname + window.location.search !== newUrl) {
-            history.replaceState(null, "", newUrl);
-         }
-      }
+   const newUrl = "/static/embed.html?p=" + encodeURIComponent(displayUrl);
+
+   if (window.location.pathname + window.location.search !== newUrl) {
+      history.replaceState(null, "", newUrl);
+   }
+}
 
       async function registerServiceWorker() {
          if (!("serviceWorker" in navigator)) {
@@ -1051,6 +1043,14 @@
 
             let style = doc.getElementById("nexus-frame-cursor-style");
 
+            if (!isCustomCursorEnabled()) {
+               if (style) {
+                  style.remove();
+               }
+
+               return;
+            }
+
             if (!style) {
                style = doc.createElement("style");
                style.id = "nexus-frame-cursor-style";
@@ -1070,13 +1070,22 @@
 
                html,
                body,
-               body * {
-                  cursor: url("${cursorDefault}") 0 0, auto !important;
+               body *,
+               *::before,
+               *::after {
+                  cursor: url("${getCursorDefault()}") 0 0, auto !important;
                }
 
                a,
+               a *,
+               a:hover,
+               a:hover *,
                button,
+               button *,
+               button:hover,
+               button:hover *,
                select,
+               select:hover,
                option,
                input[type="button"],
                input[type="submit"],
@@ -1084,12 +1093,24 @@
                input[type="checkbox"],
                input[type="radio"],
                input[type="file"],
+               label,
                label[for],
+               label:hover,
                [role="button"],
+               [role="button"] *,
+               [role="button"]:hover,
+               [role="button"]:hover *,
                [onclick],
+               [onclick] *,
+               [onclick]:hover,
+               [onclick]:hover *,
                summary,
-               .clickable {
-                  cursor: url("${cursorLink}") 0 0, pointer !important;
+               summary:hover,
+               .clickable,
+               .clickable *,
+               .clickable:hover,
+               .clickable:hover * {
+                  cursor: url("${getCursorPointer()}") 0 0, pointer !important;
                }
 
                input[type="text"],
@@ -1098,8 +1119,9 @@
                input[type="search"],
                input[type="url"],
                input[type="tel"],
-               textarea {
-                  cursor: url("${cursorText}") 0 0, text !important;
+               textarea,
+               [contenteditable="true"] {
+                  cursor: url("${getCursorText()}") 0 0, text !important;
                }
             `;
 
@@ -1108,10 +1130,7 @@
 
                doc.addEventListener("keydown", function (event) {
                   if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "r") {
-                     event.preventDefault();
-                     window.parent.postMessage({
-                        type: "nexus-hard-refresh"
-                     }, "*");
+                     return;
                   }
                }, true);
             }
@@ -1347,6 +1366,7 @@ function createFrame(tab) {
          }
 
          injectCursorIntoFrame(tab);
+         applyEmbedChromeCursor();
 
          try {
             const doc = tab.frame.contentDocument;
@@ -1583,8 +1603,8 @@ function createFrame(tab) {
          historyBody.innerHTML = `
             <form class="history-password-form" id="history-password-form">
                <label for="history-password-input">Create a password before history can be viewed</label>
-               <input id="history-password-input" type="password" autocomplete="new-password" placeholder="Password">
-               <input id="history-password-confirm" type="password" autocomplete="new-password" placeholder="Confirm password">
+               <input id="history-password-input" type="password" autocomplete="off" placeholder="Password">
+               <input id="history-password-confirm" type="password" autocomplete="off" placeholder="Confirm password">
                <div id="history-error" class="history-error"></div>
                <button type="submit">Set password</button>
             </form>
@@ -1769,6 +1789,168 @@ function createFrame(tab) {
          document.body.appendChild(script);
       }
 
+            function refreshEmbedCursors() {
+         tabs.forEach(function (tab) {
+            if (tab.frame) {
+               injectCursorIntoFrame(tab);
+            }
+         });
+      }
+
+      window.addEventListener("storage", function (event) {
+         if (
+            event.key === "nexusCustomCursor" ||
+            event.key === "nexusCursorDefault" ||
+            event.key === "nexusCursorPointer" ||
+            event.key === "nexusCursorPreset"
+         ) {
+            refreshEmbedCursors();
+         }
+      });
+
+      window.addEventListener("focus", refreshEmbedCursors);
+
+      document.addEventListener("visibilitychange", function () {
+         if (!document.hidden) {
+            refreshEmbedCursors();
+         }
+      });
+
+
+      function applyEmbedChromeCursor() {
+         let style = document.getElementById("nexus-embed-chrome-cursor-style");
+
+         if (!style) {
+            style = document.createElement("style");
+            style.id = "nexus-embed-chrome-cursor-style";
+            document.head.appendChild(style);
+         }
+
+         if (!isCustomCursorEnabled()) {
+            style.textContent = "";
+            return;
+         }
+
+         const normal = getCursorDefault();
+         const pointer = getCursorPointer();
+         const textCursor = getCursorText();
+
+         style.textContent = `
+            html,
+            body,
+            body *,
+            body *::before,
+            body *::after {
+               cursor: url("${normal}") 0 0, auto !important;
+            }
+
+            button,
+            button *,
+            button:hover,
+            button:hover *,
+            a,
+            a *,
+            a:hover,
+            a:hover *,
+            .proxy-tab,
+            .proxy-tab *,
+            .proxy-tab:hover,
+            .proxy-tab:hover *,
+            .proxy-tab-close,
+            .proxy-tab-close *,
+            .proxy-tab-close:hover,
+            .proxy-tab-close:hover *,
+            #new-tab-button,
+            #new-tab-button *,
+            #new-tab-button:hover,
+            #new-tab-button:hover *,
+            #top-home-button,
+            #top-home-button *,
+            #top-home-button:hover,
+            #top-home-button:hover *,
+            #bar-toggle,
+            #bar-toggle *,
+            #bar-toggle:hover,
+            #bar-toggle:hover *,
+            .proxy-actions button,
+            .proxy-actions button *,
+            .proxy-actions button:hover,
+            .proxy-actions button:hover *,
+            .history-close,
+            .history-close *,
+            .history-clear,
+            .history-clear *,
+            .history-item,
+            .history-item *,
+            .history-password-form button,
+            .history-password-form button *,
+            [role="button"],
+            [role="button"] *,
+            [onclick],
+            [onclick] * {
+               cursor: url("${pointer}") 0 0, pointer !important;
+            }
+
+            input,
+            input:hover,
+            input:focus,
+            textarea,
+            textarea:hover,
+            textarea:focus {
+               cursor: url("${textCursor}") 0 0, text !important;
+            }
+         `;
+      }
+
+      function refreshEmbedCursors() {
+         applyEmbedChromeCursor();
+
+         tabs.forEach(function (tab) {
+            if (tab.frame) {
+               injectCursorIntoFrame(tab);
+            }
+         });
+      }
+
+      let cursorRefreshTimer = null;
+
+      function scheduleEmbedCursorRefresh() {
+         clearTimeout(cursorRefreshTimer);
+
+         cursorRefreshTimer = setTimeout(function () {
+            refreshEmbedCursors();
+         }, 80);
+      }
+
+      window.addEventListener("storage", function (event) {
+         if (
+            event.key === "nexusCustomCursor" ||
+            event.key === "nexusCursorDefault" ||
+            event.key === "nexusCursorPointer" ||
+            event.key === "nexusCursorPreset"
+         ) {
+            scheduleEmbedCursorRefresh();
+         }
+      });
+
+      window.addEventListener("message", function (event) {
+         if (!event.data || event.data.type !== "nexus-cursor-change") {
+            return;
+         }
+
+         scheduleEmbedCursorRefresh();
+      });
+
+      window.addEventListener("focus", scheduleEmbedCursorRefresh);
+
+      document.addEventListener("visibilitychange", function () {
+         if (!document.hidden) {
+            scheduleEmbedCursorRefresh();
+         }
+      });
+
+      refreshEmbedCursors();
+
       proxyForm.addEventListener("submit", function (event) {
          event.preventDefault();
          loadUrl(proxyAddress.value);
@@ -1779,7 +1961,7 @@ function createFrame(tab) {
       });
 
       topHomeButton.addEventListener("click", function () {
-         window.location.reload();
+         top.location.reload();
       });
 
       barToggle.addEventListener("click", function () {
@@ -1809,11 +1991,6 @@ function createFrame(tab) {
             return;
          }
 
-         if (event.data.type === "nexus-hard-refresh") {
-            window.location.reload();
-            return;
-         }
-
          if (event.data.type !== "nexus-search-open" || !event.data.url) {
             return;
          }
@@ -1836,12 +2013,7 @@ function createFrame(tab) {
          if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "w") {
             event.preventDefault();
             closeTab(activeTabId);
-         }
-
-         if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "r") {
-            event.preventDefault();
-            window.location.reload();
-         }
+         }  
 
          if (event.key === "Escape") {
             closeHistoryOverlay();
@@ -1864,6 +2036,7 @@ function createFrame(tab) {
 
       createTab(getUrlParam() || defaultUrl, true);
    </script>
+
 </body>
 
 </html>

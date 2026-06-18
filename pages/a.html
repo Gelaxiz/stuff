@@ -1,0 +1,398 @@
+﻿   <!DOCTYPE html>
+   <html lang="en">
+
+   <head>
+   <script>
+   const theme = localStorage.getItem("nexusTheme") || "default";
+
+   document.documentElement.classList.add("theme-" + theme);
+
+   if (window.self !== window.top) {
+      document.documentElement.classList.add("in-frame");
+   }
+   </script>
+
+   <meta property="og:title" content="Classroom Management Tools & Resources - Google for Education">
+      <meta property="og:description" content="Google Classroom is your central place where teaching and learning come together. This easy-to-use and secure tool helps educators manage, measure and enrich learning experiences.">
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <title>Home</title>
+
+   <link rel="icon" href="../storage/images/googleclassroom.png" type="image/png">
+   <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="../storage/css/anotherstyle.css">
+   <link rel="stylesheet" href="../storage/css/style.css">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="../storage/css/background.css">
+   <link rel="stylesheet" href="../storage/css/override.css">
+   <link href="/storage/css/cursor.css" rel="stylesheet">
+   <script src="/storage/js/cursor.js"></script>
+   </head>
+
+   <body>
+
+   <div class="navbar">
+      <div class="left-side">
+         <a href="/"></a>
+      </div>
+
+      <div class="right-side">
+         <script type="text/javascript" src="/storage/js/nav.js"></script>
+      </div>
+   </div>
+
+   <div class="game-title">Apps</div>
+
+   <div class="search-bar-container">
+      <input
+         type="text"
+         id="gameSearch"
+         class="search-bar"
+         placeholder="Search apps..."
+         autocomplete="off"
+         oninput="filterApps()"
+      >
+   </div>
+
+   <div class="game-grid" id="gameGrid"></div>
+
+   <div class="tooltip"></div>
+
+   <script>
+      const CACHE_KEY = "apps-cache";
+      const CACHE_TIME_KEY = "apps-cache-time";
+      const JSON_PATH = "/storage/json/apps.json";
+
+      async function loadApps() {
+         const cached = localStorage.getItem(CACHE_KEY);
+
+         if (cached) {
+         try {
+            const apps = JSON.parse(cached);
+            renderApps(apps);
+         } catch (error) {
+            console.warn("Failed to parse cached apps:", error);
+         }
+         }
+
+         try {
+         const res = await fetch(JSON_PATH, { cache: "no-store" });
+
+         if (!res.ok) {
+            throw new Error("Failed to fetch JSON");
+         }
+
+         const freshApps = await res.json();
+         const freshString = JSON.stringify(freshApps);
+
+         if (freshString !== cached) {
+            localStorage.setItem(CACHE_KEY, freshString);
+            localStorage.setItem(CACHE_TIME_KEY, Date.now().toString());
+            renderApps(freshApps);
+         }
+         } catch (error) {
+         console.error("Failed to fetch latest apps.json:", error);
+         }
+      }
+
+      function renderApps(apps) {
+         const gameGrid = document.getElementById("gameGrid");
+
+         gameGrid.innerHTML = "";
+
+         for (const app of apps) {
+         const div = document.createElement("div");
+         div.className = "game-button";
+
+         div.innerHTML = `
+            <a href="${app.url}">
+               <img src="${app.img}" alt="${app.alt || app.title}" onerror="this.onerror=null;this.src='/storage/images/404.png';">
+            </a>
+         `;
+
+         gameGrid.appendChild(div);
+         }
+
+         if (typeof sortGameButtons === "function") {
+         sortGameButtons();
+         }
+      }
+
+      function filterApps() {
+         const searchInput = document.getElementById("gameSearch").value.trim().toLowerCase();
+         const apps = document.querySelectorAll(".game-button");
+
+         apps.forEach(function (app) {
+               const img = app.querySelector("img");
+               const title = img && img.alt ? img.alt.toLowerCase() : "";
+
+               if (title.includes(searchInput)) {
+                  app.classList.remove("is-hidden");
+               } else {
+                  app.classList.add("is-hidden");
+               }
+         });
+      }
+
+
+      window.addEventListener("load", function () {
+         loadApps();
+      });
+
+      document.getElementById("random-button").addEventListener("click", function () {
+         const apps = Array.from(document.querySelectorAll(".game-button a"));
+
+         if (apps.length === 0) {
+         return;
+         }
+
+         const randomIndex = Math.floor(Math.random() * apps.length);
+         const randomApp = apps[randomIndex];
+
+         window.location.href = randomApp.href;
+      });
+   </script>
+
+   <script>
+      document.addEventListener("DOMContentLoaded", function () {
+         const tooltip = document.querySelector(".tooltip");
+
+         if (!tooltip) {
+         return;
+         }
+
+         document.body.addEventListener("mouseenter", function (event) {
+         if (event.target && event.target.tagName === "IMG" && event.target.alt) {
+            tooltip.textContent = event.target.alt;
+            tooltip.classList.add("show");
+
+            const padding = 15;
+            const maxX = window.innerWidth - tooltip.offsetWidth - padding;
+
+            tooltip.style.left = Math.min(event.pageX + padding, maxX) + "px";
+            tooltip.style.top = event.pageY - 20 + "px";
+         }
+         }, true);
+
+         document.body.addEventListener("mousemove", function (event) {
+         if (tooltip.classList.contains("show")) {
+            const padding = 15;
+            const maxX = window.innerWidth - tooltip.offsetWidth - padding;
+
+            tooltip.style.left = Math.min(event.pageX + padding, maxX) + "px";
+            tooltip.style.top = event.pageY - 20 + "px";
+         }
+         });
+
+         document.body.addEventListener("mouseleave", function (event) {
+         if (event.target && event.target.tagName === "IMG") {
+            tooltip.classList.remove("show");
+         }
+         }, true);
+      });
+   </script>
+
+   <script type="text/javascript" src="/storage/js/settings.js"></script>
+   <script type="text/javascript" src="/storage/js/resort.js"></script>
+   <script src="/static/uv/uv.bundle.js" defer></script>
+   <script src="/static/uv/uv.config.js" defer></script>
+   <script src="/static/register-sw.js" defer></script>
+   <script src="/static/search.js" defer></script>
+   <script src="/static/index.js" defer></script>
+
+   <script>
+      async function regsw() {
+         await navigator.serviceWorker.register("/static/uv-sw.js", {
+         scope: "/static/"
+         });
+      }
+
+      regsw();
+   </script>
+      <script id="mirror-pframe-switcher">
+         (function () {
+            const framePage = "/pages/pframe.html";
+
+            const mirrors = [
+               "nexus-is.onthewifi.com",
+               "nexuss.global.ssl.fastly.net",
+               "workforschool.global.ssl.fastly.net",
+               "schoolstuff.serveminecraft.net",
+               "nexus-school.github.io",
+               "nexuss.zapto.org"
+            ];
+
+            function enabled() {
+               return localStorage.getItem("nexusOpenThroughPframe") === "true";
+            }
+
+            function decodeSafe(value) {
+               try {
+                  return decodeURIComponent(value);
+               } catch (error) {
+                  return value;
+               }
+            }
+
+            function cleanTarget(value) {
+               if (!value) {
+                  return "";
+               }
+
+               value = String(value).trim();
+
+               if (!value || value === "#" || value.startsWith("#")) {
+                  return "";
+               }
+
+               if (/^nexus:\/\//i.test(value)) {
+                  value = "/" + value.replace(/^nexus:\/\//i, "").replace(/^\/+/, "");
+               }
+
+               if (/^pages\/(?:games|apps)\//i.test(value)) {
+                  value = "/" + value;
+               }
+
+               try {
+                  const url = new URL(value, location.origin);
+                  value = url.pathname + url.search + url.hash;
+               } catch (error) {}
+
+               const match = value.match(/\/pages\/(?:games|apps)\/[^"' <>)]+/i);
+
+               return match ? match[0] : "";
+            }
+
+            function targetFrom(value) {
+               if (!value) {
+                  return "";
+               }
+
+               value = String(value).trim();
+
+               try {
+                  const url = new URL(value, location.origin);
+
+                  if (/\/(?:iframe|pframe|embed)\.html$/i.test(url.pathname)) {
+                     const p = url.searchParams.get("p");
+                     const u = url.searchParams.get("url");
+
+                     if (p) {
+                        return cleanTarget(decodeSafe(p));
+                     }
+
+                     if (u) {
+                        return cleanTarget(decodeSafe(u));
+                     }
+
+                     if (url.search.startsWith("?=")) {
+                        return cleanTarget(decodeSafe(url.search.slice(2)));
+                     }
+                  }
+
+                  return cleanTarget(url.pathname + url.search + url.hash);
+               } catch (error) {}
+
+               const pMatch = value.match(/[?&]p=([^&]+)/i);
+
+               if (pMatch) {
+                  return cleanTarget(decodeSafe(pMatch[1]));
+               }
+
+               const urlMatch = value.match(/[?&]url=([^&]+)/i);
+
+               if (urlMatch) {
+                  return cleanTarget(decodeSafe(urlMatch[1]));
+               }
+
+               return cleanTarget(value);
+            }
+
+            function hashText(value) {
+               let hash = 0;
+
+               for (let i = 0; i < value.length; i++) {
+                  hash = ((hash << 5) - hash) + value.charCodeAt(i);
+                  hash |= 0;
+               }
+
+               return Math.abs(hash);
+            }
+
+            function pickMirror(target) {
+               const currentHost = location.hostname.toLowerCase();
+               const available = mirrors.filter(function (host) {
+                  return host.toLowerCase() !== currentHost;
+               });
+
+               if (!available.length) {
+                  return mirrors[0];
+               }
+
+               return available[hashText(target) % available.length];
+            }
+
+            function build(target) {
+               const mirror = pickMirror(target);
+               const fullUrl = "https://" + mirror + target;
+
+               return framePage + "?url=" + encodeURI(fullUrl);
+            }
+
+            function read(element) {
+               const attrs = ["href", "data-url", "data-href", "data-src", "data-link", "data-path"];
+
+               for (const attr of attrs) {
+                  if (element.hasAttribute && element.hasAttribute(attr)) {
+                     return element.getAttribute(attr);
+                  }
+               }
+
+               const child = element.querySelector && element.querySelector("a[href]");
+
+               if (child) {
+                  return child.getAttribute("href");
+               }
+
+               const onclick = element.getAttribute && element.getAttribute("onclick");
+
+               if (onclick) {
+                  const match = onclick.match(/(?:\/pages\/(?:iframe|pframe|embed)\.html\?(?:url=|p=)|\/static\/(?:pframe|embed)\.html\?(?:url=|p=)|\/pages\/(?:games|apps)\/|pages\/(?:games|apps)\/)[^"' <>)]+/i);
+
+                  if (match) {
+                     return match[0];
+                  }
+               }
+
+               return "";
+            }
+
+            document.addEventListener("click", function (event) {
+               if (!enabled()) {
+                  return;
+               }
+
+               const element = event.target && event.target.closest && event.target.closest("a[href], [data-url], [data-href], [data-src], [data-link], [data-path], [onclick]");
+
+               if (!element) {
+                  return;
+               }
+
+               const target = targetFrom(read(element));
+
+               if (!target) {
+                  return;
+               }
+
+               event.preventDefault();
+               event.stopPropagation();
+               event.stopImmediatePropagation();
+
+               location.href = build(target);
+            }, true);
+         }());
+      </script>
+   </body>
+
+   </html>

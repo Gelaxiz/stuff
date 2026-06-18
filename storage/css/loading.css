@@ -1,0 +1,61 @@
+.proxy-loading {
+   position: fixed;
+   top: var(--top-height, 0);
+   left: 0;
+   right: 0;
+   bottom: var(--bottom-height, 0);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background: var(--bg, #000);
+   z-index: 10030;
+   opacity: 1;
+   visibility: visible;
+   pointer-events: auto;
+   transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+body.proxy-bar-hidden .proxy-loading {
+   bottom: 0;
+}
+
+.proxy-loading.proxy-loading-hidden {
+   opacity: 0;
+   visibility: hidden;
+   pointer-events: none;
+}
+
+.loader-dots {
+   display: flex;
+   gap: 8px;
+}
+
+.loader-dots span {
+   width: 9px;
+   height: 9px;
+   border-radius: 50%;
+   background: var(--muted, #b8b8c0);
+   opacity: 0.45;
+   animation: dotPulse 0.9s infinite ease-in-out;
+}
+
+.loader-dots span:nth-child(2) {
+   animation-delay: 0.12s;
+}
+
+.loader-dots span:nth-child(3) {
+   animation-delay: 0.24s;
+}
+
+@keyframes dotPulse {
+   0%,
+   100% {
+      transform: translateY(0);
+      opacity: 0.35;
+   }
+
+   50% {
+      transform: translateY(-5px);
+      opacity: 0.9;
+   }
+}

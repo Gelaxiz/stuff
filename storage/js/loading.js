@@ -1,100 +1,32 @@
-// /storage/js/loading.js
-document.addEventListener('DOMContentLoaded', function () {
-  const fontLink = document.createElement('link');
-  fontLink.href = 'https://fonts.googleapis.com/css2?family=Poppins&display=swap';
-  fontLink.rel = 'stylesheet';
-  document.head.appendChild(fontLink);
+(function () {
+   let loadingTimer = null;
 
-  const loadingMessages = [
-    'made with love from nexus',
-    'boiiii what u say about yara yara phonk',
-    'are you sure?',
-    'æ³£ããŸããªã£ã¦ã‚‚ ãã‚Œã§ã‚‚ ã‹ãé›†ã‚',
-    'today is 30/30',
-    '"watch hfjone, it changed my life" - prolly someone',
-    'young pokeballer i just leveled up',
-    '+1 (475) 266-9223',
-    'windows update fucked up my ssd ðŸ˜­',
-    'Life only begins once you realize what you want to be.',
-    'Some dance to remember, others dance to forget.',
-    'hache tml',
-    '"how to setup aws cloudflare"',
-    'bog has a good site',
-    'gurt: yo',
-  ];
+   function getLoadingElement() {
+      return document.getElementById("proxy-loading");
+   }
 
-  const randomMessage = loadingMessages[Math.floor(Math.random() * loadingMessages.length)];
+   window.showLoading = function () {
+      const proxyLoading = getLoadingElement();
 
-  const overlay = document.createElement('div');
-  overlay.style.position = 'fixed';
-  overlay.style.top = '0';
-  overlay.style.left = '0';
-  overlay.style.width = '100%';
-  overlay.style.height = '100%';
-  overlay.style.backgroundColor = 'black';
-  overlay.style.zIndex = '9999';
-  overlay.style.display = 'flex';
-  overlay.style.flexDirection = 'column';
-  overlay.style.justifyContent = 'center';
-  overlay.style.alignItems = 'center';
+      if (!proxyLoading) {
+         return;
+      }
 
-  const spinner = document.createElement('div');
-  spinner.style.width = '60px';
-  spinner.style.height = '60px';
-  spinner.style.border = '8px solid #333';
-  spinner.style.borderTop = '8px solid white';
-  spinner.style.borderRadius = '50%';
-  spinner.style.animation = 'spin 1s linear infinite';
+      clearTimeout(loadingTimer);
+      proxyLoading.classList.remove("proxy-loading-hidden");
+   };
 
-  const poweredText = document.createElement('div');
-  poweredText.textContent = randomMessage;
-  poweredText.style.color = 'white';
-  poweredText.style.marginTop = '16px';
-  poweredText.style.fontSize = '15px';
-  poweredText.style.fontFamily = "'Poppins', sans-serif";
+   window.hideLoading = function () {
+      const proxyLoading = getLoadingElement();
 
-  const skipButton = document.createElement('button');
-  skipButton.textContent = 'Skip';
-  skipButton.style.position = 'absolute';
-  skipButton.style.bottom = '20px';
-  skipButton.style.right = '20px';
-  skipButton.style.padding = '6px 12px';
-  skipButton.style.fontSize = '14px';
-  skipButton.style.cursor = 'pointer';
-  skipButton.style.display = 'none';
-  skipButton.style.backgroundColor = '#222';
-  skipButton.style.border = 'none';
-  skipButton.style.borderRadius = '6px';
-  skipButton.style.color = '#fff';
-  skipButton.style.pointerEvents = 'auto';
+      if (!proxyLoading) {
+         return;
+      }
 
-  skipButton.addEventListener('click', removeOverlay);
+      clearTimeout(loadingTimer);
 
-  const styleSheet = document.createElement('style');
-  styleSheet.innerHTML = `
-    @keyframes spin {
-      100% { transform: rotate(360deg); }
-    }
-  `;
-  document.head.appendChild(styleSheet);
-
-  overlay.appendChild(spinner);
-  overlay.appendChild(poweredText);
-  overlay.appendChild(skipButton);
-  document.body.appendChild(overlay);
-
-  function removeOverlay() {
-    overlay.style.transition = 'opacity 0.5s';
-    overlay.style.opacity = '0';
-    setTimeout(() => overlay.remove(), 700);
-  }
-
-  const skipTimeout = setTimeout(() => {
-    skipButton.style.display = 'block';
-  }, 2000);
-
-  window.onload = function () {
-    clearTimeout(skipTimeout);
-    removeOverlay();
-  };
-});
+      loadingTimer = setTimeout(function () {
+         proxyLoading.classList.add("proxy-loading-hidden");
+      }, 450);
+   };
+}());

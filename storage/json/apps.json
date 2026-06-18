@@ -12,10 +12,10 @@
     "title": "Thirty Dollar Website"
   },
   {
-  "url": "/pages/iframe.html?url=/pages/youtube/",
+  "url": "/pages/pframe.html?url=https://www.youtube-nocookie.com/watch?v=GcU6eXc4Qzw",
   "img": "/pages/apps/images/youtube.png",
-  "alt": "Youtube - API",
-  "title": "Youtube - API"
+  "alt": "Youtube",
+  "title": "Youtube"
 },
 {
   "url": "/pages/pframe.html?url=https://inv.nadeko.net/",

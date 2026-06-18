@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Home - Classroom</title>
+
+   <link rel="icon" href="/storage/images/googleclassroom.png" type="image/png">
+   <link href="/storage/css/cursor.css" rel="stylesheet">
+
+   <script src="/static/uv/uv.bundle.js"></script>
+   <script src="/static/uv/uv.config.js"></script>
+   <script src="/static/register-sw.js"></script>
+   <script src="/storage/js/cursor.js"></script>
+
+   <style>
+      html,
+      body {
+         width: 100%;
+         height: 100%;
+         margin: 0;
+         background: url("/storage/icons/404/background.png") center center / cover no-repeat;
+      }
+
+      body {
+         font-family: Arial, sans-serif;
+         color: #eeeeee;
+         text-shadow: 0 0 0.8px #111;
+         overflow: hidden;
+         user-select: none;
+      }
+
+      #start-screen {
+         position: fixed;
+         inset: 0;
+         z-index: 9999;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         text-align: center;
+      }
+
+      .card {
+         width: min(520px, calc(100vw - 36px));
+         padding: 34px 28px;
+         border-radius: 22px;
+         border: 1px solid rgba(255, 255, 255, 0.18);
+         background: rgba(0, 0, 0, 0.58);
+         box-shadow: 0 22px 60px rgba(0, 0, 0, 0.45);
+         backdrop-filter: blur(4px);
+      }
+
+      h1 {
+         margin: 0 0 12px;
+         font-size: clamp(34px, 6vw, 58px);
+         letter-spacing: -2px;
+      }
+
+      p {
+         margin: 0 0 24px;
+         color: #d2d2dc;
+         font-size: clamp(15px, 2vw, 18px);
+         line-height: 1.5;
+      }
+
+      #continue-btn {
+         height: 46px;
+         padding: 0 28px;
+         border: 1px solid rgba(255, 255, 255, 0.22);
+         border-radius: 14px;
+         background: rgba(255, 255, 255, 0.92);
+         color: #111;
+         font-size: 15px;
+         font-weight: 700;
+         cursor: pointer;
+      }
+
+      #continue-btn:hover {
+         background: white;
+      }
+
+      #uv-frame {
+         width: 100%;
+         height: 100%;
+         border: 0;
+         display: none;
+         background: #000;
+      }
+   </style>
+</head>
+
+<body>
+   <main id="start-screen">
+      <section class="card">
+         <h1>⚠️ be warned ⚠️</h1>
+         <p>if the movies don't load, click <strong>server 2</strong> on the movies page</p>
+         <button id="continue-btn">continue</button>
+      </section>
+   </main>
+
+   <iframe
+      id="uv-frame"
+      src="about:blank"
+      allow="fullscreen; autoplay; clipboard-read; clipboard-write; encrypted-media; picture-in-picture"
+      allowfullscreen>
+   </iframe>
+
+   <script>
+      const targetUrl = "https://movie-web.click/";
+      const frame = document.getElementById("uv-frame");
+      const startScreen = document.getElementById("start-screen");
+      const continueBtn = document.getElementById("continue-btn");
+
+      async function registerUV() {
+         if ("serviceWorker" in navigator) {
+            await navigator.serviceWorker.register("/static/uv-sw.js", {
+               scope: "/static/"
+            });
+         }
+      }
+
+      function encodeUV(url) {
+         return __uv$config.prefix + __uv$config.encodeUrl(url);
+      }
+
+      async function loadFrame() {
+         await registerUV();
+         frame.src = encodeUV(targetUrl);
+      }
+
+      continueBtn.addEventListener("click", async () => {
+         startScreen.style.display = "none";
+         frame.style.display = "block";
+         await loadFrame();
+      });
+   </script>
+</body>
+
+</html>

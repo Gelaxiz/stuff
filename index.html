@@ -6,7 +6,7 @@
      crossorigin="anonymous"></script>
 
    <link rel="stylesheet" href="/storage/css/cursor.css">
-   <script src="/storage/js/cursor.js"></script>   
+   <script src="/storage/js/cursor.js"></script>
 
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,6 +51,7 @@
       .shake {
          animation: shake 0.35s;
       }
+
    </style>
 </head>
 
@@ -146,19 +147,19 @@
          <i class="fa-solid fa-house"></i>
       </a>
 
-      <a href="./pages/games.html" class="nav-item frame-link" data-frame="./pages/games.html" title="Games">
+      <a href="./pages/g.html" class="nav-item frame-link" data-frame="./pages/g.html">
          <i class="fa-solid fa-gamepad"></i>
       </a>
 
-      <a href="./pages/apps.html" class="nav-item frame-link" data-frame="./pages/apps.html" title="Apps">
+      <a href="./pages/a.html" class="nav-item frame-link" data-frame="./pages/a.html">
          <i class="fa-solid fa-layer-group"></i>
       </a>
 
-      <a href="./pages/movies/index.html" class="nav-item frame-link" data-frame="./pages/movies/index.html" title="Movies">
+      <a href="./pages/m/index.html" class="nav-item frame-link" data-frame="./pages/m/index.html">
          <i class="fa-solid fa-video"></i>
       </a>
 
-      <a href="./pages/extra.html" class="nav-item frame-link" data-frame="./pages/extra.html" title="Extras">
+      <a href="./pages/extra.html" class="nav-item frame-link" data-frame="./pages/extra.html">
          <i class="fa-solid fa-screwdriver-wrench"></i>
       </a>
 
@@ -166,13 +167,12 @@
          <i class="fa-brands fa-discord"></i>
       </a>
 
-      <a href="./pages/settings.html" class="nav-item frame-link" data-frame="./pages/settings.html" title="Settings">
+      <a href="./pages/settings.html" class="nav-item frame-link" data-frame="./pages/settings.html">
          <i class="fa-solid fa-gear"></i>
       </a>
    </nav>
 
    <audio id="errorSound" src="/storage/mp3/error.mp3" preload="auto"></audio>
-
    <script src="./static/uv/uv.bundle.js" defer></script>
    <script src="./static/uv/uv.config.js" defer></script>
    <script src="./static/register-sw.js" defer></script>
@@ -320,6 +320,36 @@
       }, 550);
    });
 </script>
+
+
+<script>
+   window.addEventListener("message", function (event) {
+      if (!event.data || event.data.type !== "nexus-cursor-change") {
+         return;
+      }
+
+      if (event.data.defaultCursor) {
+         localStorage.setItem("nexusCursorDefault", event.data.defaultCursor);
+      }
+
+      if (event.data.pointerCursor) {
+         localStorage.setItem("nexusCursorPointer", event.data.pointerCursor);
+      }
+
+      if (typeof event.data.enabled === "boolean") {
+         localStorage.setItem("nexusCustomCursor", event.data.enabled ? "true" : "false");
+      }
+
+      if (window.setNexusCursorChoice && event.data.defaultCursor) {
+         window.setNexusCursorChoice(event.data.defaultCursor, event.data.pointerCursor);
+      }
+
+      if (window.setNexusCustomCursor && typeof event.data.enabled === "boolean") {
+         window.setNexusCustomCursor(event.data.enabled);
+      }
+   });
+</script>
+
 <script type="module" src="./storage/themes/minecraft/theme.js"></script>
 
 </body>

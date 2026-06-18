@@ -21,9 +21,141 @@
    <script src="/storage/js/cursor.js"></script>
    <style>
       .settings-grid {
+         display: grid;
+         grid-template-columns: repeat(2, minmax(0, 1fr));
+         gap: 26px;
+         align-items: stretch;
+      }
+
+      .settings-grid > .settings-card,
+      .settings-grid > .data-card {
+         grid-column: auto;
+         width: 100%;
+         max-width: none;
+         justify-self: stretch;
+      }
+
+      @media (max-width: 850px) {
+         .settings-grid {
+            grid-template-columns: 1fr;
+         }
+      }
+         .settings-card-head {
+         display: flex;
+         align-items: flex-start;
+         justify-content: space-between;
+         gap: 18px;
+      }
+
+      .settings-card-head h2,
+      .settings-card-head p {
+         margin-right: 0;
+      }
+
+      .cursor-settings-card {
+         overflow: hidden;
+      }
+
+      .cursor-switch-row {
+         min-width: 150px;
+         margin-top: 4px;
+      }
+
+      .cursor-picker-head {
+         margin-top: 18px;
+      }
+
+      .cursor-picker-head h3 {
+         margin: 0;
+         color: #ffffff;
+         font-size: 22px;
+         line-height: 1.1;
+         text-transform: lowercase;
+      }
+
+      .cursor-picker-head p {
+         margin: 8px 0 0;
+         color: rgba(255, 255, 255, 0.62);
+         font-size: 13px;
+      }
+
+      .cursor-choice-grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(116px, 1fr));
+         gap: 12px;
+         margin-top: 16px;
+      }
+
+      .cursor-choice {
+         min-height: 116px;
+         display: grid;
+         align-content: center;
+         justify-items: center;
+         gap: 9px;
+         border: 2px solid rgba(255, 255, 255, 0.12);
+         border-radius: 18px;
+         background: rgba(255, 255, 255, 0.035);
+         color: #ffffff;
+         padding: 13px 10px;
+         box-sizing: border-box;
+         position: relative;
+         overflow: hidden;
+      }
+
+      .cursor-choice.is-selected {
+         border-color: rgba(255, 255, 255, 0.74);
+         background: rgba(255, 255, 255, 0.09);
+         box-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
+      }
+
+      .cursor-preview {
+         width: 52px;
+         height: 52px;
+         display: inline-flex;
+         align-items: center;
+         justify-content: center;
+         border-radius: 16px;
+         background: rgba(0, 0, 0, 0.22);
+         border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .cursor-preview img {
+         width: 34px;
+         height: 34px;
+         object-fit: contain;
+         pointer-events: none;
+         user-select: none;
+      }
+
+      .cursor-name {
+         max-width: 100%;
+         overflow: hidden;
+         text-overflow: ellipsis;
+         white-space: nowrap;
+         font-size: 13px;
+         color: rgba(255, 255, 255, 0.82);
+      }
+
+      @media (max-width: 560px) {
+         .settings-card-head {
+            display: grid;
+         }
+
+         .cursor-switch-row {
+            width: 100%;
+         }
+      }
+
+         .settings-page {
+         width: min(1500px, calc(100% - 48px)) !important;
+         max-width: 1500px !important;
+         margin: 0 auto !important;
+      }
+
+      .settings-grid {
          display: grid !important;
-         grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-         gap: 26px !important;
+         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
+         gap: 18px !important;
          align-items: stretch !important;
       }
 
@@ -35,11 +167,327 @@
          justify-self: stretch !important;
       }
 
-      @media (max-width: 850px) {
+      .settings-card {
+         min-height: 210px;
+         box-sizing: border-box;
+      }
+
+      @media (min-width: 1200px) {
+         .settings-grid {
+            grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+         }
+      }
+
+      @media (min-width: 850px) and (max-width: 1199px) {
+         .settings-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+         }
+      }
+
+      @media (max-width: 849px) {
+         .settings-page {
+            width: min(100%, calc(100% - 28px)) !important;
+         }
+
          .settings-grid {
             grid-template-columns: 1fr !important;
          }
       }
+
+
+         /* fixed settings layout */
+      .settings-page {
+         width: min(1320px, calc(100% - 48px)) !important;
+         max-width: 1320px !important;
+         margin: 0 auto !important;
+      }
+
+      .settings-grid {
+         display: grid !important;
+         grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+         gap: 18px !important;
+         align-items: start !important;
+      }
+
+      .settings-grid > .settings-card,
+      .settings-grid > .data-card {
+         grid-column: auto !important;
+         width: 100% !important;
+         max-width: none !important;
+         justify-self: stretch !important;
+         align-self: start !important;
+      }
+
+      .settings-card {
+         height: auto !important;
+         min-height: 0 !important;
+         max-height: none !important;
+         box-sizing: border-box !important;
+      }
+
+      .cursor-settings-card {
+         grid-column: span 1 !important;
+      }
+
+      .settings-card-head {
+         display: block !important;
+      }
+
+      .cursor-switch-row {
+         margin-top: 14px !important;
+         min-width: 0 !important;
+      }
+
+      .cursor-choice-grid {
+         display: grid !important;
+         grid-template-columns: repeat(auto-fit, minmax(105px, 1fr)) !important;
+         gap: 12px !important;
+         margin-top: 16px !important;
+      }
+
+      .cursor-choice {
+         min-height: 104px !important;
+         padding: 12px 8px !important;
+      }
+
+      .cursor-preview {
+         width: 48px !important;
+         height: 48px !important;
+      }
+
+      .cursor-preview img {
+         width: 32px !important;
+         height: 32px !important;
+         object-fit: contain !important;
+      }
+
+      @media (max-width: 1120px) {
+         .settings-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+         }
+      }
+
+      @media (max-width: 720px) {
+         .settings-page {
+            width: min(100%, calc(100% - 28px)) !important;
+         }
+
+         .settings-grid {
+            grid-template-columns: 1fr !important;
+         }
+      }
+
+
+         /* clean cursor/settings layout */
+      .settings-page {
+         width: min(1320px, calc(100% - 48px)) !important;
+         max-width: 1320px !important;
+         margin: 0 auto !important;
+      }
+
+      .settings-grid {
+         display: grid !important;
+         grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+         gap: 18px !important;
+         align-items: start !important;
+      }
+
+      .settings-card {
+         height: auto !important;
+         min-height: 0 !important;
+         max-height: none !important;
+         box-sizing: border-box !important;
+      }
+
+      .settings-grid > .settings-card,
+      .settings-grid > .data-card {
+         width: 100% !important;
+         max-width: none !important;
+         align-self: start !important;
+         justify-self: stretch !important;
+      }
+
+      .settings-card-head {
+         display: block !important;
+      }
+
+      .cursor-switch-row {
+         margin-top: 14px !important;
+         min-width: 0 !important;
+      }
+
+      .cursor-choice-grid {
+         display: grid !important;
+         grid-template-columns: repeat(auto-fit, minmax(105px, 1fr)) !important;
+         gap: 12px !important;
+         margin-top: 16px !important;
+      }
+
+      .cursor-choice {
+         min-height: 104px !important;
+         padding: 12px 8px !important;
+      }
+
+      .cursor-preview {
+         width: 48px !important;
+         height: 48px !important;
+      }
+
+      .cursor-preview img {
+         width: 32px !important;
+         height: 32px !important;
+         object-fit: contain !important;
+      }
+
+      @media (max-width: 1120px) {
+         .settings-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+         }
+      }
+
+      @media (max-width: 720px) {
+         .settings-page {
+            width: min(100%, calc(100% - 28px)) !important;
+         }
+
+         .settings-grid {
+            grid-template-columns: 1fr !important;
+         }
+      }
+
+
+   
+      /* proxy opener + panic key stacked column */
+      .settings-grid > .settings-stack {
+         width: 100% !important;
+         max-width: none !important;
+         display: grid !important;
+         grid-template-columns: 1fr !important;
+         gap: 18px !important;
+         align-self: start !important;
+         justify-self: stretch !important;
+      }
+
+      .settings-stack > .settings-card {
+         width: 100% !important;
+         max-width: none !important;
+         box-sizing: border-box !important;
+      }
+
+   
+      /* final stacked settings layout fix */
+      .settings-grid {
+         align-items: start !important;
+         grid-auto-flow: row !important;
+      }
+
+      .settings-grid > .settings-card,
+      .settings-grid > .settings-stack {
+         grid-column: auto !important;
+         grid-row: auto !important;
+         align-self: start !important;
+         justify-self: stretch !important;
+         width: 100% !important;
+         max-width: none !important;
+         min-width: 0 !important;
+      }
+
+      .settings-grid > .settings-stack {
+         display: flex !important;
+         flex-direction: column !important;
+         gap: 18px !important;
+         height: max-content !important;
+      }
+
+      .settings-stack > .settings-card {
+         width: 100% !important;
+         max-width: none !important;
+         margin: 0 !important;
+         min-height: 0 !important;
+         height: auto !important;
+         box-sizing: border-box !important;
+      }
+
+   
+      /* cursor stack fix */
+      .settings-grid {
+         align-items: start !important;
+      }
+
+      .settings-grid > .settings-stack {
+         grid-column: auto !important;
+         grid-row: auto !important;
+         align-self: start !important;
+         justify-self: stretch !important;
+         width: 100% !important;
+         max-width: none !important;
+         min-width: 0 !important;
+         display: flex !important;
+         flex-direction: column !important;
+         gap: 18px !important;
+      }
+
+      .settings-stack > .settings-card {
+         width: 100% !important;
+         max-width: none !important;
+         margin: 0 !important;
+         height: auto !important;
+         min-height: 0 !important;
+         box-sizing: border-box !important;
+      }
+
+      .cursor-settings-card {
+         overflow: hidden !important;
+      }
+
+      .cursor-settings-card .settings-card-head {
+         display: block !important;
+      }
+
+      .cursor-settings-card .cursor-switch-row {
+         margin-top: 14px !important;
+         min-width: 0 !important;
+         width: 100% !important;
+      }
+
+      .cursor-settings-card #cursorStatus,
+      .cursor-settings-card .cursor-picker-head,
+      .cursor-settings-card #cursorChoiceGrid {
+         display: block !important;
+         position: static !important;
+         float: none !important;
+         clear: both !important;
+      }
+
+      .cursor-settings-card #cursorStatus {
+         margin-top: 14px !important;
+      }
+
+      .cursor-settings-card .cursor-picker-head {
+         margin-top: 18px !important;
+      }
+
+      .cursor-settings-card .cursor-picker-head h3 {
+         margin: 0 !important;
+         color: #ffffff !important;
+         font-size: 22px !important;
+         line-height: 1.1 !important;
+         text-transform: lowercase !important;
+      }
+
+      .cursor-settings-card .cursor-picker-head p {
+         margin: 8px 0 0 !important;
+         color: rgba(255, 255, 255, 0.62) !important;
+         font-size: 13px !important;
+      }
+
+      .cursor-settings-card #cursorChoiceGrid {
+         display: grid !important;
+         grid-template-columns: repeat(auto-fit, minmax(105px, 1fr)) !important;
+         gap: 12px !important;
+         margin-top: 16px !important;
+      }
+
    </style>
 </head>
 
@@ -80,6 +528,7 @@
 
             <p class="setting-status" id="themeStatus">default theme selected</p>
          </div>
+
          <div class="settings-card data-card">
             <h2>data saving</h2>
             <p>export or import your local nexus data</p>
@@ -94,17 +543,86 @@
             <input type="file" id="importFile" accept="application/json">
          </div>
 
-         <div class="settings-card">
+         <div class="settings-stack cursor-stack">
+            <div class="settings-card cursor-settings-card">
+            <div class="settings-card-head">
+            <div>
             <h2>custom cursor</h2>
             <p>use the nexus cursor icons across supported pages</p>
+            </div>
 
-            <label class="switch-row">
-               <span>enable custom cursor</span>
-               <input type="checkbox" id="customCursorToggle">
-               <span class="switch"></span>
+            <label class="switch-row cursor-switch-row">
+            <span>enable</span>
+            <input type="checkbox" id="customCursorToggle">
+            <span class="switch"></span>
             </label>
+            </div>
 
             <p class="setting-status" id="cursorStatus">custom cursor disabled</p>
+
+            <div class="cursor-picker-head">
+            <h3>choose cursor</h3>
+            <p>select your cursor style</p>
+            </div>
+
+            <div id="cursorChoiceGrid" class="cursor-choice-grid">
+            <button class="cursor-choice" type="button" data-cursor-preset="default">
+            <span class="cursor-preview">
+            <img src="/storage/icons/cursor/cursor.png" alt="">
+            </span>
+            <span class="cursor-name">default</span>
+            </button>
+
+            <button class="cursor-choice" type="button" data-cursor-preset="hollowknight">
+            <span class="cursor-preview">
+            <img src="/storage/icons/cursor/hollowknight/cursor.png" alt="">
+            </span>
+            <span class="cursor-name">hollow knight</span>
+            </button>
+            </div>
+            </div>
+
+            <div class="settings-card about-blank-card">
+            <h2>about:blank</h2>
+            <p>open nexus in a blank tab</p>
+
+            <button id="openBlank" type="button">open in about:blank</button>
+
+            <p class="small-note">this opens nexus in a new blank tab.</p>
+            </div>
+         </div>
+
+<div class="settings-stack proxy-stack">
+            <div class="settings-card proxy-opener-card">
+            <h2>proxify</h2>
+            <p>switch between local and proxied games & apps
+               note: not evey game or app will load
+            </p>
+
+            <p class="setting-status" id="proxyOpenStatus">localized mode selected</p>
+
+            <label class="switch-row">
+            <span>use proxify</span>
+            <input type="checkbox" id="proxyOpenToggle">
+            <span class="switch"></span>
+            </label>
+            </div>
+
+            <div class="settings-card panic-key-card">
+            <h2>panic key</h2>
+
+            <p class="setting-status">your key: <span id="panicKeyDisplay">none</span></p>
+            <p>click any key to change</p>
+
+            <button id="changePanicKey" type="button">change panic key</button>
+
+            <p class="setting-status">your url: <span id="panicUrlDisplay">https://www.google.classroom.com</span></p>
+
+            <label for="panicUrl">enter your url link</label>
+            <input type="text" id="panicUrl" placeholder="https://www.google.com">
+
+            <button id="savePanicUrl" type="button">set url</button>
+            </div>
          </div>
 
          <div class="settings-card">
@@ -120,31 +638,6 @@
             </label>
          </div>
 
-         <div class="settings-card">
-            <h2>about:blank</h2>
-            <p>open nexus in a blank tab</p>
-
-            <button id="openBlank" type="button">open in about:blank</button>
-
-            <p class="small-note">this opens nexus in a new blank tab.</p>
-         </div>
-
-         <div class="settings-card">
-            <h2>panic key</h2>
-
-            <p class="setting-status">your key: <span id="panicKeyDisplay">none</span></p>
-            <p>click any key to change</p>
-
-            <button id="changePanicKey" type="button">change panic key</button>
-
-            <p class="setting-status">your url: <span id="panicUrlDisplay">https://www.google.com</span></p>
-
-            <label for="panicUrl">enter your url link</label>
-            <input type="text" id="panicUrl" placeholder="https://www.google.com">
-
-            <button id="savePanicUrl" type="button">set url</button>
-         </div>
-      </section>
    </main>
 
    <script>
@@ -156,6 +649,8 @@
 
       const customCursorToggle = document.getElementById("customCursorToggle");
       const cursorStatus = document.getElementById("cursorStatus");
+      const cursorChoiceGrid = document.getElementById("cursorChoiceGrid");
+      const cursorChoiceButtons = document.querySelectorAll(".cursor-choice");
 
       const mobileModeToggle = document.getElementById("mobileModeToggle");
       const deviceStatus = document.getElementById("deviceStatus");
@@ -172,6 +667,19 @@
       const importData = document.getElementById("importData");
       const importFile = document.getElementById("importFile");
       const clearData = document.getElementById("clearData");
+
+      const cursorPresets = {
+         "default": {
+                  "label": "default",
+                  "cursor": "/storage/icons/cursor/cursor.png",
+                  "pointer": "/storage/icons/cursor/pointer.png"
+         },
+         "hollowknight": {
+                  "label": "hollow knight",
+                  "cursor": "/storage/icons/cursor/hollowknight/cursor.png",
+                  "pointer": "/storage/icons/cursor/hollowknight/pointer.png"
+         }
+};
 
       const cloaks = {
          default: {
@@ -254,18 +762,52 @@
          themeStatus.textContent = value + " theme selected";
       }
 
+      function getCursorPreset(value) {
+         return cursorPresets[value] ? value : "default";
+      }
+
+      function applyCursorChoice(value) {
+         const key = getCursorPreset(value);
+         localStorage.setItem("nexusCursorPreset", key);
+         applyCursorMode(true);
+      }
+
       function applyCursorMode(enabled) {
+         const key = getCursorPreset(localStorage.getItem("nexusCursorPreset") || "default");
+         const preset = cursorPresets[key];
+
          localStorage.setItem("nexusCustomCursor", enabled ? "true" : "false");
+         localStorage.setItem("nexusCursorPreset", key);
+         localStorage.setItem("nexusCursorDefault", preset.cursor);
+         localStorage.setItem("nexusCursorPointer", preset.pointer);
+
+         customCursorToggle.checked = enabled;
+
+         cursorChoiceButtons.forEach(function (button) {
+            button.classList.toggle("is-selected", button.dataset.cursorPreset === key);
+         });
+
+         cursorStatus.textContent = enabled
+            ? "custom cursor enabled - " + preset.label
+            : "custom cursor disabled";
+
+         if (window.setNexusCursorChoice) {
+            window.setNexusCursorChoice(preset.cursor, preset.pointer);
+         }
 
          if (window.setNexusCustomCursor) {
             window.setNexusCustomCursor(enabled);
-         } else {
-            document.documentElement.classList.toggle("nexus-cursor-on", enabled);
-            document.documentElement.classList.toggle("nexus-cursor-off", !enabled);
          }
 
-         customCursorToggle.checked = enabled;
-         cursorStatus.textContent = enabled ? "custom cursor enabled" : "custom cursor disabled";
+         if (window.parent && window.parent !== window) {
+            window.parent.postMessage({
+               type: "nexus-cursor-change",
+               enabled: enabled,
+               preset: key,
+               defaultCursor: preset.cursor,
+               pointerCursor: preset.pointer
+            }, "*");
+         }
       }
 
       function applyMobileMode(enabled) {
@@ -310,6 +852,12 @@
          applyCursorMode(customCursorToggle.checked);
       });
 
+      cursorChoiceButtons.forEach(function (button) {
+         button.addEventListener("click", function () {
+            applyCursorChoice(button.dataset.cursorPreset);
+         });
+      });
+
       mobileModeToggle.addEventListener("change", function () {
          applyMobileMode(mobileModeToggle.checked);
       });
@@ -346,7 +894,7 @@
                </head>
                <body>
                   <iframe src="${location.origin}"></iframe>
-               </body>
+</body>
             </html>
          `);
 
@@ -458,7 +1006,29 @@
    </script>
 
    <script type="module" src="../storage/themes/minecraft/theme.js"></script>
+   <script id="nexus-proxy-settings">
+      (function () {
+         const toggle = document.getElementById("proxyOpenToggle");
+         const status = document.getElementById("proxyOpenStatus");
 
+         if (!toggle || !status) {
+            return;
+         }
+
+         function apply(enabled) {
+            localStorage.setItem("nexusOpenThroughPframe", enabled ? "true" : "false");
+            localStorage.removeItem("nexusOpenThroughEmbed");
+            toggle.checked = enabled;
+            status.textContent = enabled ? "proxify mode selected" : "localized mode selected";
+         }
+
+         apply(localStorage.getItem("nexusOpenThroughPframe") === "true");
+
+         toggle.addEventListener("change", function () {
+            apply(toggle.checked);
+         });
+      }());
+   </script>
 </body>
 
 </html>
