@@ -9,9 +9,6 @@
    <link rel="icon" href="/storage/images/googleclassroom.png" type="image/png">
    <link href="/storage/css/cursor.css" rel="stylesheet">
 
-   <script src="/static/uv/uv.bundle.js"></script>
-   <script src="/static/uv/uv.config.js"></script>
-   <script src="/static/register-sw.js"></script>
    <script src="/storage/js/cursor.js"></script>
 
    <style>
@@ -80,7 +77,7 @@
          background: white;
       }
 
-      #uv-frame {
+      #game-frame {
          width: 100%;
          height: 100%;
          border: 0;
@@ -95,46 +92,39 @@
       <section class="card">
          <h1>⚠️ be warned ⚠️</h1>
          <p>if the movies don't load, click <strong>server 2</strong> on the movies page</p>
-         <button id="continue-btn">continue</button>
+         <button id="continue-btn" type="button">continue</button>
       </section>
    </main>
 
-   <iframe
-      id="uv-frame"
-      src="about:blank"
-      allow="fullscreen; autoplay; clipboard-read; clipboard-write; encrypted-media; picture-in-picture"
-      allowfullscreen>
-   </iframe>
+   <iframe id="game-frame" allowfullscreen tabindex="0"></iframe>
 
    <script>
       const targetUrl = "https://movie-web.click/";
-      const frame = document.getElementById("uv-frame");
+      const gameFrame = document.getElementById("game-frame");
       const startScreen = document.getElementById("start-screen");
       const continueBtn = document.getElementById("continue-btn");
 
-      async function registerUV() {
-         if ("serviceWorker" in navigator) {
-            await navigator.serviceWorker.register("/static/uv-sw.js", {
-               scope: "/static/"
-            });
-         }
+      function loadFrame() {
+         gameFrame.src = "/scramjet/embed.html#" + targetUrl;
       }
 
-      function encodeUV(url) {
-         return __uv$config.prefix + __uv$config.encodeUrl(url);
-      }
-
-      async function loadFrame() {
-         await registerUV();
-         frame.src = encodeUV(targetUrl);
-      }
-
-      continueBtn.addEventListener("click", async () => {
+      continueBtn.addEventListener("click", function () {
          startScreen.style.display = "none";
-         frame.style.display = "block";
-         await loadFrame();
+         gameFrame.style.display = "block";
+         loadFrame();
+      });
+
+      gameFrame.addEventListener("load", function () {
+         gameFrame.focus();
+      });
+
+      gameFrame.addEventListener("click", function () {
+         gameFrame.focus();
       });
    </script>
+
+   <script src="/storage/js/settings.js"></script>
+   <script id="cursor-state-fix-js" src="/storage/js/cursor-state-fix.js"></script>
 </body>
 
 </html>

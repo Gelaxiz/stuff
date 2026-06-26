@@ -7,6 +7,18 @@
   },
   {
     "url": "",
+    "img": "/storage/images/supporters/tn.png",
+    "alt": "TitaniumNetwork - UV & Scramjet proxy",
+    "title": "TitaniumNetwork"
+  },
+    {
+    "url": "",
+    "img": "/storage/images/supporters/destroyed.png",
+    "alt": "Destroyed12121 - Static scramjet proxy",
+    "title": "Destroyed12121"
+  },
+  {
+    "url": "",
     "img": "/storage/images/supporters/bog.jpeg",
     "alt": "Bog - Some web ports",
     "title": "Bog"
@@ -26,7 +38,7 @@
   {
     "url": "",
     "img": "/storage/images/supporters/ts.webp",
-    "alt": "TS (plz dont @) - Minecraft Legacy Edition web port",
+    "alt": "TS (plz dont @) - MCLE web port & Among Us web port",
     "title": "TS (plz dont @)"
   }
 ]

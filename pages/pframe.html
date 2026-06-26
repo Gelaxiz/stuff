@@ -45,9 +45,6 @@
       </section>
    </main>
 
-   <script src="/static/uv/uv.bundle.js"></script>
-   <script src="/static/uv/uv.config.js"></script>
-
    <script>
       const gameFrame = document.getElementById("game-frame");
       const reloadButton = document.getElementById("reload-button");
@@ -60,16 +57,20 @@
          return params.get(name);
       }
 
-      async function registerUV() {
-         if (!("serviceWorker" in navigator)) {
-            return;
+      function decodeParam(value) {
+         let decoded = String(value || "").trim();
+
+         for (let i = 0; i < 2; i++) {
+            try {
+               const next = decodeURIComponent(decoded);
+               if (next === decoded) break;
+               decoded = next;
+            } catch (error) {
+               break;
+            }
          }
 
-         try {
-            await navigator.serviceWorker.register("/static/uv-sw.js", {
-               scope: "/static/"
-            });
-         } catch (error) {}
+         return decoded;
       }
 
       function hasProtocol(value) {
@@ -77,14 +78,28 @@
       }
 
       function makeFullUrl(value) {
-         if (hasProtocol(value)) {
-            return value;
+         const decoded = decodeParam(value);
+
+         if (!decoded) {
+            return "";
          }
 
-         return "https://" + value;
+         if (hasProtocol(decoded)) {
+            return decoded;
+         }
+
+         if (decoded.startsWith("//")) {
+            return "https:" + decoded;
+         }
+
+         if (decoded.includes(".") && !decoded.includes(" ")) {
+            return "https://" + decoded;
+         }
+
+         return "https://duckduckgo.com/?q=" + encodeURIComponent(decoded) + "&kp=1&ia=web";
       }
 
-      async function setFrameUrl() {
+      function setFrameUrl() {
          const proxyUrl = getUrlParameter("p") || getUrlParameter("url");
 
          if (!proxyUrl) {
@@ -92,15 +107,14 @@
             return;
          }
 
-         await registerUV();
-
          const finalUrl = makeFullUrl(proxyUrl);
 
-         if (window.__uv$config && __uv$config.prefix && __uv$config.encodeUrl) {
-            gameFrame.src = __uv$config.prefix + __uv$config.encodeUrl(finalUrl);
-         } else {
+         if (!finalUrl) {
             gameFrame.src = "/404";
+            return;
          }
+
+         gameFrame.src = "/scramjet/embed.html#" + finalUrl;
       }
 
       function reloadFrame() {
@@ -247,7 +261,7 @@ iframe {
    </script>
 
    <script src="/storage/js/settings.js"></script>
-
+   <script id="cursor-state-fix-js" src="/storage/js/cursor-state-fix.js"></script>
 </body>
 
 </html>

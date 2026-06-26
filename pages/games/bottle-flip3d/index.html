@@ -5,8 +5,6 @@
   <meta charset="utf-8" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>Bottle Flip 3D</title>
-  <script src="/assets/js/script.js?v=11"></script>
-  <link rel="icon" type="image/x-icon" href="/img/canvas.ico" />
   <style>
     * {
       margin: 0;
@@ -138,78 +136,6 @@
       document.getElementById("gameContainer").style.height = height + "px";
     }
   </script>
-  <script src="patch/js/null.js?www.bestgames.com/forgame/functions.js?0123"></script>
-  <script src="patch/js/null.js?www.bestgames.com/ShowGames.js"></script>
-  <script src="patch/js/null.js?www.cargames.com/forgame/functions.js?0123"></script>
-  <script src="patch/js/null.js?www.cargames.com/ShowGames.js"></script>
-
-  <script type="text/javascript">
-    function openWindow(Screen, Button, NameId, website) {
-      document.onmouseup = function () {
-        switch (website.trim().toLowerCase()) {
-          case "bestgames":
-            GameId = GetGameIdByNameId(NameId, gamesBest);
-            linkBest("Bottle Flip 3D", Screen, Button, GameId);
-            break;
-          case "cargames":
-            GameId = GetGameIdByNameId(NameId, gamesCar);
-            linkCar("Bottle Flip 3D", Screen, Button, GameId);
-            break;
-          default:
-            console.log(website + " is error");
-        }
-        document.onmouseup = null;
-      };
-    }
-    //Ã©ÂšÂÃ¦ÂœÂºÃ¤Â¸Â€Ã¤Â¸ÂªnameId
-    function GetNameIdByRandom(len, website) {
-      var gamesArr;
-      switch (website.trim().toLowerCase()) {
-        case "bestgames":
-          gamesArr = gamesBest;
-          break;
-        case "cargames":
-          gamesArr = gamesCar;
-          break;
-        default:
-          console.log(website + " is error");
-      }
-      var nameIdArray = new Array();
-      var separator = ",";
-      for (var i = 0; i < len; i++) {
-        var randomIndex;
-        var nameId;
-        do {
-          randomIndex = Math.floor(Math.random() * gamesArr.length);
-          nameId = gamesArr[randomIndex]["nameid"];
-        } while (nameIdArray.includes(nameId) && len <= gamesArr.length);
-        nameIdArray[i] = nameId;
-      }
-      nameIdArray[len] = website;
-      var nameIds = nameIdArray.join(separator);
-      console.log(nameIds);
-      gameInstance.SendMessage("WWWLoader", "CallGetNameIds", nameIds);
-    }
-    //Ã©Â€ÂšÃ¨Â¿Â‡NameIdÃ¨ÂŽÂ·Ã¥ÂÂ–GameId
-    function GetGameIdByNameId(NameId, Games) {
-      for (i = 0; i < Games.length; i++) {
-        if (Games[i]["nameid"] == NameId) {
-          return Games[i]["id"];
-        }
-      }
-      console.log("ShowGames.js not exist ", NameId, " correspond to vaule");
-      return "";
-    }
-    //Ã§Â›Â´Ã¦ÂŽÂ¥Ã¦Â Â¹Ã¦ÂÂ®Ã§Â½Â‘Ã¥ÂÂ€Ã¦Â‰Â“Ã¥Â¼Â€Ã§Â½Â‘Ã©Â¡Âµ
-    function openWindowByUrl(Url) {
-      var url = encodeURI(Url);
-      document.onmouseup = function () {
-        window.xopen(url);
-        document.onmouseup = null;
-      };
-    }
-  </script>
-</head>
 
 <body onFocus="FitScreen();" onLoad="FitScreen();" onResize="FitScreen();">
   <div id="container">
@@ -219,4 +145,3 @@
 </body>
 
 </html>
-

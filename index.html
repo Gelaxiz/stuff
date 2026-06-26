@@ -55,6 +55,8 @@
    </style>
 </head>
 
+<body>
+
 <div id="seo-content" aria-hidden="true">
    <div class="school-nav">
       <h2 class="logo">Classroom</h2>
@@ -118,13 +120,15 @@
    <script src="/storage/js/particles-toggle.js" defer></script> -->
 
    <div id="home-screen">
-      <h1>NEXUS</h1>
+      <h>NEXUS</h>
 
       <div id="search-container">
 
          <form id="uv-form">
 
             <input id="uv-search-engine" value="https://duckduckgo.com/?q=%s&kp=1&ia=web" type="hidden">
+
+            <img id="search-icon" src="/storage/icons/logos/duckduckgo.png">
 
             <input id="uv-address" type="text" autocomplete="off" class="search-bar-home" placeholder="Search DuckDuckGo or type a URL">
 
@@ -173,9 +177,6 @@
    </nav>
 
    <audio id="errorSound" src="/storage/mp3/error.mp3" preload="auto"></audio>
-   <script src="./static/uv/uv.bundle.js" defer></script>
-   <script src="./static/uv/uv.config.js" defer></script>
-   <script src="./static/register-sw.js" defer></script>
    <script src="./storage/js/splash-messages.js"></script>
    <script src="./storage/js/search-terms.js"></script>
 
@@ -183,6 +184,45 @@
    const pageFrame = document.getElementById("page-frame");
    const navItems = document.querySelectorAll(".nav-item");
    const frameLinks = document.querySelectorAll(".frame-link");
+   const proxyForm = document.getElementById("uv-form");
+   const proxyAddress = document.getElementById("uv-address");
+
+   function openScramjet(url) {
+      pageFrame.src = `./scramjet/index.html#${encodeURIComponent(url)}`;
+      document.body.classList.add("frame-open");
+      document.body.classList.add("proxy-open");
+
+      navItems.forEach(function (item) {
+         item.classList.remove("active");
+      });
+   }
+
+   proxyForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const input = proxyAddress.value.trim();
+      if (!input) return;
+
+      let target;
+
+      if (/^https?:\/\//i.test(input)) {
+         target = input;
+      } else if (input.includes(".") && !input.includes(" ")) {
+         target = `https://${input}`;
+      } else {
+         target = `https://duckduckgo.com/?q=${encodeURIComponent(input)}&kp=1&ia=web`;
+      }
+
+      openScramjet(target);
+   });
+
+   window.addEventListener("message", function (event) {
+      if (!event.data || event.data.type !== "navigate" || !event.data.url) {
+         return;
+      }
+
+      openScramjet(event.data.url);
+   });
 
    frameLinks.forEach(function (link) {
       link.addEventListener("click", function (event) {
@@ -190,6 +230,7 @@
 
          pageFrame.src = link.dataset.frame;
          document.body.classList.add("frame-open");
+         document.body.classList.remove("proxy-open");
 
          navItems.forEach(function (item) {
             item.classList.remove("active");
@@ -217,16 +258,6 @@
       });
    }
 </script>
-
-   <script>
-      async function regsw() {
-         await navigator.serviceWorker.register("/static/uv-sw.js", {
-            scope: "/static/"
-         });
-      }
-
-      regsw();
-   </script>
 
    <script>
       const code = [
@@ -312,9 +343,9 @@
    window.addEventListener("load", function () {
       setTimeout(function () {
          const seoContent = document.getElementById("seo-content");
-         seoContent.style.display = "none";
 
          if (seoContent) {
+            seoContent.style.display = "none";
             seoContent.classList.add("seo-hidden");
          }
       }, 550);
@@ -355,3 +386,4 @@
 </body>
 
 </html>
+   

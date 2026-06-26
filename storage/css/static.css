@@ -12,12 +12,28 @@ body {
     background: #1b1b1f;
 }
 
+@font-face {
+    font-family: 'Title';
+    src: url('/storage/fonts/poek.otf') format('truetype');
+}
+
 h1 {
     margin: 0;
     padding: 0;
     font-size: 4.6rem;
     line-height: 1;
     color: white;
+    text-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
+    transform: translateY(-24px);
+}
+
+h {
+    margin: 0;
+    padding: 0;
+    font-size: 5em;
+    line-height: 1;
+    color: white;
+    font-family: 'Title';
     text-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
     transform: translateY(-24px);
 }
@@ -52,20 +68,34 @@ a:focus {
     margin-top: 28px;
 }
 
+#search-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    display: block;
+    flex: 0 0 auto;
+    margin-left: 12px;
+    margin-right: 12px;
+    z-index: 2;
+    pointer-events: none;
+}
+
 #uv-form {
     position: relative;
+    user-select: none;
     display: flex;
     align-items: center;
-    width: 100%;
+    width: 700px;
     height: 58px;
     margin: 0;
-    padding: 0 8px 0 20px;
+    padding: 0 8px;
     box-sizing: border-box;
     border-radius: 18px;
     border: 2px solid rgba(255, 255, 255, 0.16);
     background: #111;
     overflow: hidden;
     transform: scale(1);
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.25);
     transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -73,7 +103,6 @@ a:focus {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(255, 255, 255, 0.18);
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.2s ease;
@@ -82,8 +111,6 @@ a:focus {
 #uv-form:hover {
     transform: scale(1.018);
     border-color: rgba(255, 255, 255, 0.95);
-    background: #2c2c33;
-    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.25);
 }
 
 #uv-form:hover::before {
@@ -93,7 +120,6 @@ a:focus {
 #uv-form:focus-within {
     transform: scale(1.018);
     border-color: rgba(255, 255, 255, 0.95);
-    background: #2c2c33;
     box-shadow: 0 12px 26px rgba(0, 0, 0, 0.25);
 }
 
@@ -102,8 +128,22 @@ a:focus {
 }
 
 #uv-address {
+    font-style: normal;
     text-align: center;
 }
+
+#uv-address::placeholder {
+    color: rgba(255, 255, 255, 0.62);
+    font-style: italic;
+}   
+
+#uv-form:hover #uv-address::placeholder,
+#uv-form:focus-within #uv-address::placeholder {
+    color: rgba(255, 255, 255, 0.86);
+    font-style: italic;
+    user-select: none;
+}
+
 
 .search-bar-home {
     position: relative;
@@ -131,16 +171,6 @@ a:focus {
     box-shadow: none;
 }
 
-.search-bar-home::placeholder {
-    color: rgba(255, 255, 255, 0.62);
-}
-
-#uv-form:hover .search-bar-home::placeholder,
-#uv-form:focus-within .search-bar-home::placeholder {
-    color: rgba(255, 255, 255, 0.86);
-}
-
-
 .desc {
     margin: 0;
     padding: 0;
@@ -162,10 +192,21 @@ a:focus {
     line-height: 18px;
     text-align: center;
     cursor: default;
+    font-family: 'Poppins', sans-serif;
     pointer-events: none;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    -webkit-user-select: text;
+    user-select: text;
+    pointer-events: auto;
+    cursor: text;
+}
+
+
+#randomText::selection {
+    background: white;
+    color: #111111;
 }
 
 #randomText:hover {

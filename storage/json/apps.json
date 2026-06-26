@@ -12,7 +12,7 @@
     "title": "Thirty Dollar Website"
   },
   {
-  "url": "/pages/pframe.html?url=https://www.youtube-nocookie.com/watch?v=GcU6eXc4Qzw",
+  "url": "/pages/pframe.html?url=https://www.youtube.com/",
   "img": "/pages/apps/images/youtube.png",
   "alt": "Youtube",
   "title": "Youtube"
@@ -100,6 +100,12 @@
     "img": "/pages/apps/images/marioseq.jpg",
     "alt": "Mario Sequencer",
     "title": "Mario Sequencer"
+  },
+  {
+    "url": "/pages/pframe.html?url=https://www.netflix.com/",
+    "img": "/pages/apps/images/netflix.png",
+    "alt": "Netflix",
+    "title": "Netflix"
   },
   {
     "url": "/pages/iframe.html?url=/pages/apps/engine-sim/",

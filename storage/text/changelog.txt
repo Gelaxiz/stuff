@@ -1,37 +1,12 @@
-site isn't in beta anymore 🥳
+site isn't in beta anymore
 
 next update will lots more games
 
 -- stuff --
-added ads on a few pages
-loading screen will now automatically be disabled after 5s
-changed homepage a bit
-removed search page (will be added back when tabs are implemented)
-added 300+ more splash messages
 
 -- games --
-fixed drive mad
-fixed incredibox
-added bite sized beats
-added bad time simulator
-added undertale
-added bouncy basketball
-added cut the rope
-added cut the rope holiday gift
-added cut the rope time travel
-added dadish 1 & 2
-added fnf
-added dud
-added jetpack joyride
-added pako 3
-added pako highway
-added space bar clicker
-added tanuki sunset
-added the impossible quiz 1 & 2
-added nfs dos
-added economical 1 & 2
-added raftwars 1 & 2
+stopped games from opening advertising content
 
 -- bugs --
-fixed iframe positioning bug
-fixed a bug where having a different page hash than normal would break the whole site until changed
+fixed cursor bug
+fixed css positioning bugs
