@@ -6,7 +6,7 @@
     "title": "Discord"
   },
   {
-    "url": "/pages/iframe.html?url=/pages/apps/30$w/",
+    "url": "/pages/pframe.html?url=https://thirtydollar.website/",
     "img": "/pages/apps/images/dollar.png",
     "alt": "Thirty Dollar Website",
     "title": "Thirty Dollar Website"
@@ -18,10 +18,10 @@
   "title": "Youtube"
 },
 {
-  "url": "/pages/pframe.html?url=https://inv.nadeko.net/",
-  "img": "/pages/apps/images/invid.png",
-  "alt": "Youtube (Invidious)",
-  "title": "Youtube (Invidious)"
+  "url": "/pages/pframe.html?url=https://chatgpt.com/",
+  "img": "/pages/apps/images/chatgpt.png",
+  "alt": "ChatGPT",
+  "title": "ChatGPT"
 },
   {
     "url": "/pages/pframe.html?url=https://snapchat.com/",
@@ -42,12 +42,6 @@
     "title": "Emulator JS"
   },
   {
-    "url": "/pages/iframe.html?url=/pages/apps/soundboard/",
-    "img": "/pages/apps/images/button.png",
-    "alt": "Soundboard - Genizy",
-    "title": "Soundboard - Genizy"
-  },
-  {
     "url": "/pages/pframe.html?url=https://soundcloud.com/",
     "img": "/pages/apps/images/soundcloud.png",
     "alt": "Soundcloud",
@@ -60,13 +54,7 @@
     "title": "copy.sh - v86"
   },
   {
-    "url": "/pages/iframe.html?url=/pages/apps/txtmoji/",
-    "img": "/pages/apps/images/txtmoji.avif",
-    "alt": "Txtmoji",
-    "title": "Txtmoji"
-  },
-  {
-    "url": "/pages/pframe.html?url=https://play.geforcenow.com/mall/#/loginwall",
+    "url": "/pages/iframe.html?url=https://play.geforcenow.com/",
     "img": "/pages/apps/images/geforce.png",
     "alt": "Geforce",
     "title": "Geforce NOW"
@@ -78,22 +66,10 @@
     "title": "Gauth Math"
   },
   {
-    "url": "/pages/iframe.html?url=/pages/apps/javascript-executor",
-    "img": "/pages/apps/images/script.webp",
-    "alt": "Javascript Executor",
-    "title": "Javascript Executor"
-  },
-  {
     "url": "/pages/pframe.html?url=https://www.xbox.com/en-us/play",
     "img": "/pages/apps/images/xbox.png",
     "alt": "Xbox Cloud Gaming",
     "title": "Xbox Cloud Gaming"
-  },
-  {
-    "url": "/pages/iframe.html?url=/pages/apps/gradecalc",
-    "img": "/pages/apps/images/gradecalc.png",
-    "alt": "Grade Calculator",
-    "title": "Grade Calculator"
   },
   {
     "url": "/pages/iframe.html?url=/pages/apps/mariosequencer/",
@@ -118,12 +94,6 @@
     "img": "/pages/apps/images/desmos.png",
     "alt": "Desmos",
     "title": "Desmos"
-  },
-  {
-    "url": "/pages/iframe.html?url=/pages/apps/kahoot",
-    "img": "/pages/apps/images/kahoot.png",
-    "alt": "Kahoot (Hacked)",
-    "title": "Kahoot (Hacked)"
   },
   {
     "url": "/pages/iframe.html?url=/pages/apps/print3r",
