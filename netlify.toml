@@ -13,3 +13,4 @@
   from = "/pages/games/fnf-goose-mod/*"
   to = "/pages/games/fnf-goose-mod/:splat"
   status = 200
+ # netlfiy
