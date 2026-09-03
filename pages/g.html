@@ -1,374 +1,61 @@
-﻿<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<script>
-  const theme = localStorage.getItem("nexusTheme") || "default";
-
-  document.documentElement.classList.add("theme-" + theme);
-
-  if (window.self !== window.top) {
-    document.documentElement.classList.add("in-frame");
-  }
-</script>
-  <meta property="og:title" content="Classroom Management Tools & Resources - Google for Education">
-   <meta property="og:description" content="Google Classroom is your central place where teaching and learning come together. This easy-to-use and secure tool helps educators manage, measure and enrich learning experiences.">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home</title>
-  <link rel="icon" href="../storage/images/googleclassroom.png" type="image/png" />
-  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../storage/css/anotherstyle.css" />
-  <link rel="stylesheet" href="../storage/css/style.css" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+  <script>
+    const theme = localStorage.getItem("nexusTheme") || "default";
+    document.documentElement.classList.add("theme-" + theme);
+    if (window.self !== window.top) document.documentElement.classList.add("in-frame");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08090c">
+  <title>Games · Nexus</title>
+  <link rel="icon" href="../storage/images/googleclassroom.png" type="image/png">
   <link rel="stylesheet" href="../storage/css/background.css">
-  <link rel="stylesheet" href="../storage/css/override.css">
-  <link href="/storage/css/cursor.css" rel="stylesheet">
-
-  <script src="/storage/js/cursor.js"></script>
+  <link rel="stylesheet" href="../storage/css/games-library.css">
+  <link rel="stylesheet" href="/storage/css/cursor.css">
+  <script src="/storage/js/cursor.js" defer></script>
+  <script src="/storage/js/settings.js" defer></script>
+  <script src="/storage/js/games-library.js" defer></script>
 </head>
 <body>
-
-  <div class="navbar">
-    <div class="left-side">
-      <a href="/"></a>
+  <main class="library-shell">
+    <header class="library-header">
+      <div>
+        <h1>Games</h1>
+        <p id="gamesTitle" aria-live="polite">Loading the library…</p>
+      </div>
+      <button id="random-button" class="surprise-button" type="button" disabled>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+        Surprise me
+      </button>
+    </header>
+    <section class="library-tools" aria-label="Game library controls">
+      <label class="search-control" for="gameSearch">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16.5 16.5 4 4"/></svg>
+        <input type="search" id="gameSearch" autocomplete="off" placeholder="Search by title" spellcheck="false">
+        <kbd>/</kbd>
+      </label>
+      <div class="filter-row" id="genreFilters" aria-label="Filter games">
+        <button type="button" class="filter-button is-active" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" class="filter-button" data-filter="classic" aria-pressed="false">Classics</button>
+        <button type="button" class="filter-button" data-filter="arcade" aria-pressed="false">Arcade</button>
+        <button type="button" class="filter-button" data-filter="sports" aria-pressed="false">Sports</button>
+        <button type="button" class="filter-button" data-filter="adventure" aria-pressed="false">Adventure</button>
+      </div>
+    </section>
+    <div id="libraryStatus" class="library-status" role="status">
+      <span class="status-spinner" aria-hidden="true"></span>
+      Loading games
     </div>
-    <div class="right-side">
-      <script type="text/javascript" src="/storage/js/nav.js"></script>
-    </div>
-  </div>
-
-  <div class="game-title">Games</div>
-  <div class="games-title" id="gamesTitle">Select from 0 games!</div>
-
-  <div class="search-bar-container">
-    <input
-      type="text"
-      id="gameSearch"
-      autocomplete="off"
-      class="search-bar"
-      placeholder="Search games..."
-      oninput="filterGames()"
-    />
-  </div>
-
-  <div class="game-grid" id="gameGrid"></div>
-
-  <div class="tooltip"></div>
-
-  <script>
-    const CACHE_KEY = "games-cache";
-    const CACHE_TIME_KEY = "games-cache-time";
-    const JSON_PATH = "/storage/json/games.json";
-
-    async function loadGames() {
-      const cached = localStorage.getItem(CACHE_KEY);
-
-      if (cached) {
-        try {
-          const games = JSON.parse(cached);
-          renderGames(games);
-        } catch (e) {
-          console.warn("Failed to parse cached games:", e);
-        }
-      }
-
-      try {
-        const res = await fetch(JSON_PATH, { cache: "no-store" });
-        if (!res.ok) throw new Error("Failed to fetch JSON");
-        const freshGames = await res.json();
-        const freshString = JSON.stringify(freshGames);
-        if (freshString !== cached) {
-          localStorage.setItem(CACHE_KEY, freshString);
-          localStorage.setItem(CACHE_TIME_KEY, Date.now().toString());
-          renderGames(freshGames);
-        }
-      } catch (err) {
-        console.error(`Failed to fetch latest games.json:`, err);
-      }
-    }
-
-    function renderGames(games) {
-      const gameGrid = document.getElementById("gameGrid");
-      const gamesTitle = document.getElementById("gamesTitle");
-      gameGrid.innerHTML = "";
-
-      for (const game of games) {
-        const div = document.createElement("div");
-        div.className = "game-button";
-        div.innerHTML = `
-          <a href="${game.url}">
-            <img src="${game.img}" 
-                 alt="${game.alt || game.title}" 
-                 onerror="this.onerror=null;this.src='/storage/images/404.png';" />
-          </a>
-        `;
-        gameGrid.appendChild(div);
-      }
-
-      gamesTitle.textContent = `Select from ${games.length} games!`;
-
-      sortGameButtons();
-      checkGridAlignment();
-    }
-
-    function filterGames() {
-        const searchInput = document.getElementById("gameSearch").value.trim().toLowerCase();
-        const games = document.querySelectorAll(".game-button");
-
-        games.forEach(function (game) {
-            const img = game.querySelector("img");
-            const title = img && img.alt ? img.alt.toLowerCase() : "";
-
-            if (title.includes(searchInput)) {
-                game.classList.remove("is-hidden");
-            } else {
-                game.classList.add("is-hidden");
-            }
-        });
-    }
-
-    function checkGridAlignment() {
-      const buttons = document.querySelectorAll(".game-button");
-      const pageWidth = window.innerWidth;
-      buttons.forEach((button) => {
-        const rect = button.getBoundingClientRect();
-        const distanceToRightEdge = pageWidth - rect.right;
-        button.style.clear = distanceToRightEdge < 75 ? "both" : "none";
-      });
-    }
-
-    window.addEventListener("resize", checkGridAlignment);
-    window.addEventListener("load", () => {
-      loadGames();
-      checkGridAlignment();
-    });
-
-    document.getElementById("random-button").addEventListener("click", () => {
-      const games = Array.from(document.querySelectorAll(".game-button a"));
-      if (games.length === 0) return;
-      const randomIndex = Math.floor(Math.random() * games.length);
-      const randomGame = games[randomIndex];
-      window.location.href = randomGame.href;
-    });
-  </script>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const tooltip = document.querySelector(".tooltip");
-
-      document.body.addEventListener("mouseenter", (e) => {
-        if (e.target.tagName === "IMG" && e.target.alt) {
-          tooltip.textContent = e.target.alt;
-          tooltip.classList.add("show");
-
-          const padding = 15;
-          const maxX = window.innerWidth - tooltip.offsetWidth - padding;
-          tooltip.style.left = Math.min(e.pageX + padding, maxX) + "px";
-          tooltip.style.top = (e.pageY - 20) + "px";
-        }
-      }, true);
-
-      document.body.addEventListener("mousemove", (e) => {
-        if (tooltip.classList.contains("show")) {
-          const padding = 15;
-          const maxX = window.innerWidth - tooltip.offsetWidth - padding;
-          tooltip.style.left = Math.min(e.pageX + padding, maxX) + "px";
-          tooltip.style.top = (e.pageY - 20) + "px";
-        }
-      });
-
-      document.body.addEventListener("mouseleave", (e) => {
-        if (e.target.tagName === "IMG") {
-          tooltip.classList.remove("show");
-        }
-      }, true);
-    });
-  </script>
-
-  <script type="text/javascript" src="/storage/js/settings.js"></script>
-  <script type="text/javascript" src="/storage/js/resort.js"></script>
-   <script id="mirror-pframe-switcher">
-      (function () {
-         const framePage = "/pages/pframe.html";
-
-         const mirrors = [
-            "nexus-is.onthewifi.com",
-            "nexuss.global.ssl.fastly.net",
-            "workforschool.global.ssl.fastly.net",
-            "schoolstuff.serveminecraft.net",
-            "nexus-school.github.io",
-            "nexuss.zapto.org"
-         ];
-
-         function enabled() {
-            return localStorage.getItem("nexusOpenThroughPframe") === "true";
-         }
-
-         function decodeSafe(value) {
-            try {
-               return decodeURIComponent(value);
-            } catch (error) {
-               return value;
-            }
-         }
-
-         function cleanTarget(value) {
-            if (!value) {
-               return "";
-            }
-
-            value = String(value).trim();
-
-            if (!value || value === "#" || value.startsWith("#")) {
-               return "";
-            }
-
-            if (/^nexus:\/\//i.test(value)) {
-               value = "/" + value.replace(/^nexus:\/\//i, "").replace(/^\/+/, "");
-            }
-
-            if (/^pages\/(?:games|apps)\//i.test(value)) {
-               value = "/" + value;
-            }
-
-            try {
-               const url = new URL(value, location.origin);
-               value = url.pathname + url.search + url.hash;
-            } catch (error) {}
-
-            const match = value.match(/\/pages\/(?:games|apps)\/[^"' <>)]+/i);
-
-            return match ? match[0] : "";
-         }
-
-         function targetFrom(value) {
-            if (!value) {
-               return "";
-            }
-
-            value = String(value).trim();
-
-            try {
-               const url = new URL(value, location.origin);
-
-               if (/\/(?:iframe|pframe|embed)\.html$/i.test(url.pathname)) {
-                  const p = url.searchParams.get("p");
-                  const u = url.searchParams.get("url");
-
-                  if (p) {
-                     return cleanTarget(decodeSafe(p));
-                  }
-
-                  if (u) {
-                     return cleanTarget(decodeSafe(u));
-                  }
-
-                  if (url.search.startsWith("?=")) {
-                     return cleanTarget(decodeSafe(url.search.slice(2)));
-                  }
-               }
-
-               return cleanTarget(url.pathname + url.search + url.hash);
-            } catch (error) {}
-
-            const pMatch = value.match(/[?&]p=([^&]+)/i);
-
-            if (pMatch) {
-               return cleanTarget(decodeSafe(pMatch[1]));
-            }
-
-            const urlMatch = value.match(/[?&]url=([^&]+)/i);
-
-            if (urlMatch) {
-               return cleanTarget(decodeSafe(urlMatch[1]));
-            }
-
-            return cleanTarget(value);
-         }
-
-         function hashText(value) {
-            let hash = 0;
-
-            for (let i = 0; i < value.length; i++) {
-               hash = ((hash << 5) - hash) + value.charCodeAt(i);
-               hash |= 0;
-            }
-
-            return Math.abs(hash);
-         }
-
-         function pickMirror(target) {
-            const currentHost = location.hostname.toLowerCase();
-            const available = mirrors.filter(function (host) {
-               return host.toLowerCase() !== currentHost;
-            });
-
-            if (!available.length) {
-               return mirrors[0];
-            }
-
-            return available[hashText(target) % available.length];
-         }
-
-         function build(target) {
-            const mirror = pickMirror(target);
-            const fullUrl = "https://" + mirror + target;
-
-            return framePage + "?url=" + encodeURI(fullUrl);
-         }
-
-         function read(element) {
-            const attrs = ["href", "data-url", "data-href", "data-src", "data-link", "data-path"];
-
-            for (const attr of attrs) {
-               if (element.hasAttribute && element.hasAttribute(attr)) {
-                  return element.getAttribute(attr);
-               }
-            }
-
-            const child = element.querySelector && element.querySelector("a[href]");
-
-            if (child) {
-               return child.getAttribute("href");
-            }
-
-            const onclick = element.getAttribute && element.getAttribute("onclick");
-
-            if (onclick) {
-               const match = onclick.match(/(?:\/pages\/(?:iframe|pframe|embed)\.html\?(?:url=|p=)|\/static\/(?:pframe|embed)\.html\?(?:url=|p=)|\/pages\/(?:games|apps)\/|pages\/(?:games|apps)\/)[^"' <>)]+/i);
-
-               if (match) {
-                  return match[0];
-               }
-            }
-
-            return "";
-         }
-
-         document.addEventListener("click", function (event) {
-            if (!enabled()) {
-               return;
-            }
-
-            const element = event.target && event.target.closest && event.target.closest("a[href], [data-url], [data-href], [data-src], [data-link], [data-path], [onclick]");
-
-            if (!element) {
-               return;
-            }
-
-            const target = targetFrom(read(element));
-
-            if (!target) {
-               return;
-            }
-
-            event.preventDefault();
-            event.stopPropagation();
-            event.stopImmediatePropagation();
-
-            location.href = build(target);
-         }, true);
-      }());
-   </script>
+    <section class="game-grid" id="gameGrid" aria-label="Games"></section>
+    <section id="emptyState" class="empty-state" hidden>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 11h12l2 7-3 2-3-3h-4l-3 3-3-2 2-7Z"/><path d="M9 14h-3M7.5 12.5v3M15.5 14h.01M18 14h.01"/></svg>
+      <h2>No games found</h2>
+      <p>Try a shorter title or choose another category.</p>
+      <button id="clearSearch" type="button">Clear search</button>
+    </section>
+  </main>
+  <noscript>This game library requires JavaScript to load its catalog.</noscript>
 </body>
 </html>

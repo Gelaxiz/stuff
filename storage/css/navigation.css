@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    transition: opacity 300ms ease;
 }
 
 #page-frame {
@@ -28,21 +29,19 @@ body.frame-open #page-frame {
 .nexus-nav {
     position: fixed;
     left: 50%;
-    bottom: 22px;
+    bottom: 24px;
     transform: translateX(-50%);
     display: flex;
     align-items: center;
     gap: 7px;
     padding: 8px;
     border-radius: 20px;
-    background: rgba(26, 26, 30, 0.92);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(26, 26, 30, 0.65);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 14px 32px rgba(0, 0, 0, 0.38);
-    z-index: 50;
-}
-
-body.proxy-open .nexus-nav {
-   display: none;
+    z-index: 9999;
 }
 
 .nav-item {
@@ -59,9 +58,9 @@ body.proxy-open .nexus-nav {
     background: transparent;
     cursor: pointer;
     transition:
-        background 0.18s ease,
-        opacity 0.18s ease,
-        transform 0.18s ease;
+        background 160ms ease-out,
+        opacity 160ms ease-out,
+        transform 160ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .nav-item:hover {
@@ -70,7 +69,7 @@ body.proxy-open .nexus-nav {
 }
 
 .nav-item:active {
-    transform: translateY(-1px) scale(0.95);
+    transform: scale(0.95);
 }
 
 .nav-item.active {
@@ -101,39 +100,11 @@ body.proxy-open .nexus-nav {
     }
 
     .nav-item {
-        width: 41px;
-        height: 41px;
+        width: 44px;
+        height: 44px;
         font-size: 1.05rem;
         border-radius: 13px;
     }
-}
-
-.nexus-nav {
-    position: fixed;
-    left: 50%;
-    right: auto;
-    bottom: 24px;
-    transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 7px;
-    padding: 8px;
-    border-radius: 20px;
-    background: rgba(26, 26, 30, 0.88);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.38);
-    z-index: 9999;
-}
-
-.nav-item {
-    width: 48px;
-    height: 48px;
-    flex: 0 0 48px;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 html.minecraft-theme .nexus-nav,
@@ -143,24 +114,14 @@ body.minecraft-theme .nexus-nav {
     transform: translateX(-50%);
 }
 
-.nexus-nav {
-    position: fixed;
-    left: 50%;
-    right: auto;
-    bottom: 24px;
-    transform: translateX(-50%);
-    z-index: 9999;
-}
-
-html.minecraft-theme .nexus-nav {
-    position: fixed;
-    left: 50%;
-    right: auto;
-    bottom: 24px;
-    transform: translateX(-50%);
-    z-index: 9999;
-}
-
 #page-frame {
     background: transparent;
+    transition: opacity 300ms ease;
+    opacity: 1;
+}
+
+@starting-style {
+    body.frame-open #page-frame {
+        opacity: 0;
+    }
 }

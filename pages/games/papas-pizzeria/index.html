@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { margin: 0; padding: 0; background-color: #000; height: 100vh; display: flex; justify-content: center; align-items: center; }
+    #ruffle { width: 100vw; height: 100vh; }
+  </style>
+  <script src="/ruffle-nightly/ruffle.js"></script>
+</head>
+<body>
+  <div id="ruffle"></div>
+  <script>
+    window.RufflePlayer = window.RufflePlayer || {};
+    window.addEventListener("load", (event) => {
+        const ruffle = window.RufflePlayer.newest();
+        const player = ruffle.createPlayer();
+        const container = document.getElementById("ruffle");
+        container.appendChild(player);
+        player.load("papas-pizzeria.swf");
+    });
+  </script>
+</body>
+</html>

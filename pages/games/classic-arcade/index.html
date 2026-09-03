@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#090a0d">
+  <title>Nexus Classic Arcade</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="arcade.js" defer></script>
+</head>
+<body>
+  <main>
+    <header>
+      <a class="back" href="../../g.html" aria-label="Back to games">← Games</a>
+      <div class="score"><span id="scoreLabel">Score</span><strong id="score">0</strong></div>
+    </header>
+    <section class="title-row">
+      <div><h1 id="gameTitle">Classic Arcade</h1><p id="instructions">Choose a game to begin.</p></div>
+      <button id="restart" type="button">New game</button>
+    </section>
+    <nav id="gamePicker" aria-label="Choose a classic game"></nav>
+    <section id="stage" class="stage" aria-label="Game area">
+      <canvas id="canvas" width="800" height="520" tabindex="0"></canvas>
+      <div id="board" class="board" hidden></div>
+      <div id="message" class="message" hidden><strong></strong><button type="button">Play again</button></div>
+    </section>
+    <div class="touch-controls" id="touchControls" aria-label="Touch controls" hidden>
+      <button type="button" data-key="ArrowLeft" aria-label="Move left">←</button>
+      <button type="button" data-key="ArrowUp" aria-label="Move up">↑</button>
+      <button type="button" data-key="ArrowDown" aria-label="Move down">↓</button>
+      <button type="button" data-key="ArrowRight" aria-label="Move right">→</button>
+      <button type="button" data-key=" " aria-label="Fire">Fire</button>
+    </div>
+  </main>
+</body>
+</html>

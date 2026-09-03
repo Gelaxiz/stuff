@@ -23,7 +23,7 @@
     "alt": "Animal Crossing Population: Growing!",
     "title": "Animal Crossing Population: Growing!"
   },
-    {
+  {
     "url": "/pages/iframe.html?url=/pages/games/angrybirdsepic/",
     "img": "/pages/images/angrybirdsepic.webp",
     "alt": "Angry Birds Epic",
@@ -155,17 +155,11 @@
     "alt": "Chrome Dino",
     "title": "Chrome Dino"
   },
-    {
+  {
     "url": "/pages/iframe.html?url=/pages/games/cluster-rush/",
     "img": "/pages/images/clusterrush.png",
     "alt": "Cluster Rush",
     "title": "Cluster Rush"
-  },
-    {
-    "url": "/pages/pframe.html?url=https://www.easyfun.gg/embed/clash-royale-cloud-online.html",
-    "img": "/pages/images/clashroyale.png",
-    "alt": "Clash Royale",
-    "title": "Clash Royale"
   },
   {
     "url": "/pages/iframe.html?url=/pages/games/cheeserolling/",
@@ -227,7 +221,7 @@
     "alt": "Dadish 3",
     "title": "Dadish 3"
   },
-    {
+  {
     "url": "/pages/iframe.html?url=/pages/games/deltarune/",
     "img": "/pages/images/deltarune.jpg",
     "alt": "Deltarune",
@@ -342,12 +336,6 @@
     "title": "Famidash"
   },
   {
-    "url": "/pages/pframe.html?url=https://play.fancade.com/",
-    "img": "/pages/images/fancade.jpg",
-    "alt": "Fancade",
-    "title": "Fancade"
-  },
-  {
     "url": "/pages/iframe.html?url=/pages/games/fancypants2/",
     "img": "/pages/images/fp2.png",
     "alt": "Fancy Pants 2",
@@ -402,18 +390,6 @@
     "title": "Jetpack Joyride"
   },
   {
-    "url": "/pages/pframe.html?p=https://infinite-craft.org/",
-    "img": "/pages/images/infcraft.png",
-    "alt": "Infinite Craft",
-    "title": "Infinite Craft"
-  },
-  {
-    "url": "/pages/pframe.html?url=https://kirka.io",
-    "img": "/pages/images/kirka.png",
-    "alt": "Kirka io",
-    "title": "Kirka"
-  },
-  {
     "url": "/pages/iframe.html?url=/pages/games/learntofly/",
     "img": "/pages/images/ltf.png",
     "alt": "Learn To Fly",
@@ -437,25 +413,25 @@
     "alt": "Let's Surf",
     "title": "Let's Surf"
   },
- {
+  {
     "url": "/pages/iframe.html?url=/pages/roms/newsmb/",
     "img": "/pages/images/new-smb.png",
     "alt": "New Super Mario Bros.",
     "title": "New Super Mario Bros."
   },
- {
+  {
     "url": "/pages/iframe.html?url=/pages/roms/superstarsaga/",
     "img": "/pages/images/superstarsaga.webp",
     "alt": "Mario & Luigi: Superstar Saga",
     "title": "Mario & Luigi: Superstar Saga"
   },
- {
+  {
     "url": "/pages/iframe.html?url=/pages/roms/mario-party/",
     "img": "/pages/images/marioparty.png",
     "alt": "Mario Party DS",
     "title": "Mario Party DS"
   },
- {
+  {
     "url": "/pages/iframe.html?url=/pages/roms/mkds/",
     "img": "/pages/images/mkds.png",
     "alt": "Mario Kart DS",
@@ -485,17 +461,11 @@
     "alt": "Moto X3M",
     "title": "Moto X3M"
   },
- {
+  {
     "url": "/pages/iframe.html?url=/pages/games/need-for-speed/",
     "img": "/pages/images/nfs.jpg",
     "alt": "Need For Speed",
     "title": "Need For Speed"
-  },
-  {
-    "url": "/pages/iframe.html?url=https://webosu.online/",
-    "img": "/pages/apps/images/osu.png",
-    "alt": "osu! (Web)",
-    "title": "osu! (Web)"
   },
   {
     "url": "/pages/iframe.html?url=/pages/games/OvO/",
@@ -576,12 +546,6 @@
     "title": "Rocket Goal"
   },
   {
-    "url": "/pages/pframe.html?url=https://easyfun.gg/embed/roblox.html",
-    "img": "/pages/images/rblx.png",
-    "alt": "Roblox",
-    "title": "Roblox"
-  },
-  {
     "url": "/pages/iframe.html?url=/pages/games/rooftop-snipers/",
     "img": "/pages/images/rpsnipers.png",
     "alt": "Rooftop Snipers",
@@ -624,12 +588,6 @@
     "title": "Slow Roads"
   },
   {
-    "url": "/static/load/hvtrs8%2F-gcmgs%2Ccpaxyeaoeq.aoo%2Fgn%5DUQ%2Fqmcsj-iaptq%2Fknfez.jtol%3Dv%3F1%2C313-",
-    "img": "/pages/images/smashkarts.avif",
-    "alt": "Smash Karts",
-    "title": "Smash Karts"
-  },
-  {
     "url": "/pages/iframe.html?url=/pages/games/escroadcity2/",
     "img": "/pages/images/escroad2.png",
     "alt": "Escape Road City 2",
@@ -647,7 +605,7 @@
     "alt": "Soccer Random",
     "title": "Soccer Random"
   },
-    {
+  {
     "url": "/pages/iframe.html?url=/pages/games/sonic-advance/",
     "img": "/pages/images/sonicadv.png",
     "alt": "Sonic Advance",
@@ -774,12 +732,6 @@
     "title": "The Impossible Quiz 2"
   },
   {
-    "url": "/pages/pframe.html?url=https://quirkylock.netlify.app/",
-    "img": "/pages/images/quirky.png",
-    "alt": "The Password Game",
-    "title": "The Password Game"
-  },
-  {
     "url": "/pages/iframe.html?url=/pages/games/there-is-no-game/",
     "img": "/pages/images/game.png",
     "alt": "There Is No Game",
@@ -832,5 +784,138 @@
     "img": "/pages/images/zeepkist.jpg",
     "alt": "Zeepkist: Crash 2D",
     "title": "Zeepkist: Crash 2D"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/papas-pizzeria/",
+    "img": "/pages/images/papaspizzeria.png",
+    "alt": "Papa's Pizzeria",
+    "title": "Papa's Pizzeria"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/papas-freezeria/",
+    "img": "/pages/images/papasfreezeria.png",
+    "alt": "Papa's Freezeria",
+    "title": "Papa's Freezeria"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/papas-burgeria/",
+    "img": "/pages/images/papasburgeria.png",
+    "alt": "Papa's Burgeria",
+    "title": "Papa's Burgeria"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/papas-tacomia/",
+    "img": "/pages/images/papastacomia.png",
+    "alt": "Papa's Taco Mia",
+    "title": "Papa's Taco Mia"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/papas-pancakeria/",
+    "img": "/pages/images/papaspancakeria.png",
+    "alt": "Papa's Pancakeria",
+    "title": "Papa's Pancakeria"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/papas-wingeria/",
+    "img": "/pages/images/papaswingeria.png",
+    "alt": "Papa's Wingeria",
+    "title": "Papa's Wingeria"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/papas-hotdoggeria/",
+    "img": "/pages/images/papashotdoggeria.png",
+    "alt": "Papa's Hot Doggeria",
+    "title": "Papa's Hot Doggeria"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/papas-cupcakeria/",
+    "img": "/pages/images/papascupcakeria.png",
+    "alt": "Papa's Cupcakeria",
+    "title": "Papa's Cupcakeria"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/papas-pastaria/",
+    "img": "/pages/images/papaspastaria.png",
+    "alt": "Papa's Pastaria",
+    "title": "Papa's Pastaria"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/papas-donuteria/",
+    "img": "/pages/images/papasdonuteria.png",
+    "alt": "Papa's Donuteria",
+    "title": "Papa's Donuteria"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/papas-bakeria/",
+    "img": "/pages/images/papasbakeria.png",
+    "alt": "Papa's Bakeria",
+    "title": "Papa's Bakeria"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/papas-sushiria/",
+    "img": "/pages/images/papassushiria.png",
+    "alt": "Papa's Sushiria",
+    "title": "Papa's Sushiria"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/papas-cheeseria/",
+    "img": "/pages/images/papascheeseria.png",
+    "alt": "Papa's Cheeseria",
+    "title": "Papa's Cheeseria"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/papas-scooperia/",
+    "img": "/pages/images/papasscooperia.png",
+    "alt": "Papa's Scooperia",
+    "title": "Papa's Scooperia"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/classic-arcade/?game=pong",
+    "img": "/pages/images/classic-pong.svg",
+    "alt": "Pong paddles and ball",
+    "title": "Pong",
+    "genre": "classic"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/classic-arcade/?game=breakout",
+    "img": "/pages/images/classic-breakout.svg",
+    "alt": "Breakout bricks and paddle",
+    "title": "Breakout",
+    "genre": "classic"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/classic-arcade/?game=asteroids",
+    "img": "/pages/images/classic-asteroids.svg",
+    "alt": "Ship flying through asteroids",
+    "title": "Asteroids",
+    "genre": "classic"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/classic-arcade/?game=minesweeper",
+    "img": "/pages/images/classic-mines.svg",
+    "alt": "Minesweeper grid and mine",
+    "title": "Minesweeper",
+    "genre": "classic"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/classic-arcade/?game=connect4",
+    "img": "/pages/images/classic-connect.svg",
+    "alt": "Yellow and red Connect Four discs",
+    "title": "Connect Four",
+    "genre": "classic"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/classic-arcade/?game=memory",
+    "img": "/pages/images/classic-memory.svg",
+    "alt": "Paired memory cards",
+    "title": "Memory Match",
+    "genre": "classic"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/classic-arcade/?game=invaders",
+    "img": "/pages/images/classic-invaders.svg",
+    "alt": "Pixel invaders and player ship",
+    "title": "Invaders",
+    "genre": "classic"
   }
 ]

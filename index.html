@@ -13,90 +13,13 @@
    <meta property="og:title" content="Classroom Management Tools & Resources - Google for Education">
    <meta property="og:description" content="Google Classroom is your central place where teaching and learning come together. This easy-to-use and secure tool helps educators manage, measure and enrich learning experiences.">
    <title>Home - Classroom</title>
-   <link rel="icon" href="../storage/images/googleclassroom.png" type="image/png">
+   <link rel="icon" href="./storage/images/googleclassroom.png" type="image/png">
    <link rel="stylesheet" href="./storage/css/seo.css">
    <link rel="stylesheet" href="./storage/css/evenmorestyles.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
    <link rel="stylesheet" href="./storage/css/static.css">
    <link rel="stylesheet" href="./storage/css/background.css">
    <link rel="stylesheet" href="./storage/css/navigation.css">
-
-   <style>
-#clear-site-data {
-   position: fixed;
-   top: 20px;
-   right: 20px;
-   z-index: 99999;
-   padding: 10px 16px;
-   cursor: pointer;
-}
-</style>
-
-   <button id="clear-site-data" type="button">
-click to fix proxy</button>
-
-<script>
-document.getElementById("clear-site-data").addEventListener("click", async function () {
-   const confirmed = confirm(
-      "continue"
-   );
-
-   if (!confirmed) return;
-
-   try {
-      // Local and session storage
-      localStorage.clear();
-      sessionStorage.clear();
-
-      // JavaScript-accessible cookies
-      document.cookie.split(";").forEach(function (cookie) {
-         const name = cookie.split("=")[0].trim();
-
-         document.cookie =
-            `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/`;
-      });
-
-      // Cache Storage
-      if ("caches" in window) {
-         const cacheNames = await caches.keys();
-         await Promise.all(
-            cacheNames.map(function (name) {
-               return caches.delete(name);
-            })
-         );
-      }
-
-      // IndexedDB databases
-      if (indexedDB.databases) {
-         const databases = await indexedDB.databases();
-
-         databases.forEach(function (database) {
-            if (database.name) {
-               indexedDB.deleteDatabase(database.name);
-            }
-         });
-      }
-
-      // Service workers
-      if ("serviceWorker" in navigator) {
-         const registrations =
-            await navigator.serviceWorker.getRegistrations();
-
-         await Promise.all(
-            registrations.map(function (registration) {
-               return registration.unregister();
-            })
-         );
-      }
-
-      alert(" proxy should be fixed now, if not try again");
-      window.top.location.replace("/?reset=" + Date.now());
-   } catch (error) {
-      console.error("Could not clear all site data:", error);
-      alert("Some site data could not be cleared.");
-   }
-});
-</script>
 
    <style>
       @keyframes shake {
@@ -197,7 +120,7 @@ document.getElementById("clear-site-data").addEventListener("click", async funct
    <script src="/storage/js/particles-toggle.js" defer></script> -->
 
    <div id="home-screen">
-      <h>NEXUS</h>
+      <h1 id="nexus-title">NEXUS</h1>
 
       <div id="search-container">
 
@@ -205,9 +128,10 @@ document.getElementById("clear-site-data").addEventListener("click", async funct
 
             <input id="uv-search-engine" value="https://duckduckgo.com/?q=%s&kp=1&ia=web" type="hidden">
 
-            <img id="search-icon" src="/storage/icons/logos/duckduckgo.png">
+            <img id="search-icon" src="/storage/icons/logos/duckduckgo.png" alt="">
 
-            <input id="uv-address" type="text" autocomplete="off" class="search-bar-home" placeholder="Search DuckDuckGo or type a URL">
+            <label class="visually-hidden" for="uv-address">Search DuckDuckGo or enter a public web address</label>
+            <input id="uv-address" type="text" autocomplete="off" inputmode="url" class="search-bar-home" placeholder="Search DuckDuckGo or type a URL" aria-describedby="uv-error">
 
          </form>
 
@@ -228,19 +152,19 @@ document.getElementById("clear-site-data").addEventListener("click", async funct
          <i class="fa-solid fa-house"></i>
       </a>
 
-      <a href="./pages/g.html" class="nav-item frame-link" data-frame="./pages/g.html">
+      <a href="./pages/g.html" class="nav-item frame-link" data-frame="./pages/g.html" title="Games" aria-label="Games">
          <i class="fa-solid fa-gamepad"></i>
       </a>
 
-      <a href="./pages/a.html" class="nav-item frame-link" data-frame="./pages/a.html">
+      <a href="./pages/a.html" class="nav-item frame-link" data-frame="./pages/a.html" title="Apps" aria-label="Apps">
          <i class="fa-solid fa-layer-group"></i>
       </a>
 
-      <a href="./pages/m/index.html" class="nav-item frame-link" data-frame="./pages/m/index.html">
+      <a href="./pages/m/index.html" class="nav-item frame-link" data-frame="./pages/m/index.html" title="Movies" aria-label="Movies">
          <i class="fa-solid fa-video"></i>
       </a>
 
-      <a href="./pages/extra.html" class="nav-item frame-link" data-frame="./pages/extra.html">
+      <a href="./pages/extra.html" class="nav-item frame-link" data-frame="./pages/extra.html" title="Tools" aria-label="Tools">
          <i class="fa-solid fa-screwdriver-wrench"></i>
       </a>
 
@@ -248,7 +172,7 @@ document.getElementById("clear-site-data").addEventListener("click", async funct
          <i class="fa-brands fa-discord"></i>
       </a>
 
-      <a href="./pages/settings.html" class="nav-item frame-link" data-frame="./pages/settings.html">
+      <a href="./pages/settings.html" class="nav-item frame-link" data-frame="./pages/settings.html" title="Settings" aria-label="Settings">
          <i class="fa-solid fa-gear"></i>
       </a>
    </nav>
@@ -294,7 +218,7 @@ document.getElementById("clear-site-data").addEventListener("click", async funct
    });
 
    window.addEventListener("message", function (event) {
-      if (!event.data || event.data.type !== "navigate" || !event.data.url) {
+      if (event.source !== pageFrame.contentWindow || !event.data || event.data.type !== "navigate" || !event.data.url) {
          return;
       }
 
@@ -463,4 +387,3 @@ document.getElementById("clear-site-data").addEventListener("click", async funct
 </body>
 
 </html>
-   

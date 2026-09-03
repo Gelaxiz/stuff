@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-03T12:00:00+03:00",
+  "title": "Design System: Nexus School",
+  "extensions": {
+    "colorMeta": {
+      "night": {"role":"neutral","displayName":"Night","canonical":"#08090c","tonalRamp":["#08090c","#15171c","#292c33","#484d57","#707782","#a0a6ae","#d0d3d7","#f4f6f8"]},
+      "surface": {"role":"neutral","displayName":"Surface","canonical":"#101216","tonalRamp":["#101216","#202329","#353941","#535964","#777f8a","#a2a8b0","#d1d4d8","#f5f6f7"]},
+      "raised": {"role":"neutral","displayName":"Raised","canonical":"#171a20","tonalRamp":["#171a20","#282c34","#3f444e","#5e6570","#838a94","#abb0b7","#d4d6da","#f5f6f7"]},
+      "rule": {"role":"neutral","displayName":"Rule","canonical":"#282c34","tonalRamp":["#111318","#282c34","#41464f","#606772","#858c96","#adb2b9","#d5d8db","#f6f7f8"]},
+      "rule-strong": {"role":"neutral","displayName":"Strong Rule","canonical":"#3a404b","tonalRamp":["#15181d","#2a2f37","#3a404b","#5d6570","#828a94","#abb1b8","#d4d7da","#f5f6f7"]},
+      "ink": {"role":"neutral","displayName":"Ink","canonical":"#f4f6f8","tonalRamp":["#16191d","#31363c","#545b63","#7c848c","#a8aeb4","#cbd0d4","#e5e8ea","#f4f6f8"]},
+      "muted": {"role":"neutral","displayName":"Muted","canonical":"#9ba3af","tonalRamp":["#171b20","#303740","#515b67","#747e8a","#9ba3af","#bcc1c7","#dcdee1","#f3f4f5"]},
+      "quiet": {"role":"neutral","displayName":"Quiet","canonical":"#707985","tonalRamp":["#14181c","#2b3239","#48515b","#707985","#939ba4","#b6bbc1","#d7dadd","#f2f3f4"]},
+      "signal": {"role":"primary","displayName":"Acid Signal","canonical":"#d8ff45","tonalRamp":["#283000","#4e6000","#7f9a00","#adc900","#d8ff45","#e4ff78","#efffac","#f9ffe5"]},
+      "signal-ink": {"role":"neutral","displayName":"Signal Ink","canonical":"#151900","tonalRamp":["#151900","#303800","#566400","#809300","#acbf22","#cedb72","#e8eeae","#f8fae5"]},
+      "danger": {"role":"secondary","displayName":"Danger","canonical":"#ff727c","tonalRamp":["#3f0b10","#701620","#a52a35","#d94853","#ff727c","#ff9da4","#ffc5c9","#ffedef"]}
+    },
+    "shadows": {
+      "hover": "0 10px 24px rgba(0,0,0,.22)",
+      "overlay": "0 24px 64px rgba(0,0,0,.55)"
+    },
+    "motion": {
+      "fast": "150ms ease",
+      "physical": "200ms cubic-bezier(.2,.8,.2,1)",
+      "entrance": "420ms cubic-bezier(.2,.8,.2,1)"
+    },
+    "breakpoints": {"compact":"520px","stacked":"780px"}
+  },
+  "components": {
+    "ds-signal-button": {"description":"Primary active or play control","css":"background:#d8ff45;color:#151900;min-height:44px;border-radius:8px;font-weight:700"},
+    "ds-quiet-button": {"description":"Secondary control","css":"background:#101216;color:#f4f6f8;border:1px solid #3a404b;min-height:44px;border-radius:8px"},
+    "ds-search-field": {"description":"Catalog search","css":"background:#101216;color:#f4f6f8;border:1px solid #282c34;min-height:48px;border-radius:8px"},
+    "ds-filter": {"description":"Scrollable category filter","css":"white-space:nowrap;min-height:44px;padding:0 14px;border-radius:8px"},
+    "ds-game-art": {"description":"Square resilient game artwork","css":"aspect-ratio:1;overflow:hidden;background:#171a20;border:1px solid #282c34;border-radius:10px"},
+    "ds-recovery-panel": {"description":"Proxy failure recovery","css":"background:#171a20;color:#f4f6f8;border:1px solid #3a404b;border-radius:12px;padding:24px"}
+  }
+}

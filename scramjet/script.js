@@ -114,6 +114,7 @@ let sharedConnectionReady = false;
 let tabs = [];
 let activeTabId = null;
 let nextTabId = 1;
+const INITIALIZATION_TIMEOUT = 12000;
 
 // =====================================================
 // UTILITIES
@@ -190,12 +191,53 @@ async function getSharedConnection() {
     const wispUrl = localStorage.getItem("proxServer") ?? DEFAULT_WISP;
     
     sharedConnection = new BareMux.BareMuxConnection(basePath + "bareworker.js");
-    await sharedConnection.setTransport(
-        "https://cdn.jsdelivr.net/npm/@mercuryworkshop/epoxy-transport@2.1.28/dist/index.mjs",
-        [{ wisp: wispUrl }]
+    await withTimeout(
+        sharedConnection.setTransport(
+            "https://cdn.jsdelivr.net/npm/@mercuryworkshop/epoxy-transport@2.1.28/dist/index.mjs",
+            [{ wisp: wispUrl }]
+        ),
+        INITIALIZATION_TIMEOUT,
+        "The proxy transport did not respond."
     );
     sharedConnectionReady = true;
     return sharedConnection;
+}
+
+function withTimeout(promise, timeout, message) {
+    let timer;
+    const limit = new Promise((_, reject) => {
+        timer = setTimeout(() => reject(new Error(message)), timeout);
+    });
+    return Promise.race([promise, limit]).finally(() => clearTimeout(timer));
+}
+
+function showInitializationError(error) {
+    const root = document.getElementById("app");
+    const detail = error?.message || "The browser could not start.";
+    root.innerHTML = `
+        <main class="startup-error" role="alert">
+            <div class="startup-error-mark" aria-hidden="true"><i class="fa-solid fa-link-slash"></i></div>
+            <p class="startup-error-label">Browser unavailable</p>
+            <h1>Connection setup failed</h1>
+            <p>${escapeHtml(detail)}</p>
+            <p class="startup-error-help">The selected relay may be offline or refusing that public destination. Local and private network addresses remain blocked for safety.</p>
+            <div class="startup-error-actions">
+                <button type="button" id="retry-startup"><i class="fa-solid fa-rotate-right"></i> Retry</button>
+                <button type="button" id="reset-relay">Use default relay</button>
+                <a href="../index.html">Return home</a>
+            </div>
+        </main>`;
+    document.getElementById("retry-startup").onclick = () => location.reload();
+    document.getElementById("reset-relay").onclick = () => {
+        localStorage.setItem("proxServer", DEFAULT_WISP);
+        location.reload();
+    };
+}
+
+function escapeHtml(value) {
+    return String(value).replace(/[&<>'"]/g, character => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;"
+    })[character]);
 }
 
 async function initializeBrowser() {
@@ -204,15 +246,16 @@ async function initializeBrowser() {
         <div class="browser-container">
             <div class="flex tabs" id="tabs-container"></div>
             <div class="flex nav">
-                <button id="back-btn" title="Back"><i class="fa-solid fa-chevron-left"></i></button>
-                <button id="fwd-btn" title="Forward"><i class="fa-solid fa-chevron-right"></i></button>
-                <button id="reload-btn" title="Reload"><i class="fa-solid fa-rotate-right"></i></button>
+                <button id="back-btn" title="Back" aria-label="Go back"><i class="fa-solid fa-chevron-left"></i></button>
+                <button id="fwd-btn" title="Forward" aria-label="Go forward"><i class="fa-solid fa-chevron-right"></i></button>
+                <button id="reload-btn" title="Reload" aria-label="Reload page"><i class="fa-solid fa-rotate-right"></i></button>
                 <div class="address-wrapper">
+                    <label class="sr-only" for="address-bar">Search or enter a public web address</label>
                     <input class="bar" id="address-bar" autocomplete="off" placeholder="Search or enter URL">
-                    <button id="home-btn-nav" title="Home"><i class="fa-solid fa-house"></i></button>
+                    <button id="home-btn-nav" title="Home" aria-label="Return to Nexus home"><i class="fa-solid fa-house"></i></button>
                 </div>
-                <button id="devtools-btn" title="DevTools"><i class="fa-solid fa-code"></i></button>
-                <button id="wisp-settings-btn" title="Proxy Settings"><i class="fa-solid fa-gear"></i></button>
+                <button id="devtools-btn" title="DevTools" aria-label="Open developer tools"><i class="fa-solid fa-code"></i></button>
+                <button id="wisp-settings-btn" title="Proxy Settings" aria-label="Open proxy settings"><i class="fa-solid fa-gear"></i></button>
             </div>
             <div class="loading-bar-container"><div class="loading-bar" id="loading-bar"></div></div>
             <div class="iframe-container" id="iframe-container">
@@ -411,8 +454,11 @@ function updateTabsUI() {
     container.innerHTML = "";
 
     tabs.forEach(tab => {
-        const el = document.createElement("div");
+        const el = document.createElement("button");
+        el.type = "button";
         el.className = `tab ${tab.id === activeTabId ? "active" : ""}`;
+        el.setAttribute("role", "tab");
+        el.setAttribute("aria-selected", tab.id === activeTabId ? "true" : "false");
 
         const iconHtml = tab.loading 
             ? `<div class="tab-spinner"></div>`
@@ -420,14 +466,19 @@ function updateTabsUI() {
                 ? `<img src="${tab.favicon}" class="tab-favicon" onerror="this.style.display='none'">`
                 : '';
 
-        el.innerHTML = `${iconHtml}<span class="tab-title">${tab.title}</span><span class="tab-close">&times;</span>`;
+        el.setAttribute("aria-label", `${tab.title}. Press Delete to close tab.`);
+        el.innerHTML = `${iconHtml}<span class="tab-title">${escapeHtml(tab.title)}</span><span class="tab-close" aria-hidden="true">&times;</span>`;
         el.onclick = () => switchTab(tab.id);
         el.querySelector(".tab-close").onclick = (e) => { e.stopPropagation(); closeTab(tab.id); };
+        el.onkeydown = (e) => {
+            if (e.key === "Delete") { e.preventDefault(); closeTab(tab.id); }
+        };
         container.appendChild(el);
     });
 
     const newBtn = document.createElement("button");
     newBtn.className = "new-tab";
+    newBtn.setAttribute("aria-label", "Open new tab");
     newBtn.innerHTML = "<i class='fa-solid fa-plus'></i>";
     newBtn.onclick = () => createTab(true);
     container.appendChild(newBtn);
@@ -446,24 +497,59 @@ function handleSubmit(url) {
     let input = url ?? document.getElementById("address-bar").value.trim();
     if (!input) return;
 
-    if (!input.startsWith('http')) {
+    if (!/^https?:\/\//i.test(input)) {
         input = input.includes('.') && !input.includes(' ') 
             ? `https://${input}`
             : `https://search.brave.com/search?q=${encodeURIComponent(input)}`;
     }
     
+    let destination;
+    try {
+        destination = new URL(input);
+    } catch {
+        showNavigationError("That address is not a valid web destination.");
+        return;
+    }
+
+    if (!isSafePublicDestination(destination)) {
+        showNavigationError("Local and private-network destinations are not available through this browser.");
+        return;
+    }
+
+    const error = document.getElementById('error');
+    if (error) error.style.display = 'none';
     tab.loading = true;
     showIframeLoading(true, input);
     updateLoadingBar(tab, 10);
-    tab.frame.go(input);
+    tab.frame.go(destination.href);
+}
+
+function isSafePublicDestination(url) {
+    if (!['http:', 'https:'].includes(url.protocol)) return false;
+    const host = url.hostname.toLowerCase().replace(/^\[|\]$/g, '');
+    if (host === 'localhost' || host === '::1' || host.endsWith('.local')) return false;
+    if (/^(127|10|0)\./.test(host)) return false;
+    if (/^169\.254\./.test(host) || /^192\.168\./.test(host)) return false;
+    const parts = host.split('.').map(Number);
+    if (parts.length === 4 && parts.every(Number.isInteger)) {
+        if (parts[0] === 172 && parts[1] >= 16 && parts[1] <= 31) return false;
+    }
+    return true;
+}
+
+function showNavigationError(message) {
+    const error = document.getElementById('error');
+    const text = document.getElementById('error-message');
+    if (text) text.textContent = message;
+    if (error) error.style.display = 'flex';
 }
 
 function updateLoadingBar(tab, percent) {
     if (tab.id !== activeTabId) return;
     const bar = document.getElementById("loading-bar");
-    bar.style.width = percent + "%";
+    bar.style.transform = `scaleX(${Math.max(0, Math.min(100, percent)) / 100})`;
     bar.style.opacity = percent === 100 ? "0" : "1";
-    if (percent === 100) setTimeout(() => { bar.style.width = "0%"; }, 200);
+    if (percent === 100) setTimeout(() => { bar.style.transform = "scaleX(0)"; }, 200);
 }
 
 // =====================================================
@@ -725,5 +811,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         await initializeBrowser();
     } catch (err) {
         console.error("Initialization error:", err);
+        showInitializationError(err);
     }
 });
