@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <script src="/storage/js/auto-cloak.js"></script>
   <script>
     const theme = localStorage.getItem("nexusTheme") || "default";
     document.documentElement.classList.add("theme-" + theme);
@@ -42,6 +43,7 @@
         <button type="button" class="filter-button" data-filter="arcade" aria-pressed="false">Arcade</button>
         <button type="button" class="filter-button" data-filter="sports" aria-pressed="false">Sports</button>
         <button type="button" class="filter-button" data-filter="adventure" aria-pressed="false">Adventure</button>
+        <button type="button" class="filter-button" data-filter="shooter" aria-pressed="false">Shooters</button>
       </div>
     </section>
     <div id="libraryStatus" class="library-status" role="status">

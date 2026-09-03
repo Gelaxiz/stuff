@@ -917,5 +917,313 @@
     "alt": "Pixel invaders and player ship",
     "title": "Invaders",
     "genre": "classic"
+  },
+{
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/ball-arena.html",
+    "img": "",
+    "alt": "Ball Arena",
+    "title": "Ball Arena",
+    "genre": "arcade"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/shan-hai.html",
+    "img": "",
+    "alt": "Shan Hai",
+    "title": "Shan Hai",
+    "genre": "adventure"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/starforge-idle.html",
+    "img": "",
+    "alt": "Starforge Idle",
+    "title": "Starforge Idle",
+    "genre": "adventure"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/garden-front.html",
+    "img": "",
+    "alt": "Garden Front",
+    "title": "Garden Front",
+    "genre": "strategy"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/moba-frontier.html",
+    "img": "",
+    "alt": "MOBA Frontier",
+    "title": "MOBA Frontier",
+    "genre": "action"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/slingstorm.html",
+    "img": "",
+    "alt": "Slingstorm",
+    "title": "Slingstorm",
+    "genre": "arcade"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/snake-game.html",
+    "img": "",
+    "alt": "Snake Game",
+    "title": "Snake Game",
+    "genre": "classic"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/spud-arena.html",
+    "img": "",
+    "alt": "Spud Arena",
+    "title": "Spud Arena",
+    "genre": "action"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/tank-arena.html",
+    "img": "",
+    "alt": "Tank Arena",
+    "title": "Tank Arena",
+    "genre": "shooter"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/abyss-sonar.html",
+    "img": "",
+    "alt": "Abyss Sonar",
+    "title": "Abyss Sonar",
+    "genre": "adventure"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/auto-chess-forge.html",
+    "img": "",
+    "alt": "Auto Chess Forge",
+    "title": "Auto Chess Forge",
+    "genre": "strategy"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/beat-bento.html",
+    "img": "",
+    "alt": "Beat Bento",
+    "title": "Beat Bento",
+    "genre": "arcade"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/chalk-billiards.html",
+    "img": "",
+    "alt": "Chalk Billiards",
+    "title": "Chalk Billiards",
+    "genre": "sports"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/comet-weaver.html",
+    "img": "",
+    "alt": "Comet Weaver",
+    "title": "Comet Weaver",
+    "genre": "arcade"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/courtroom-clash.html",
+    "img": "",
+    "alt": "Courtroom Clash",
+    "title": "Courtroom Clash",
+    "genre": "strategy"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/dice-delver.html",
+    "img": "",
+    "alt": "Dice Delver",
+    "title": "Dice Delver",
+    "genre": "adventure"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/drift-racer.html",
+    "img": "",
+    "alt": "Drift Racer",
+    "title": "Drift Racer",
+    "genre": "sports"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/dungeon-delver.html",
+    "img": "",
+    "alt": "Dungeon Delver",
+    "title": "Dungeon Delver",
+    "genre": "adventure"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/ember-tactics.html",
+    "img": "",
+    "alt": "Ember Tactics",
+    "title": "Ember Tactics",
+    "genre": "strategy"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/gem-garden.html",
+    "img": "",
+    "alt": "Gem Garden",
+    "title": "Gem Garden",
+    "genre": "puzzle"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/moon-lander.html",
+    "img": "",
+    "alt": "Moon Lander",
+    "title": "Moon Lander",
+    "genre": "classic"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/neon-2048.html",
+    "img": "",
+    "alt": "Neon 2048",
+    "title": "Neon 2048",
+    "genre": "puzzle"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/orbital-pinball.html",
+    "img": "",
+    "alt": "Orbital Pinball",
+    "title": "Orbital Pinball",
+    "genre": "classic"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/pocket-farm.html",
+    "img": "",
+    "alt": "Pocket Farm",
+    "title": "Pocket Farm",
+    "genre": "simulation"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/river-holdem.html",
+    "img": "",
+    "alt": "River Holdem",
+    "title": "River Holdem",
+    "genre": "cards"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/shadow-post.html",
+    "img": "",
+    "alt": "Shadow Post",
+    "title": "Shadow Post",
+    "genre": "adventure"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/thunder-vanguard.html",
+    "img": "",
+    "alt": "Thunder Vanguard",
+    "title": "Thunder Vanguard",
+    "genre": "shooter"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/air-hockey.html",
+    "img": "",
+    "alt": "Air Hockey",
+    "title": "Air Hockey",
+    "genre": "sports"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/block-forge.html",
+    "img": "",
+    "alt": "Block Forge",
+    "title": "Block Forge",
+    "genre": "puzzle"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/bytebot-lab.html",
+    "img": "",
+    "alt": "Bytebot Lab",
+    "title": "Bytebot Lab",
+    "genre": "puzzle"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/crossword-cafe.html",
+    "img": "",
+    "alt": "Crossword Cafe",
+    "title": "Crossword Cafe",
+    "genre": "puzzle"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/forest-dash.html",
+    "img": "",
+    "alt": "Forest Dash",
+    "title": "Forest Dash",
+    "genre": "arcade"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/fruit-slice.html",
+    "img": "",
+    "alt": "Fruit Slice",
+    "title": "Fruit Slice",
+    "genre": "arcade"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/maze-chase.html",
+    "img": "",
+    "alt": "Maze Chase",
+    "title": "Maze Chase",
+    "genre": "classic"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/midnight-chess.html",
+    "img": "",
+    "alt": "Midnight Chess",
+    "title": "Midnight Chess",
+    "genre": "classic"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/monster-horde.html",
+    "img": "",
+    "alt": "Monster Horde",
+    "title": "Monster Horde",
+    "genre": "action"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/pocket-golf.html",
+    "img": "",
+    "alt": "Pocket Golf",
+    "title": "Pocket Golf",
+    "genre": "sports"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/prism-breaker.html",
+    "img": "",
+    "alt": "Prism Breaker",
+    "title": "Prism Breaker",
+    "genre": "classic"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/sky-hop.html",
+    "img": "",
+    "alt": "Sky Hop",
+    "title": "Sky Hop",
+    "genre": "arcade"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/sokoban-quest.html",
+    "img": "",
+    "alt": "Sokoban Quest",
+    "title": "Sokoban Quest",
+    "genre": "classic"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/solitaire-classic.html",
+    "img": "",
+    "alt": "Solitaire Classic",
+    "title": "Solitaire Classic",
+    "genre": "classic"
+  },
+  {
+    "url": "/pages/iframe.html?url=/pages/games/open-arcade/sudoku-studio.html",
+    "img": "",
+    "alt": "Sudoku Studio",
+    "title": "Sudoku Studio",
+    "genre": "classic"
+  },
+  {
+    "url": "/scramjet/index.html#https%3A%2F%2Ffrankplus.github.io%2F",
+    "img": "",
+    "alt": "Counter-Strike 2D browser port",
+    "title": "Counter-Strike 2D",
+    "genre": "shooter"
+  },
+  {
+    "url": "/scramjet/index.html#https%3A%2F%2Fx8bitrain.github.io%2FwebXash%2F",
+    "img": "",
+    "alt": "Counter-Strike 1.6 WebXash launcher",
+    "title": "Counter-Strike 1.6 (own files)",
+    "genre": "shooter"
   }
 ]

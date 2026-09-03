@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+   <script src="/storage/js/auto-cloak.js"></script>
    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2041198418344250"
      crossorigin="anonymous"></script>
 
@@ -142,6 +143,12 @@
 
          <p id="randomText"></p>
 
+         <button id="browser-button" class="browser-button" type="button">
+            <i class="fa-solid fa-globe" aria-hidden="true"></i>
+            Open browser
+            <span>Proxy mode</span>
+         </button>
+
       </div>
    </div>
 
@@ -154,6 +161,10 @@
 
       <a href="./pages/g.html" class="nav-item frame-link" data-frame="./pages/g.html" title="Games" aria-label="Games">
          <i class="fa-solid fa-gamepad"></i>
+      </a>
+
+      <a href="./scramjet/index.html" id="browser-nav" class="nav-item" title="Browser / Proxy" aria-label="Open Browser / Proxy">
+         <i class="fa-solid fa-globe"></i>
       </a>
 
       <a href="./pages/a.html" class="nav-item frame-link" data-frame="./pages/a.html" title="Apps" aria-label="Apps">
@@ -187,6 +198,8 @@
    const frameLinks = document.querySelectorAll(".frame-link");
    const proxyForm = document.getElementById("uv-form");
    const proxyAddress = document.getElementById("uv-address");
+   const browserButton = document.getElementById("browser-button");
+   const browserNav = document.getElementById("browser-nav");
 
    function openScramjet(url) {
       pageFrame.src = `./scramjet/index.html#${encodeURIComponent(url)}`;
@@ -197,6 +210,17 @@
          item.classList.remove("active");
       });
    }
+
+   function openBrowserHome(event) {
+      if (event) event.preventDefault();
+      pageFrame.src = "./scramjet/index.html";
+      document.body.classList.add("frame-open", "proxy-open");
+      navItems.forEach((item) => item.classList.remove("active"));
+      browserNav.classList.add("active");
+   }
+
+   browserButton.addEventListener("click", openBrowserHome);
+   browserNav.addEventListener("click", openBrowserHome);
 
    proxyForm.addEventListener("submit", function (event) {
       event.preventDefault();
@@ -313,16 +337,7 @@
    }
 
    function applySavedCloak() {
-      const savedTitle = localStorage.getItem("siteTitle");
-      const savedIcon = localStorage.getItem("siteLogo");
-
-      if (savedTitle) {
-         document.title = savedTitle;
-      }
-
-      if (savedIcon) {
-         setTopFavicon(savedIcon);
-      }
+      if (window.NexusCloak) window.NexusCloak.apply();
    }
 
    window.addEventListener("message", function (event) {
